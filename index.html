@@ -6,12 +6,33 @@
   <title>Rabaska OS</title>
   <meta name="description" content="Rabaska OS est un système d’exploitation clair, en français, conçu pour les ordinateurs d’occasion. Produit commercial. Pas de téléchargement public.">
   <meta name="robots" content="index,follow">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,400;0,500;0,600;1,400&family=Newsreader:ital,opsz,wght@0,6..72,500;0,6..72,600;1,6..72,500&display=swap" rel="stylesheet">
+  <meta name="referrer" content="no-referrer">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self'; base-uri 'self'">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <style>
+    @font-face {
+      font-family: "Hanken Grotesk";
+      src: url("fonts/HankenGrotesk.ttf") format("truetype");
+      font-weight: 100 900;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: "Newsreader";
+      src: url("fonts/Newsreader.ttf") format("truetype");
+      font-weight: 100 900;
+      font-style: normal;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: "Newsreader";
+      src: url("fonts/Newsreader-Italic.ttf") format("truetype");
+      font-weight: 100 900;
+      font-style: italic;
+      font-display: swap;
+    }
     :root {
       --bg: #e9e2d4;
+      --bar: #f6f2ea;
       --panel: #fbf8f2;
       --card: #fdfbf6;
       --ink: #221d17;
@@ -20,6 +41,7 @@
       --accent: #c15a34;
       --accent2: #ac4c2b;
       --bd: rgba(28, 23, 16, 0.16);
+      --bd2: rgba(28, 23, 16, 0.09);
     }
     * { box-sizing: border-box; margin: 0; padding: 0; }
     html, body { background: var(--bg); color: var(--ink); }
@@ -56,7 +78,7 @@
       font-size: 22px;
     }
     nav { display: flex; gap: 28px; color: var(--mut); font-size: 15px; }
-    main { max-width: 920px; margin: 0 auto; padding: 72px 40px 96px; }
+    main { max-width: 980px; margin: 0 auto; padding: 64px 40px 96px; }
     h1 {
       font-family: "Newsreader", Georgia, serif;
       font-weight: 500;
@@ -71,6 +93,124 @@
       color: var(--mut);
       font-size: 19px;
     }
+    .ecran {
+      margin-top: 48px;
+      border: 1px solid var(--bd);
+      border-radius: 16px;
+      overflow: hidden;
+      background: var(--bg);
+      position: relative;
+      height: min(540px, 72vw);
+      min-height: 360px;
+    }
+    .filigrane {
+      position: absolute;
+      right: 28px;
+      bottom: 78px;
+      font-family: "Newsreader", Georgia, serif;
+      font-style: italic;
+      font-size: clamp(40px, 8vw, 72px);
+      color: var(--ink);
+      opacity: .07;
+      pointer-events: none;
+    }
+    .menu {
+      position: absolute;
+      left: 12px;
+      bottom: 68px;
+      width: min(520px, 86%);
+      background: var(--panel);
+      border: 1px solid var(--bd);
+      border-radius: 18px;
+      padding: 18px 18px 14px;
+    }
+    .menu h2 {
+      font-family: "Newsreader", Georgia, serif;
+      font-weight: 500;
+      font-size: 22px;
+      margin-bottom: 12px;
+    }
+    .cherche {
+      height: 44px;
+      padding: 0 14px;
+      background: var(--bg);
+      border: 1px solid var(--bd2);
+      border-radius: 12px;
+      color: var(--mut);
+      font-size: 14px;
+      display: flex;
+      align-items: center;
+      margin-bottom: 14px;
+    }
+    .apps {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 6px;
+    }
+    .app {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 2px 10px;
+      font-size: 12px;
+      font-weight: 500;
+    }
+    .app i {
+      width: 48px; height: 48px;
+      border-radius: 14px;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-style: normal;
+      font-weight: 600;
+      font-size: 18px;
+    }
+    .pied-menu {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 10px;
+      padding-top: 12px;
+      border-top: 1px solid var(--bd2);
+      font-size: 14px;
+    }
+    .barre {
+      position: absolute;
+      left: 0; right: 0; bottom: 0;
+      height: 56px;
+      background: var(--bar);
+      border-top: 1px solid var(--bd);
+      display: flex;
+      align-items: center;
+      padding: 0 12px;
+      gap: 6px;
+    }
+    .demarrer {
+      width: 40px; height: 40px;
+      border-radius: 11px;
+      background: var(--accent);
+      color: #fff;
+      font-family: "Newsreader", Georgia, serif;
+      font-style: italic;
+      font-weight: 600;
+      font-size: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex: none;
+    }
+    .pin {
+      width: 30px; height: 30px;
+      border-radius: 8px;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 600;
+      font-size: 13px;
+    }
     .notice {
       margin-top: 40px;
       background: var(--panel);
@@ -82,7 +222,7 @@
     .notice strong { display: block; margin-bottom: 6px; font-weight: 600; }
     .notice p { color: var(--mut); font-size: 16px; }
     .grid {
-      margin-top: 64px;
+      margin-top: 48px;
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 20px;
@@ -93,11 +233,7 @@
       border-radius: 16px;
       padding: 22px 22px 24px;
     }
-    article h2 {
-      font-size: 15px;
-      font-weight: 600;
-      margin-bottom: 8px;
-    }
+    article h2 { font-size: 15px; font-weight: 600; margin-bottom: 8px; }
     article p { color: var(--mut); font-size: 15px; }
     footer {
       border-top: 1px solid var(--bd);
@@ -113,6 +249,8 @@
       header, footer, main { padding-left: 20px; padding-right: 20px; }
       .grid { grid-template-columns: 1fr; }
       nav { display: none; }
+      .apps { grid-template-columns: repeat(4, 1fr); }
+      .app:nth-child(n+9) { display: none; }
     }
   </style>
 </head>
@@ -135,7 +273,45 @@
       pensé pour du matériel ancien. Ce n’est pas Windows.
     </p>
 
-    <div class="notice" id="os">
+    <div class="ecran" id="os" role="img" aria-label="Bureau Rabaska OS : menu Démarrer ouvert, bouton R terracotta">
+      <div class="filigrane">Rabaska</div>
+      <div class="menu">
+        <h2>Bonjour</h2>
+        <div class="cherche">Rechercher une application…</div>
+        <div class="apps">
+          <div class="app"><i style="background:#3f6ea8">W</i>Internet</div>
+          <div class="app"><i style="background:#c08a2e">F</i>Fichiers</div>
+          <div class="app"><i style="background:#c15a34">P</i>Photos</div>
+          <div class="app"><i style="background:#5c7738">@</i>Courriel</div>
+          <div class="app"><i style="background:#2f7d78">D</i>Documents</div>
+          <div class="app"><i style="background:#8a4a6b">M</i>Musique</div>
+          <div class="app"><i style="background:#8a7d6a">=</i>Calculatrice</div>
+          <div class="app"><i style="background:#b0506a">J</i>Jeux</div>
+          <div class="app"><i style="background:#2f7d78;font-size:14px">IA</i>Assistant</div>
+          <div class="app"><i style="background:#6b6459">R</i>Réglages</div>
+        </div>
+        <div class="pied-menu">
+          <span style="font-weight:600">Rabaska OS</span>
+          <span style="color:var(--mut)">Éteindre</span>
+        </div>
+      </div>
+      <div class="barre">
+        <div class="demarrer">R</div>
+        <div style="width:1px;height:28px;background:var(--bd2);margin:0 4px"></div>
+        <div class="pin" style="background:#3f6ea8">W</div>
+        <div class="pin" style="background:#c08a2e">F</div>
+        <div class="pin" style="background:#c15a34">P</div>
+        <div class="pin" style="background:#5c7738">@</div>
+        <div style="flex:1"></div>
+        <span style="font-size:12px;font-weight:700;color:var(--mut);padding:0 10px">FR</span>
+        <div style="text-align:right;line-height:1.15">
+          <div style="font-size:14px;font-weight:600">14:15</div>
+          <div style="font-size:11px;color:var(--mut)">21 août</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="notice">
       <strong>Fourni avec l’ordinateur</strong>
       <p>
         Rabaska OS s’installe sur la machine que vous achetez. Il n’y a pas
