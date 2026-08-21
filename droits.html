@@ -21,9 +21,20 @@
       font-weight: 100 900;
       font-display: swap;
     }
+    @font-face {
+      font-family: "Newsreader";
+      src: url("fonts/Newsreader-Italic.ttf") format("truetype");
+      font-weight: 100 900;
+      font-style: italic;
+      font-display: swap;
+    }
     :root {
-      --bg: #e9e2d4; --ink: #221d17; --mut: #736a5b;
-      --accent: #c15a34; --bd: rgba(28, 23, 16, 0.16);
+      --bg: #e9e2d4;
+      --ink: #1c1814;
+      --mut: #6b6357;
+      --faint: #9a9080;
+      --accent: #c15a34;
+      --bd: rgba(28, 23, 16, 0.14);
     }
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
@@ -32,50 +43,78 @@
       font-size: 17px; line-height: 1.55;
     }
     a { color: var(--accent); text-decoration: none; }
-    header, main, footer { max-width: 720px; margin: 0 auto; padding: 32px 24px; }
+    a:hover { color: #9c4526; }
+    .wrap { width: min(720px, calc(100% - 48px)); margin-inline: auto; }
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 22px 0 40px;
+    }
+    .brand {
+      display: flex; align-items: center; gap: 10px;
+      font-family: "Newsreader", Georgia, serif;
+      font-size: 20px; font-weight: 500; color: var(--ink);
+      letter-spacing: -0.02em;
+    }
+    .tile {
+      width: 32px; height: 32px; background: var(--accent); border-radius: 8px;
+      color: #fff; font-family: "Newsreader", Georgia, serif;
+      font-style: italic; font-weight: 600; font-size: 18px;
+      display: grid; place-items: center;
+    }
     h1 {
       font-family: "Newsreader", Georgia, serif;
-      font-weight: 500; font-size: 36px; margin: 12px 0 28px;
+      font-weight: 500; font-size: 42px; letter-spacing: -0.03em;
+      margin-bottom: 36px;
     }
-    h2 { font-size: 16px; margin: 28px 0 8px; }
-    p, li { color: var(--mut); margin-bottom: 10px; }
-    ul { padding-left: 1.2em; }
-    footer { border-top: 1px solid var(--bd); color: #a99f8d; font-size: 13px; }
+    h2 { font-size: 15px; font-weight: 600; margin: 28px 0 8px; }
+    p { color: var(--mut); margin-bottom: 12px; }
+    strong { color: var(--ink); font-weight: 600; }
+    footer {
+      border-top: 1px solid var(--bd);
+      margin-top: 56px; padding: 22px 0 36px;
+      color: var(--faint); font-size: 13px;
+    }
   </style>
 </head>
 <body>
-  <header><a href="index.html">← Rabaska OS</a></header>
-  <main>
-    <h1>Droits</h1>
-
-    <h2>1. Rabaska OS</h2>
-    <p>
-      Rabaska OS, son habillage, ses outils et cette page sont protégés.
-      © 2026. Tous droits réservés. Aucune licence libre n’est accordée
-      sur Rabaska OS.
-    </p>
-    <p>
-      L’acheteur d’un ordinateur qui en est équipé reçoit un
-      <strong>droit d’usage sur cet exemplaire</strong> : se servir de
-      la machine. Pas un droit de copier, extraire, publier ou
-      redistribuer le système.
-    </p>
-
-    <h2>2. Linux et les programmes inclus</h2>
-    <p>
-      Le noyau Linux et les programmes du système de base restent sous
-      <strong>leurs licences d’origine</strong> (souvent GPL). Ces licences
-      s’imposent à tous. La part propriétaire, c’est uniquement Rabaska OS
-      ajouté par-dessus.
-    </p>
-
-    <h2>3. Marques</h2>
-    <p>
-      « Rabaska OS » est une marque de produit. Linux® est une marque de
-      Linus Torvalds. Les autres noms cités appartiennent à leurs titulaires.
-      Aucune affiliation.
-    </p>
-  </main>
-  <footer>Usage commercial · pas de redistribution</footer>
+  <div class="wrap">
+    <header>
+      <a class="brand" href="index.html">
+        <span class="tile" aria-hidden="true">R</span>
+        Rabaska OS
+      </a>
+    </header>
+    <main>
+      <h1>Droits</h1>
+      <h2>Rabaska OS</h2>
+      <p>
+        Rabaska OS, son habillage, ses outils et cette page sont protégés.
+        © 2026. Tous droits réservés. Aucune licence libre n’est accordée
+        sur Rabaska OS.
+      </p>
+      <p>
+        L’acheteur d’un ordinateur qui en est équipé reçoit un
+        <strong>droit d’usage sur cet exemplaire</strong> : se servir de
+        la machine. Pas un droit de copier, extraire, publier ou
+        redistribuer le système.
+      </p>
+      <h2>Linux et les programmes inclus</h2>
+      <p>
+        Le noyau Linux et les programmes du système de base restent sous
+        <strong>leurs licences d’origine</strong> (souvent GPL). Ces licences
+        s’imposent à tous. La part propriétaire, c’est uniquement Rabaska OS
+        ajouté par-dessus.
+      </p>
+      <h2>Marques</h2>
+      <p>
+        « Rabaska OS » est une marque de produit. Linux® est une marque de
+        Linus Torvalds. Les autres noms cités appartiennent à leurs titulaires.
+        Aucune affiliation.
+      </p>
+    </main>
+    <footer>Usage commercial · pas de redistribution</footer>
+  </div>
 </body>
 </html>

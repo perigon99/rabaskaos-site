@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Rabaska OS</title>
-  <meta name="description" content="Rabaska OS est un système d’exploitation clair, en français, conçu pour les ordinateurs d’occasion. Produit commercial. Pas de téléchargement public.">
+  <meta name="description" content="Rabaska OS est un système d’exploitation clair, en français, conçu pour les ordinateurs d’occasion.">
   <meta name="robots" content="index,follow">
   <meta name="referrer" content="no-referrer">
   <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self'; base-uri 'self'">
@@ -32,190 +32,211 @@
     }
     :root {
       --bg: #e9e2d4;
-      --bar: #f6f2ea;
-      --panel: #fbf8f2;
-      --card: #fdfbf6;
-      --ink: #221d17;
-      --mut: #736a5b;
-      --faint: #a99f8d;
+      --stage: #d8cfc0;
+      --ink: #1c1814;
+      --mut: #6b6357;
+      --faint: #9a9080;
       --accent: #c15a34;
-      --accent2: #ac4c2b;
-      --bd: rgba(28, 23, 16, 0.16);
-      --bd2: rgba(28, 23, 16, 0.09);
+      --accent2: #9c4526;
+      --bd: rgba(28, 23, 16, 0.14);
     }
     * { box-sizing: border-box; margin: 0; padding: 0; }
-    html, body { background: var(--bg); color: var(--ink); }
+    html { background: var(--bg); }
     body {
       font-family: "Hanken Grotesk", system-ui, sans-serif;
+      color: var(--ink);
       font-size: 17px;
       line-height: 1.5;
-      min-height: 100vh;
+      background: var(--bg);
     }
-    a { color: var(--accent); text-decoration: none; }
-    a:hover { color: var(--accent2); }
+    a { color: inherit; text-decoration: none; }
+    a:hover { color: var(--accent); }
+    .wrap {
+      width: min(1120px, calc(100% - 48px));
+      margin-inline: auto;
+    }
     header {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 28px 40px;
-      border-bottom: 1px solid var(--bd);
+      padding: 22px 0;
     }
-    .brand { display: flex; align-items: center; gap: 12px; }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-family: "Newsreader", Georgia, serif;
+      font-size: 20px;
+      font-weight: 500;
+      letter-spacing: -0.02em;
+    }
     .tile {
-      width: 38px; height: 38px;
+      width: 32px; height: 32px;
       background: var(--accent);
-      border-radius: 10px;
+      border-radius: 8px;
       color: #fff;
       font-family: "Newsreader", Georgia, serif;
       font-style: italic;
       font-weight: 600;
-      font-size: 22px;
-      display: flex; align-items: center; justify-content: center;
+      font-size: 18px;
+      display: grid;
+      place-items: center;
     }
-    .brand strong {
-      font-family: "Newsreader", Georgia, serif;
+    nav a {
+      font-size: 14px;
       font-weight: 500;
-      font-size: 22px;
+      color: var(--mut);
     }
-    nav { display: flex; gap: 28px; color: var(--mut); font-size: 15px; }
-    main { max-width: 980px; margin: 0 auto; padding: 64px 40px 96px; }
+    .hero {
+      padding: 56px 0 0;
+    }
+    .eyebrow {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 18px;
+    }
     h1 {
       font-family: "Newsreader", Georgia, serif;
       font-weight: 500;
-      font-size: clamp(40px, 7vw, 68px);
-      line-height: 1.08;
-      letter-spacing: -0.02em;
-      max-width: 14ch;
+      font-size: clamp(42px, 6.4vw, 76px);
+      line-height: 0.98;
+      letter-spacing: -0.035em;
+      max-width: 11ch;
     }
     .lede {
-      margin-top: 24px;
-      max-width: 38em;
+      margin-top: 22px;
+      max-width: 22em;
       color: var(--mut);
-      font-size: 19px;
+      font-size: 20px;
+      line-height: 1.45;
     }
-    .cadre {
-      margin-top: 48px;
-      border: 1px solid var(--bd);
-      border-radius: 16px;
-      overflow: hidden;
-      background: #ddd6c8;
+    .stage {
+      margin-top: 56px;
+      background: var(--stage);
+      padding: 64px 0 72px;
     }
-    .cadre img { display: block; width: 100%; height: auto; }
-    .vues {
-      margin-top: 20px;
-      display: grid;
-      grid-template-columns: 1fr 1.35fr;
-      gap: 20px;
+    .composition {
+      position: relative;
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 0 24px;
     }
-    .vues figure {
-      margin: 0;
-      border: 1px solid var(--bd);
-      border-radius: 16px;
-      overflow: hidden;
-      background: var(--panel);
+    .shot-main {
+      width: min(860px, 82%);
+      margin-left: auto;
+      display: block;
+      border-radius: 14px;
     }
-    .vues img { display: block; width: 100%; height: auto; }
-    .notice {
-      margin-top: 40px;
-      background: var(--panel);
-      border: 1px solid var(--bd);
-      border-radius: 16px;
-      padding: 22px 24px;
-      max-width: 40em;
+    .shot-menu {
+      position: absolute;
+      left: 24px;
+      bottom: -36px;
+      width: min(300px, 34%);
+      display: block;
+      filter: drop-shadow(0 18px 40px rgba(28, 23, 16, 0.18));
     }
-    .notice strong { display: block; margin-bottom: 6px; font-weight: 600; }
-    .notice p { color: var(--mut); font-size: 16px; }
-    .grid {
-      margin-top: 48px;
+    .points {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 20px;
+      gap: 40px;
+      padding: 96px 0 48px;
     }
-    article {
-      background: var(--card);
-      border: 1px solid var(--bd);
-      border-radius: 16px;
-      padding: 22px 22px 24px;
+    .points h2 {
+      font-size: 15px;
+      font-weight: 600;
+      margin-bottom: 8px;
     }
-    article h2 { font-size: 15px; font-weight: 600; margin-bottom: 8px; }
-    article p { color: var(--mut); font-size: 15px; }
+    .points p { color: var(--mut); font-size: 15px; line-height: 1.55; }
+    .closer {
+      padding: 8px 0 80px;
+      color: var(--mut);
+      font-size: 16px;
+      max-width: 32em;
+    }
     footer {
       border-top: 1px solid var(--bd);
-      padding: 28px 40px 40px;
-      color: var(--faint);
-      font-size: 13px;
+      padding: 22px 0 36px;
       display: flex;
       justify-content: space-between;
       gap: 16px;
-      flex-wrap: wrap;
+      color: var(--faint);
+      font-size: 13px;
     }
-    @media (max-width: 800px) {
-      header, footer, main { padding-left: 20px; padding-right: 20px; }
-      .grid { grid-template-columns: 1fr; }
+    footer a { color: var(--faint); }
+    footer a:hover { color: var(--accent); }
+    @media (max-width: 840px) {
+      .wrap { width: calc(100% - 40px); }
       nav { display: none; }
-      .vues { grid-template-columns: 1fr; }
+      h1 { max-width: 12ch; }
+      .stage { padding: 32px 0 40px; }
+      .shot-main { width: 100%; margin: 0; }
+      .shot-menu {
+        position: static;
+        width: min(320px, 70%);
+        margin: 20px 0 0;
+        filter: none;
+      }
+      .points {
+        grid-template-columns: 1fr;
+        gap: 28px;
+        padding: 56px 0 32px;
+      }
     }
   </style>
 </head>
 <body>
-  <header>
-    <div class="brand">
-      <div class="tile" aria-hidden="true">R</div>
-      <strong>Rabaska OS</strong>
-    </div>
-    <nav>
-      <a href="#os">Le système</a>
-      <a href="droits.html">Droits</a>
-    </nav>
-  </header>
+  <div class="wrap">
+    <header>
+      <a class="brand" href="index.html">
+        <span class="tile" aria-hidden="true">R</span>
+        Rabaska OS
+      </a>
+      <nav><a href="droits.html">Droits</a></nav>
+    </header>
 
-  <main>
-    <h1>L’ordinateur d’occasion, enfin familier.</h1>
-    <p class="lede">
-      Rabaska OS est un système d’exploitation. Un bureau clair, en français,
-      pensé pour du matériel ancien. Ce n’est pas Windows.
-    </p>
-
-    <figure class="cadre" id="os">
-      <img src="captures/bureau.png" alt="Bureau Rabaska OS : menu Démarrer ouvert, bouton R terracotta">
-    </figure>
-    <div class="vues">
-      <figure>
-        <img src="captures/menu.png" alt="Menu Démarrer Rabaska OS">
-      </figure>
-      <figure>
-        <img src="captures/assistant.png" alt="Assistant de premier démarrage Rabaska OS">
-      </figure>
-    </div>
-
-    <div class="notice">
-      <strong>Fourni avec l’ordinateur</strong>
-      <p>
-        Rabaska OS s’installe sur la machine que vous achetez. Il n’y a pas
-        de téléchargement public. Copier ou redistribuer le système n’est
-        pas autorisé.
+    <section class="hero">
+      <p class="eyebrow">Système d’exploitation</p>
+      <h1>L’ordinateur d’occasion, enfin familier.</h1>
+      <p class="lede">
+        Un bureau clair, en français. Conçu pour le matériel
+        qu’on a déjà — pas pour celui qu’il faudrait racheter.
       </p>
-    </div>
+    </section>
+  </div>
 
-    <div class="grid">
-      <article>
-        <h2>Clair</h2>
-        <p>Un bureau simple. Des mots en clair. Rien à configurer pour s’en servir.</p>
-      </article>
-      <article>
-        <h2>En français</h2>
-        <p>L’interface parle comme vous. Pas de jargon, pas de menus en anglais.</p>
-      </article>
-      <article>
-        <h2>Léger</h2>
-        <p>Conçu pour les ordinateurs d’occasion. Il ne demande pas une machine neuve.</p>
-      </article>
+  <section class="stage" id="os">
+    <div class="composition">
+      <img class="shot-main" src="captures/assistant.png" width="1024" height="720" alt="Premier démarrage de Rabaska OS : choix du style clair ou sombre">
+      <img class="shot-menu" src="captures/menu.png" width="420" height="560" alt="Menu Démarrer de Rabaska OS">
     </div>
-  </main>
+  </section>
 
-  <footer>
-    <span>© 2026. Tous droits réservés. Rabaska OS n’est pas un logiciel libre.</span>
-    <a href="droits.html">Conditions et licences</a>
-  </footer>
+  <div class="wrap">
+    <section class="points">
+      <div>
+        <h2>Le menu</h2>
+        <p>Un bouton R. Toutes les applications, groupées. Éteindre, en bas à droite.</p>
+      </div>
+      <div>
+        <h2>Le premier jour</h2>
+        <p>Clair ou sombre. La taille du texte. Ensuite, le bureau. Rien d’autre à régler.</p>
+      </div>
+      <div>
+        <h2>La machine</h2>
+        <p>Rabaska OS arrive déjà installé. Il n’y a pas de téléchargement, pas d’image à graver.</p>
+      </div>
+    </section>
+    <p class="closer">
+      Copier ou redistribuer le système n’est pas autorisé.
+      Linux et les programmes du socle restent sous leurs licences d’origine.
+    </p>
+    <footer>
+      <span>© 2026. Tous droits réservés.</span>
+      <a href="droits.html">Conditions et licences</a>
+    </footer>
+  </div>
 </body>
 </html>
