@@ -93,124 +93,28 @@
       color: var(--mut);
       font-size: 19px;
     }
-    .ecran {
+    .cadre {
       margin-top: 48px;
       border: 1px solid var(--bd);
       border-radius: 16px;
       overflow: hidden;
-      background: var(--bg);
-      position: relative;
-      height: min(540px, 72vw);
-      min-height: 360px;
+      background: #ddd6c8;
     }
-    .filigrane {
-      position: absolute;
-      right: 28px;
-      bottom: 78px;
-      font-family: "Newsreader", Georgia, serif;
-      font-style: italic;
-      font-size: clamp(40px, 8vw, 72px);
-      color: var(--ink);
-      opacity: .07;
-      pointer-events: none;
-    }
-    .menu {
-      position: absolute;
-      left: 12px;
-      bottom: 68px;
-      width: min(520px, 86%);
-      background: var(--panel);
-      border: 1px solid var(--bd);
-      border-radius: 18px;
-      padding: 18px 18px 14px;
-    }
-    .menu h2 {
-      font-family: "Newsreader", Georgia, serif;
-      font-weight: 500;
-      font-size: 22px;
-      margin-bottom: 12px;
-    }
-    .cherche {
-      height: 44px;
-      padding: 0 14px;
-      background: var(--bg);
-      border: 1px solid var(--bd2);
-      border-radius: 12px;
-      color: var(--mut);
-      font-size: 14px;
-      display: flex;
-      align-items: center;
-      margin-bottom: 14px;
-    }
-    .apps {
+    .cadre img { display: block; width: 100%; height: auto; }
+    .vues {
+      margin-top: 20px;
       display: grid;
-      grid-template-columns: repeat(5, 1fr);
-      gap: 6px;
+      grid-template-columns: 1fr 1.35fr;
+      gap: 20px;
     }
-    .app {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 6px;
-      padding: 8px 2px 10px;
-      font-size: 12px;
-      font-weight: 500;
+    .vues figure {
+      margin: 0;
+      border: 1px solid var(--bd);
+      border-radius: 16px;
+      overflow: hidden;
+      background: var(--panel);
     }
-    .app i {
-      width: 48px; height: 48px;
-      border-radius: 14px;
-      color: #fff;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-style: normal;
-      font-weight: 600;
-      font-size: 18px;
-    }
-    .pied-menu {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-top: 10px;
-      padding-top: 12px;
-      border-top: 1px solid var(--bd2);
-      font-size: 14px;
-    }
-    .barre {
-      position: absolute;
-      left: 0; right: 0; bottom: 0;
-      height: 56px;
-      background: var(--bar);
-      border-top: 1px solid var(--bd);
-      display: flex;
-      align-items: center;
-      padding: 0 12px;
-      gap: 6px;
-    }
-    .demarrer {
-      width: 40px; height: 40px;
-      border-radius: 11px;
-      background: var(--accent);
-      color: #fff;
-      font-family: "Newsreader", Georgia, serif;
-      font-style: italic;
-      font-weight: 600;
-      font-size: 20px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex: none;
-    }
-    .pin {
-      width: 30px; height: 30px;
-      border-radius: 8px;
-      color: #fff;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 600;
-      font-size: 13px;
-    }
+    .vues img { display: block; width: 100%; height: auto; }
     .notice {
       margin-top: 40px;
       background: var(--panel);
@@ -249,8 +153,7 @@
       header, footer, main { padding-left: 20px; padding-right: 20px; }
       .grid { grid-template-columns: 1fr; }
       nav { display: none; }
-      .apps { grid-template-columns: repeat(4, 1fr); }
-      .app:nth-child(n+9) { display: none; }
+      .vues { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -273,42 +176,16 @@
       pensé pour du matériel ancien. Ce n’est pas Windows.
     </p>
 
-    <div class="ecran" id="os" role="img" aria-label="Bureau Rabaska OS : menu Démarrer ouvert, bouton R terracotta">
-      <div class="filigrane">Rabaska</div>
-      <div class="menu">
-        <h2>Bonjour</h2>
-        <div class="cherche">Rechercher une application…</div>
-        <div class="apps">
-          <div class="app"><i style="background:#3f6ea8">W</i>Internet</div>
-          <div class="app"><i style="background:#c08a2e">F</i>Fichiers</div>
-          <div class="app"><i style="background:#c15a34">P</i>Photos</div>
-          <div class="app"><i style="background:#5c7738">@</i>Courriel</div>
-          <div class="app"><i style="background:#2f7d78">D</i>Documents</div>
-          <div class="app"><i style="background:#8a4a6b">M</i>Musique</div>
-          <div class="app"><i style="background:#8a7d6a">=</i>Calculatrice</div>
-          <div class="app"><i style="background:#b0506a">J</i>Jeux</div>
-          <div class="app"><i style="background:#2f7d78;font-size:14px">IA</i>Assistant</div>
-          <div class="app"><i style="background:#6b6459">R</i>Réglages</div>
-        </div>
-        <div class="pied-menu">
-          <span style="font-weight:600">Rabaska OS</span>
-          <span style="color:var(--mut)">Éteindre</span>
-        </div>
-      </div>
-      <div class="barre">
-        <div class="demarrer">R</div>
-        <div style="width:1px;height:28px;background:var(--bd2);margin:0 4px"></div>
-        <div class="pin" style="background:#3f6ea8">W</div>
-        <div class="pin" style="background:#c08a2e">F</div>
-        <div class="pin" style="background:#c15a34">P</div>
-        <div class="pin" style="background:#5c7738">@</div>
-        <div style="flex:1"></div>
-        <span style="font-size:12px;font-weight:700;color:var(--mut);padding:0 10px">FR</span>
-        <div style="text-align:right;line-height:1.15">
-          <div style="font-size:14px;font-weight:600">14:15</div>
-          <div style="font-size:11px;color:var(--mut)">21 août</div>
-        </div>
-      </div>
+    <figure class="cadre" id="os">
+      <img src="captures/bureau.png" alt="Bureau Rabaska OS : menu Démarrer ouvert, bouton R terracotta">
+    </figure>
+    <div class="vues">
+      <figure>
+        <img src="captures/menu.png" alt="Menu Démarrer Rabaska OS">
+      </figure>
+      <figure>
+        <img src="captures/assistant.png" alt="Assistant de premier démarrage Rabaska OS">
+      </figure>
     </div>
 
     <div class="notice">
