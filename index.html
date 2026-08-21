@@ -7,7 +7,7 @@
   <meta name="description" content="Rabaska OS est un système d’exploitation clair, en français, conçu pour les ordinateurs d’occasion.">
   <meta name="robots" content="index,follow">
   <meta name="referrer" content="no-referrer">
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self'; base-uri 'self'">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self'; script-src 'unsafe-inline'; base-uri 'self'">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <style>
     @font-face {
@@ -37,8 +37,8 @@
       --mut: #6b6357;
       --faint: #9a9080;
       --accent: #c15a34;
-      --accent2: #9c4526;
       --bd: rgba(28, 23, 16, 0.14);
+      --spring: cubic-bezier(.22, 1, .36, 1);
     }
     * { box-sizing: border-box; margin: 0; padding: 0; }
     html { background: var(--bg); }
@@ -55,11 +55,19 @@
       width: min(1120px, calc(100% - 48px));
       margin-inline: auto;
     }
+    .top {
+      position: sticky;
+      top: 0;
+      z-index: 30;
+      background: color-mix(in srgb, var(--bg) 82%, transparent);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+    }
     header {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 22px 0;
+      padding: 18px 0;
     }
     .brand {
       display: flex;
@@ -81,15 +89,28 @@
       font-size: 18px;
       display: grid;
       place-items: center;
+      transition: transform .28s var(--spring);
     }
+    .brand:hover .tile { transform: rotate(-10deg) scale(1.08); }
     nav a {
       font-size: 14px;
       font-weight: 500;
       color: var(--mut);
+      position: relative;
+      transition: color .2s;
     }
-    .hero {
-      padding: 56px 0 0;
+    nav a::after {
+      content: "";
+      position: absolute;
+      left: 0; right: 0; bottom: -4px;
+      height: 1px;
+      background: var(--accent);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform .28s var(--spring);
     }
+    nav a:hover::after { transform: scaleX(1); }
+    .hero { padding: 56px 0 0; }
     .eyebrow {
       font-size: 12px;
       font-weight: 600;
@@ -97,6 +118,7 @@
       text-transform: uppercase;
       color: var(--accent);
       margin-bottom: 18px;
+      animation: monter .7s var(--spring) both;
     }
     h1 {
       font-family: "Newsreader", Georgia, serif;
@@ -105,6 +127,7 @@
       line-height: 0.98;
       letter-spacing: -0.035em;
       max-width: 11ch;
+      animation: monter .85s .06s var(--spring) both;
     }
     .lede {
       margin-top: 22px;
@@ -112,11 +135,13 @@
       color: var(--mut);
       font-size: 20px;
       line-height: 1.45;
+      animation: monter .85s .14s var(--spring) both;
     }
     .stage {
       margin-top: 56px;
-      background: var(--stage);
       padding: 48px 0 56px;
+      background:
+        radial-gradient(ellipse 80% 55% at 50% -10%, #efe6d6 0%, var(--stage) 62%);
     }
     .composition {
       max-width: 1080px;
@@ -130,6 +155,8 @@
       overflow: hidden;
       min-height: 560px;
       height: min(640px, 72vw);
+      box-shadow: 0 28px 70px rgba(28, 23, 16, .14);
+      animation: cadre .9s .18s var(--spring) both;
     }
     .filigrane {
       position: absolute;
@@ -150,6 +177,15 @@
       width: auto;
       max-width: 42%;
       display: block;
+      transform-origin: 16% 100%;
+      animation: menuPop .55s .55s var(--spring) both;
+      transition: opacity .28s var(--spring), transform .28s var(--spring);
+    }
+    .bureau.menu-ferme .menu-shot {
+      opacity: 0;
+      transform: translateY(18px) scale(.96);
+      pointer-events: none;
+      animation: none;
     }
     .barre {
       position: absolute;
@@ -169,18 +205,45 @@
       margin: 0 4px;
       flex: none;
     }
-    .barre img.pin {
+    .barre .pin, .demarrer {
       width: 40px;
       height: 40px;
       border-radius: 11px;
       flex: none;
       display: block;
+      transition: transform .22s var(--spring), filter .22s;
+    }
+    .barre .pin { cursor: default; }
+    .barre .pin:hover {
+      transform: translateY(-4px) scale(1.07);
+      filter: brightness(1.08);
+    }
+    .demarrer {
+      position: relative;
+      overflow: hidden;
+      border: none;
+      background: none;
+      padding: 0;
+      cursor: pointer;
+    }
+    .demarrer img { width: 40px; height: 40px; display: block; }
+    .demarrer:hover { transform: translateY(-3px) scale(1.06); }
+    .demarrer::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(105deg, transparent 38%, rgba(255,255,255,.38) 50%, transparent 62%);
+      transform: translateX(-130%);
+      animation: shine 5s 1.4s ease-in-out infinite;
     }
     .barre img.statut {
       width: 22px;
       height: 22px;
       display: block;
+      transition: opacity .3s, transform .22s var(--spring);
     }
+    .barre img.statut:hover { transform: scale(1.12); }
+    .wifi { animation: souffle 2.8s ease-in-out infinite; }
     .barre .pousse { flex: 1; }
     .tray {
       display: flex;
@@ -198,6 +261,7 @@
       text-align: right;
       line-height: 1.15;
       color: #221d17;
+      font-variant-numeric: tabular-nums;
     }
     .horloge b { display: block; font-size: 14px; font-weight: 600; }
     .horloge span { font-size: 11px; color: #736a5b; }
@@ -206,13 +270,22 @@
       width: min(860px, 100%);
       margin: 28px 0 0 auto;
       border-radius: 14px;
+      animation: monter .8s .75s var(--spring) both;
+      transition: transform .4s var(--spring);
     }
+    .shot-assistant:hover { transform: translateY(-6px); }
     .points {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 40px;
       padding: 96px 0 48px;
     }
+    .points > div {
+      animation: monter .7s var(--spring) both;
+    }
+    .points > div:nth-child(1) { animation-delay: .05s; }
+    .points > div:nth-child(2) { animation-delay: .12s; }
+    .points > div:nth-child(3) { animation-delay: .19s; }
     .points h2 {
       font-size: 15px;
       font-weight: 600;
@@ -234,8 +307,28 @@
       color: var(--faint);
       font-size: 13px;
     }
-    footer a { color: var(--faint); }
+    footer a { color: var(--faint); transition: color .2s; }
     footer a:hover { color: var(--accent); }
+    @keyframes monter {
+      from { opacity: 0; transform: translateY(18px); }
+      to { opacity: 1; transform: none; }
+    }
+    @keyframes cadre {
+      from { opacity: 0; transform: translateY(28px) scale(.98); }
+      to { opacity: 1; transform: none; }
+    }
+    @keyframes menuPop {
+      from { opacity: 0; transform: translateY(22px) scale(.94); }
+      to { opacity: 1; transform: none; }
+    }
+    @keyframes shine {
+      0%, 72% { transform: translateX(-130%); }
+      88%, 100% { transform: translateX(130%); }
+    }
+    @keyframes souffle {
+      0%, 100% { opacity: 1; }
+      50% { opacity: .4; }
+    }
     @media (max-width: 840px) {
       .wrap { width: calc(100% - 40px); }
       nav { display: none; }
@@ -243,7 +336,7 @@
       .stage { padding: 28px 0 36px; }
       .bureau { min-height: 480px; height: 520px; }
       .menu-shot { max-width: 58%; height: 68%; }
-      .barre img.pin:nth-of-type(n+5) { display: none; }
+      .barre .pin:nth-of-type(n+4) { display: none; }
       .shot-assistant { width: 100%; margin-top: 20px; }
       .points {
         grid-template-columns: 1fr;
@@ -251,18 +344,28 @@
         padding: 56px 0 32px;
       }
     }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation: none !important;
+        transition: none !important;
+      }
+    }
   </style>
 </head>
 <body>
-  <div class="wrap">
-    <header>
-      <a class="brand" href="index.html">
-        <span class="tile" aria-hidden="true">R</span>
-        Rabaska OS
-      </a>
-      <nav><a href="droits.html">Droits</a></nav>
-    </header>
+  <div class="top">
+    <div class="wrap">
+      <header>
+        <a class="brand" href="index.html">
+          <span class="tile" aria-hidden="true">R</span>
+          Rabaska OS
+        </a>
+        <nav><a href="droits.html">Droits</a></nav>
+      </header>
+    </div>
+  </div>
 
+  <div class="wrap">
     <section class="hero">
       <p class="eyebrow">Système d’exploitation</p>
       <h1>L’ordinateur d’occasion, enfin familier.</h1>
@@ -275,11 +378,13 @@
 
   <section class="stage" id="os">
     <div class="composition">
-      <div class="bureau">
+      <div class="bureau" id="bureau">
         <div class="filigrane">Rabaska</div>
         <img class="menu-shot" src="captures/menu.png" width="420" height="560" alt="Menu Démarrer de Rabaska OS">
         <div class="barre">
-          <img class="pin" src="barre/demarrer.svg" alt="Démarrer">
+          <button class="demarrer" id="demarrer" type="button" aria-expanded="true" aria-controls="menu" title="Démarrer">
+            <img src="barre/demarrer.svg" alt="">
+          </button>
           <div class="sep"></div>
           <img class="pin" src="barre/ia.svg" alt="Assistant">
           <img class="pin" src="barre/internet.svg" alt="Internet">
@@ -290,10 +395,10 @@
           <div class="tray">
             <img class="statut" src="barre/theme.svg" alt="Clair ou sombre">
             <span class="langue">FR</span>
-            <img class="statut" src="barre/wifi.svg" alt="Wi-Fi">
+            <img class="statut wifi" src="barre/wifi.svg" alt="Wi-Fi">
             <img class="statut" src="barre/volume.svg" alt="Son">
             <img class="statut" src="barre/batterie.svg" alt="Batterie">
-            <div class="horloge"><b>14:15</b><span>vendredi 21 août</span></div>
+            <div class="horloge"><b id="heure">14:15</b><span id="date">vendredi 21 août</span></div>
           </div>
         </div>
       </div>
@@ -325,5 +430,30 @@
       <a href="droits.html">Conditions et licences</a>
     </footer>
   </div>
+  <script>
+    (function () {
+      var bureau = document.getElementById("bureau");
+      var btn = document.getElementById("demarrer");
+      if (btn && bureau) {
+        btn.addEventListener("click", function () {
+          var ferme = bureau.classList.toggle("menu-ferme");
+          btn.setAttribute("aria-expanded", ferme ? "false" : "true");
+        });
+      }
+      var heure = document.getElementById("heure");
+      var date = document.getElementById("date");
+      function tick() {
+        var n = new Date();
+        var h = String(n.getHours()).padStart(2, "0");
+        var m = String(n.getMinutes()).padStart(2, "0");
+        if (heure) heure.textContent = h + ":" + m;
+        if (date) date.textContent = n.toLocaleDateString("fr-CA", {
+          weekday: "long", day: "numeric", month: "long"
+        });
+      }
+      tick();
+      setInterval(tick, 1000);
+    })();
+  </script>
 </body>
 </html>
