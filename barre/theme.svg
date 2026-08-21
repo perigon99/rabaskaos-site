@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48" height="48">
+  <!-- Icône bascule clair/sombre : cercle mi-plein (soleil/lune), teinte encre -->
+  <circle cx="24" cy="24" r="12" fill="none" stroke="#736a5b" stroke-width="2.6"/>
+  <path d="M24 12a12 12 0 0 0 0 24z" fill="#736a5b"/>
+</svg>

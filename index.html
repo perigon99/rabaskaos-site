@@ -116,27 +116,96 @@
     .stage {
       margin-top: 56px;
       background: var(--stage);
-      padding: 64px 0 72px;
+      padding: 48px 0 56px;
     }
     .composition {
-      position: relative;
       max-width: 1080px;
       margin: 0 auto;
       padding: 0 24px;
     }
-    .shot-main {
-      width: min(860px, 82%);
-      margin-left: auto;
-      display: block;
-      border-radius: 14px;
+    .bureau {
+      position: relative;
+      background: #e9e2d4;
+      border-radius: 16px;
+      overflow: hidden;
+      min-height: 560px;
+      height: min(640px, 72vw);
     }
-    .shot-menu {
+    .filigrane {
       position: absolute;
-      left: 24px;
-      bottom: -36px;
-      width: min(300px, 34%);
+      right: 36px;
+      bottom: 88px;
+      font-family: "Newsreader", Georgia, serif;
+      font-style: italic;
+      font-size: clamp(42px, 7vw, 78px);
+      color: #221d17;
+      opacity: .07;
+      pointer-events: none;
+    }
+    .menu-shot {
+      position: absolute;
+      left: 14px;
+      bottom: 74px;
+      height: min(72%, 520px);
+      width: auto;
+      max-width: 42%;
       display: block;
-      filter: drop-shadow(0 18px 40px rgba(28, 23, 16, 0.18));
+    }
+    .barre {
+      position: absolute;
+      left: 0; right: 0; bottom: 0;
+      height: 60px;
+      background: #f6f2ea;
+      border-top: 1px solid var(--bd);
+      display: flex;
+      align-items: center;
+      padding: 0 12px;
+      gap: 8px;
+    }
+    .barre .sep {
+      width: 1px;
+      height: 28px;
+      background: rgba(28, 23, 16, .1);
+      margin: 0 4px;
+      flex: none;
+    }
+    .barre img.pin {
+      width: 40px;
+      height: 40px;
+      border-radius: 11px;
+      flex: none;
+      display: block;
+    }
+    .barre img.statut {
+      width: 22px;
+      height: 22px;
+      display: block;
+    }
+    .barre .pousse { flex: 1; }
+    .tray {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding-right: 4px;
+    }
+    .langue {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .04em;
+      color: #736a5b;
+    }
+    .horloge {
+      text-align: right;
+      line-height: 1.15;
+      color: #221d17;
+    }
+    .horloge b { display: block; font-size: 14px; font-weight: 600; }
+    .horloge span { font-size: 11px; color: #736a5b; }
+    .shot-assistant {
+      display: block;
+      width: min(860px, 100%);
+      margin: 28px 0 0 auto;
+      border-radius: 14px;
     }
     .points {
       display: grid;
@@ -171,14 +240,11 @@
       .wrap { width: calc(100% - 40px); }
       nav { display: none; }
       h1 { max-width: 12ch; }
-      .stage { padding: 32px 0 40px; }
-      .shot-main { width: 100%; margin: 0; }
-      .shot-menu {
-        position: static;
-        width: min(320px, 70%);
-        margin: 20px 0 0;
-        filter: none;
-      }
+      .stage { padding: 28px 0 36px; }
+      .bureau { min-height: 480px; height: 520px; }
+      .menu-shot { max-width: 58%; height: 68%; }
+      .barre img.pin:nth-of-type(n+5) { display: none; }
+      .shot-assistant { width: 100%; margin-top: 20px; }
       .points {
         grid-template-columns: 1fr;
         gap: 28px;
@@ -209,8 +275,29 @@
 
   <section class="stage" id="os">
     <div class="composition">
-      <img class="shot-main" src="captures/assistant.png" width="1024" height="720" alt="Premier démarrage de Rabaska OS : choix du style clair ou sombre">
-      <img class="shot-menu" src="captures/menu.png" width="420" height="560" alt="Menu Démarrer de Rabaska OS">
+      <div class="bureau">
+        <div class="filigrane">Rabaska</div>
+        <img class="menu-shot" src="captures/menu.png" width="420" height="560" alt="Menu Démarrer de Rabaska OS">
+        <div class="barre">
+          <img class="pin" src="barre/demarrer.svg" alt="Démarrer">
+          <div class="sep"></div>
+          <img class="pin" src="barre/ia.svg" alt="Assistant">
+          <img class="pin" src="barre/internet.svg" alt="Internet">
+          <img class="pin" src="barre/fichiers.svg" alt="Fichiers">
+          <img class="pin" src="barre/photos.svg" alt="Photos">
+          <img class="pin" src="barre/courriel.svg" alt="Courriel">
+          <div class="pousse"></div>
+          <div class="tray">
+            <img class="statut" src="barre/theme.svg" alt="Clair ou sombre">
+            <span class="langue">FR</span>
+            <img class="statut" src="barre/wifi.svg" alt="Wi-Fi">
+            <img class="statut" src="barre/volume.svg" alt="Son">
+            <img class="statut" src="barre/batterie.svg" alt="Batterie">
+            <div class="horloge"><b>14:15</b><span>vendredi 21 août</span></div>
+          </div>
+        </div>
+      </div>
+      <img class="shot-assistant" src="captures/assistant.png" width="1024" height="720" alt="Premier démarrage de Rabaska OS : choix du style clair ou sombre">
     </div>
   </section>
 
