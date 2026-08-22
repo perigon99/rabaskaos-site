@@ -63,110 +63,194 @@
       position: sticky;
       top: 0;
       z-index: 30;
-      background: color-mix(in srgb, var(--bg) 82%, transparent);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
+      background: color-mix(in srgb, var(--bg) 84%, transparent);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border-bottom: 1px solid var(--bd);
+    }
+    .top::before {
+      content: "";
+      display: block;
+      height: 3px;
+      background: var(--accent);
     }
     header {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 18px 0;
+      padding: 16px 0 15px;
     }
     .brand {
       display: flex;
       align-items: center;
       gap: 10px;
       font-family: "Newsreader", Georgia, serif;
-      font-size: 20px;
+      font-size: 21px;
       font-weight: 500;
-      letter-spacing: -0.02em;
+      letter-spacing: -0.03em;
     }
     .tile {
-      width: 32px; height: 32px;
+      width: 30px; height: 30px;
       background: var(--accent);
       border-radius: 8px;
       color: #fff;
       font-family: "Newsreader", Georgia, serif;
       font-style: italic;
       font-weight: 600;
-      font-size: 18px;
+      font-size: 17px;
       display: grid;
       place-items: center;
-      transition: transform .28s var(--spring);
+      transition: transform .32s var(--spring);
     }
-    .brand:hover .tile { transform: rotate(-10deg) scale(1.08); }
+    .brand:hover .tile { transform: rotate(-8deg) scale(1.06); }
     nav {
       display: flex;
       flex-wrap: wrap;
       justify-content: flex-end;
-      gap: 22px;
+      align-items: center;
+      gap: 4px 0;
     }
     nav a {
-      font-size: 14px;
+      font-size: 13px;
       font-weight: 500;
+      letter-spacing: 0.01em;
       color: var(--mut);
       position: relative;
+      padding: 4px 0 4px 18px;
       transition: color .2s;
+    }
+    nav a:first-child { padding-left: 0; }
+    nav a + a::before {
+      content: "";
+      position: absolute;
+      left: 8px; top: 50%;
+      width: 3px; height: 3px;
+      margin-top: -1px;
+      border-radius: 50%;
+      background: var(--faint);
+      opacity: .7;
     }
     nav a::after {
       content: "";
       position: absolute;
-      left: 0; right: 0; bottom: -4px;
+      left: 18px; right: 0; bottom: 2px;
       height: 1px;
       background: var(--accent);
       transform: scaleX(0);
       transform-origin: left;
-      transition: transform .28s var(--spring);
+      transition: transform .32s var(--spring);
     }
+    nav a:first-child::after { left: 0; }
     nav a:hover::after { transform: scaleX(1); }
-    .hero { padding: 56px 0 0; }
+    .hero { padding: 72px 0 8px; }
     .eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 22px;
+      animation: monter .75s var(--spring) both;
+    }
+    .eyebrow i {
+      display: block;
+      width: 28px;
+      height: 1px;
+      background: var(--accent);
+      opacity: .55;
+      font-style: normal;
+    }
+    h1 {
+      font-family: "Newsreader", Georgia, serif;
+      font-weight: 500;
+      font-size: clamp(46px, 7.2vw, 90px);
+      line-height: 0.93;
+      letter-spacing: -0.038em;
+      max-width: 9.4em;
+      animation: monter .9s .08s var(--spring) both;
+    }
+    h1 em {
+      font-style: italic;
+      font-weight: 450;
+    }
+    .lede {
+      margin-top: 28px;
+      max-width: 36em;
+      color: var(--mut);
+      font-size: 20px;
+      line-height: 1.48;
+      animation: monter .9s .16s var(--spring) both;
+    }
+    .hero-lien {
+      margin-top: 32px;
+      animation: monter .9s .24s var(--spring) both;
+    }
+    .hero-lien a {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
       font-size: 12px;
       font-weight: 600;
       letter-spacing: 0.16em;
       text-transform: uppercase;
       color: var(--accent);
-      margin-bottom: 18px;
-      animation: monter .7s var(--spring) both;
     }
-    h1 {
-      font-family: "Newsreader", Georgia, serif;
-      font-weight: 500;
-      font-size: clamp(42px, 6.4vw, 76px);
-      line-height: 0.98;
-      letter-spacing: -0.035em;
-      max-width: 12ch;
-      animation: monter .85s .06s var(--spring) both;
+    .hero-lien a span {
+      display: block;
+      width: 36px;
+      height: 1px;
+      background: var(--accent);
+      transition: width .35s var(--spring);
     }
-    .lede {
-      margin-top: 22px;
-      max-width: 34em;
-      color: var(--mut);
-      font-size: 20px;
-      line-height: 1.45;
-      animation: monter .85s .14s var(--spring) both;
-    }
+    .hero-lien a:hover { color: var(--ink); }
+    .hero-lien a:hover span { width: 56px; background: var(--ink); }
     .stage {
-      margin-top: 56px;
-      padding: 48px 0 56px;
+      margin-top: 64px;
+      padding: 56px 0 64px;
       background:
-        radial-gradient(ellipse 80% 55% at 50% -10%, #efe6d6 0%, var(--stage) 62%);
+        radial-gradient(ellipse 70% 50% at 50% -8%, #efe7d8 0%, var(--stage) 58%);
     }
     .composition {
       max-width: 1080px;
       margin: 0 auto;
       padding: 0 24px;
     }
+    .kicker {
+      display: flex;
+      align-items: baseline;
+      gap: 14px;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--mut);
+      margin-bottom: 22px;
+    }
+    .kicker b {
+      color: var(--accent);
+      font-weight: 600;
+      font-variant-numeric: tabular-nums;
+    }
+    .cadre {
+      padding: 9px;
+      background: linear-gradient(180deg, #d4cbbd 0%, #c9bfb0 100%);
+      border-radius: 22px;
+      box-shadow:
+        inset 0 1px 0 rgba(255,255,255,.35),
+        0 36px 72px rgba(28, 23, 16, .16);
+      animation: cadre 1s .22s var(--spring) both;
+    }
     .bureau {
       position: relative;
-      background: #e9e2d4;
-      border-radius: 16px;
+      background:
+        radial-gradient(ellipse 75% 45% at 50% 0%, #f3ece1 0%, #e9e2d4 68%);
+      border-radius: 14px;
       overflow: hidden;
       min-height: 560px;
       height: min(640px, 72vw);
-      box-shadow: 0 28px 70px rgba(28, 23, 16, .14);
-      animation: cadre .9s .18s var(--spring) both;
     }
     .filigrane {
       position: absolute;
@@ -189,7 +273,7 @@
       display: block;
       transform-origin: 16% 100%;
       background: transparent;
-      animation: menuPop .55s .55s var(--spring) both;
+      animation: menuPop .6s .62s var(--spring) both;
       transition: opacity .28s var(--spring), transform .28s var(--spring);
     }
     .bureau.menu-ferme .menu-shot {
@@ -245,7 +329,7 @@
       inset: 0;
       background: linear-gradient(105deg, transparent 38%, rgba(255,255,255,.38) 50%, transparent 62%);
       transform: translateX(-130%);
-      animation: shine 5s 1.4s ease-in-out infinite;
+      animation: shine 5s 1.6s ease-in-out infinite;
     }
     .barre img.statut {
       width: 22px;
@@ -276,54 +360,118 @@
     }
     .horloge b { display: block; font-size: 14px; font-weight: 600; }
     .horloge span { font-size: 11px; color: #736a5b; }
+    .legende {
+      margin-top: 16px;
+      font-size: 13px;
+      color: var(--mut);
+      letter-spacing: 0.01em;
+    }
     .shot-assistant {
       display: block;
       width: min(860px, 100%);
-      margin: 28px 0 0 auto;
+      margin: 36px 0 0 auto;
       border-radius: 14px;
-      animation: monter .8s .75s var(--spring) both;
-      transition: transform .4s var(--spring);
+      animation: monter .85s .85s var(--spring) both;
+      transition: transform .45s var(--spring);
     }
     .shot-assistant:hover { transform: translateY(-6px); }
+    .legende-droite { text-align: right; margin-top: 12px; }
     .recit {
-      padding: 88px 0 24px;
+      padding: 96px 0 16px;
+      counter-reset: chap;
     }
     .chapitre {
       display: grid;
-      grid-template-columns: minmax(160px, 0.42fr) 1fr;
-      gap: 28px 64px;
-      padding: 44px 0;
+      grid-template-columns: minmax(180px, 0.42fr) 1fr;
+      gap: 28px 72px;
+      padding: 48px 0;
       border-top: 1px solid var(--bd);
+      counter-increment: chap;
     }
     .chapitre h2 {
       font-family: "Newsreader", Georgia, serif;
       font-weight: 500;
-      font-size: clamp(26px, 3.2vw, 34px);
+      font-size: clamp(26px, 3.2vw, 36px);
       letter-spacing: -0.03em;
       line-height: 1.12;
+    }
+    .chapitre h2::before {
+      content: counter(chap, decimal-leading-zero);
+      display: block;
+      font-family: "Hanken Grotesk", system-ui, sans-serif;
+      font-size: 11px;
+      font-weight: 600;
+      font-style: normal;
+      letter-spacing: 0.16em;
+      color: var(--accent);
+      margin-bottom: 12px;
     }
     .chapitre p {
       color: var(--mut);
       font-size: 17px;
-      line-height: 1.62;
+      line-height: 1.65;
       max-width: 38em;
     }
     .chapitre p + p { margin-top: 14px; }
+    .chapitre a {
+      color: var(--ink);
+      box-shadow: inset 0 -1px 0 var(--accent);
+      transition: color .2s, box-shadow .2s;
+    }
+    .chapitre a:hover {
+      color: var(--accent);
+      box-shadow: inset 0 -1.5px 0 var(--accent);
+    }
+    .partie { padding-top: 40px; }
+    .partie > .kicker { margin-bottom: 10px; }
+    #technique, #avantages, #limites, #os, #systeme, #video {
+      scroll-margin-top: 76px;
+    }
     .bloc-titre {
       font-family: "Newsreader", Georgia, serif;
       font-weight: 500;
-      font-size: clamp(28px, 3.6vw, 40px);
-      letter-spacing: -0.03em;
-      line-height: 1.1;
-      padding: 56px 0 8px;
+      font-size: clamp(32px, 4vw, 44px);
+      letter-spacing: -0.035em;
+      line-height: 1.08;
+      padding: 0 0 12px;
     }
     .bloc-lede {
       color: var(--mut);
-      font-size: 17px;
+      font-size: 18px;
       line-height: 1.55;
       max-width: 40em;
-      margin-bottom: 28px;
+      margin-bottom: 36px;
     }
+    .franc {
+      margin: 0 0 48px;
+      padding: 28px 0 32px 28px;
+      border-left: 3px solid var(--accent);
+    }
+    .franc-kicker {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 14px;
+    }
+    .franc-choc {
+      font-family: "Newsreader", Georgia, serif;
+      font-style: italic;
+      font-weight: 500;
+      font-size: clamp(34px, 5vw, 52px);
+      letter-spacing: -0.03em;
+      line-height: 1.02;
+      color: var(--ink);
+      margin-bottom: 18px;
+    }
+    .franc p {
+      color: var(--ink);
+      font-size: 18px;
+      line-height: 1.5;
+      max-width: 40em;
+    }
+    .franc p + p { margin-top: 10px; }
     .stack {
       display: grid;
       gap: 0;
@@ -333,8 +481,13 @@
       display: grid;
       grid-template-columns: minmax(140px, 0.38fr) 1fr;
       gap: 16px 48px;
-      padding: 18px 0;
+      padding: 20px 0;
       border-bottom: 1px solid var(--bd);
+      transition: background .25s, padding-left .25s var(--spring);
+    }
+    .stack div:hover {
+      background: color-mix(in srgb, var(--accent) 5%, transparent);
+      padding-left: 8px;
     }
     .stack dt {
       font-weight: 600;
@@ -346,71 +499,141 @@
       line-height: 1.55;
       max-width: 42em;
     }
+    .stack a {
+      color: var(--ink);
+      box-shadow: inset 0 -1px 0 var(--accent);
+    }
+    .stack a:hover { color: var(--accent); }
     .bilan {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 40px 56px;
-      padding: 8px 0 24px;
+      gap: 8px 72px;
+      padding: 8px 0 8px;
+      border-top: 1px solid var(--bd);
     }
-    .bilan h3 {
-      font-size: 13px;
-      font-weight: 700;
-      letter-spacing: 0.12em;
+    .bilan .sous {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.16em;
       text-transform: uppercase;
-      margin-bottom: 16px;
+      color: var(--accent);
+      padding-top: 28px;
     }
-    .bilan.avantages h3 { color: var(--accent); }
-    .bilan.limites h3, .col-limites h3 { color: var(--mut); }
-    .bilan ul, .col-avantages ul, .col-limites ul {
-      list-style: none;
+    .col-limites .sous { color: var(--mut); }
+    .bilan h3 {
+      font-family: "Newsreader", Georgia, serif;
+      font-weight: 500;
+      font-size: clamp(28px, 3vw, 34px);
+      letter-spacing: -0.03em;
+      margin: 6px 0 18px;
     }
-    .bilan li, .col-avantages li, .col-limites li {
+    .bilan ul { list-style: none; }
+    .bilan li {
       position: relative;
-      padding: 0 0 14px 18px;
+      padding: 13px 0 13px 0;
+      border-bottom: 1px solid var(--bd);
       color: var(--mut);
-      font-size: 16px;
+      font-size: 15.5px;
       line-height: 1.5;
+      transition: color .2s, transform .28s var(--spring), padding-left .28s var(--spring);
     }
+    .bilan li:hover {
+      color: var(--ink);
+      transform: translateX(4px);
+    }
+    .col-avantages li { padding-left: 16px; }
     .col-avantages li::before {
       content: "";
       position: absolute;
-      left: 0; top: 0.55em;
-      width: 7px; height: 7px;
-      border-radius: 50%;
+      left: 0; top: 1.15em;
+      width: 7px; height: 1px;
       background: var(--accent);
     }
+    .col-limites li { padding-left: 16px; }
     .col-limites li::before {
       content: "";
       position: absolute;
-      left: 0; top: 0.55em;
-      width: 7px; height: 7px;
-      border-radius: 50%;
+      left: 0; top: 1.15em;
+      width: 7px; height: 1px;
       background: var(--faint);
     }
+    .limite-forte {
+      color: var(--ink);
+      font-size: 16.5px;
+      line-height: 1.48;
+      padding-top: 4px;
+      padding-bottom: 18px;
+    }
+    .limite-forte:hover { transform: none; }
+    .limite-forte::before {
+      background: var(--accent);
+      width: 12px;
+      top: 1.05em;
+    }
+    .limite-forte strong {
+      display: block;
+      font-family: "Newsreader", Georgia, serif;
+      font-style: italic;
+      font-weight: 500;
+      font-size: 26px;
+      letter-spacing: -0.03em;
+      margin-bottom: 8px;
+    }
     .closer {
-      padding: 36px 0 80px;
-      color: var(--mut);
-      font-size: 16px;
-      max-width: 38em;
-      line-height: 1.6;
+      font-family: "Newsreader", Georgia, serif;
+      font-style: italic;
+      font-weight: 450;
+      font-size: clamp(22px, 3vw, 30px);
+      color: var(--ink);
+      letter-spacing: -0.025em;
+      max-width: 18em;
+      line-height: 1.28;
+      padding: 72px 0 64px;
     }
     footer {
       border-top: 1px solid var(--bd);
-      padding: 22px 0 36px;
+      padding: 36px 0 40px;
+      color: var(--faint);
+      font-size: 13px;
+    }
+    .pied-haut {
+      display: flex;
+      justify-content: space-between;
+      gap: 32px;
+      align-items: flex-start;
+      margin-bottom: 28px;
+    }
+    .pied-marque p {
+      margin-top: 10px;
+      max-width: 22em;
+      color: var(--mut);
+      font-size: 14px;
+      line-height: 1.45;
+    }
+    .pied-nav {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      gap: 8px 20px;
+      padding-top: 6px;
+    }
+    .pied-nav a { color: var(--mut); transition: color .2s; }
+    .pied-nav a:hover { color: var(--accent); }
+    .pied-bas {
       display: flex;
       justify-content: space-between;
       gap: 16px;
-      color: var(--faint);
-      font-size: 13px;
+      padding-top: 18px;
+      border-top: 1px solid var(--bd);
     }
     footer a { color: var(--faint); transition: color .2s; }
     footer a:hover { color: var(--accent); }
     @keyframes monter {
-      from { opacity: 0; transform: translateY(18px); }
+      from { opacity: 0; transform: translateY(20px); }
       to { opacity: 1; transform: none; }
     }
     @keyframes cadre {
-      from { opacity: 0; transform: translateY(28px) scale(.98); }
+      from { opacity: 0; transform: translateY(32px) scale(.978); }
       to { opacity: 1; transform: none; }
     }
     @keyframes menuPop {
@@ -427,21 +650,30 @@
     }
     @media (max-width: 840px) {
       .wrap { width: calc(100% - 40px); }
-      nav { display: none; }
-      h1 { max-width: 12ch; }
-      .stage { padding: 28px 0 36px; }
-      .bureau { min-height: 480px; height: 520px; }
+      nav a { display: none; }
+      nav a.perm { display: inline; padding-left: 0; }
+      nav a.perm::before, nav a.perm::after { display: none; }
+      h1 { max-width: 8em; }
+      .hero { padding-top: 48px; }
+      .stage { padding: 32px 0 40px; }
+      .cadre { padding: 6px; border-radius: 16px; }
+      .bureau { min-height: 480px; height: 520px; border-radius: 11px; }
       .menu-shot { max-width: 58%; height: 68%; }
       .barre .pin:nth-of-type(n+4) { display: none; }
-      .shot-assistant { width: 100%; margin-top: 20px; }
-      .recit { padding: 48px 0 8px; }
+      .shot-assistant { width: 100%; margin-top: 24px; }
+      .legende-droite { text-align: left; }
+      .recit { padding: 56px 0 8px; }
       .chapitre {
         grid-template-columns: 1fr;
         gap: 12px;
         padding: 32px 0;
       }
       .stack div { grid-template-columns: 1fr; gap: 4px; }
-      .bilan { grid-template-columns: 1fr; gap: 36px; }
+      .stack div:hover { padding-left: 0; }
+      .bilan { grid-template-columns: 1fr; gap: 8px; }
+      .franc { padding-left: 18px; }
+      .pied-haut, .pied-bas { flex-direction: column; }
+      .pied-nav { justify-content: flex-start; }
     }
     @media (prefers-reduced-motion: reduce) {
       html { scroll-behavior: auto; }
@@ -464,8 +696,9 @@
           <a href="#os">Le bureau</a>
           <a href="#systeme">Le système</a>
           <a href="#technique">Technique</a>
+          <a href="#avantages">Avantages</a>
           <a href="#limites">Limites</a>
-          <a href="droits.html">Droits</a>
+          <a class="perm" href="droits.html">Droits</a>
         </nav>
       </header>
     </div>
@@ -473,8 +706,8 @@
 
   <div class="wrap">
     <section class="hero">
-      <p class="eyebrow">Système d’exploitation</p>
-      <h1>L’ordinateur d’occasion, enfin familier.</h1>
+      <p class="eyebrow">Système d’exploitation <i></i> Livré installé</p>
+      <h1>L’ordinateur d’occasion,<br>enfin <em>familier.</em></h1>
       <p class="lede">
         Rabaska OS est un Linux habillé pour la revente de PC
         d’occasion. Socle&nbsp;: Lubuntu (famille Ubuntu), bureau LXQt.
@@ -482,41 +715,48 @@
         à jour en français. Il arrive installé. Ce n’est pas une
         distribution à télécharger.
       </p>
+      <p class="hero-lien"><a href="#os">Voir le bureau <span></span></a></p>
     </section>
   </div>
 
   <section class="stage" id="os">
     <div class="composition">
-      <div class="bureau" id="bureau">
-        <div class="filigrane">Rabaska</div>
-        <img class="menu-shot" src="captures/menu.png" width="420" height="560" alt="Menu Démarrer de Rabaska OS">
-        <div class="barre">
-          <button class="demarrer" id="demarrer" type="button" aria-expanded="true" aria-controls="menu" title="Démarrer">
-            <img src="barre/demarrer.svg" alt="">
-          </button>
-          <div class="sep"></div>
-          <img class="pin" src="barre/ia.svg" alt="Assistant">
-          <img class="pin" src="barre/internet.svg" alt="Internet">
-          <img class="pin" src="barre/fichiers.svg" alt="Fichiers">
-          <img class="pin" src="barre/photos.svg" alt="Photos">
-          <img class="pin" src="barre/courriel.svg" alt="Courriel">
-          <div class="pousse"></div>
-          <div class="tray">
-            <img class="statut" src="barre/theme.svg" alt="Clair ou sombre">
-            <span class="langue">FR</span>
-            <img class="statut wifi" src="barre/wifi.svg" alt="Wi-Fi">
-            <img class="statut" src="barre/volume.svg" alt="Son">
-            <img class="statut" src="barre/batterie.svg" alt="Batterie">
-            <div class="horloge"><b id="heure">14:15</b><span id="date">vendredi 21 août</span></div>
+      <p class="kicker"><b>01</b> Le bureau</p>
+      <div class="cadre">
+        <div class="bureau" id="bureau">
+          <div class="filigrane">Rabaska</div>
+          <img class="menu-shot" id="menu" src="captures/menu.png" width="420" height="560" alt="Menu Démarrer de Rabaska OS">
+          <div class="barre">
+            <button class="demarrer" id="demarrer" type="button" aria-expanded="true" aria-controls="menu" title="Démarrer">
+              <img src="barre/demarrer.svg" alt="">
+            </button>
+            <div class="sep"></div>
+            <img class="pin" src="barre/ia.svg" alt="Assistant">
+            <img class="pin" src="barre/internet.svg" alt="Internet">
+            <img class="pin" src="barre/fichiers.svg" alt="Fichiers">
+            <img class="pin" src="barre/photos.svg" alt="Photos">
+            <img class="pin" src="barre/courriel.svg" alt="Courriel">
+            <div class="pousse"></div>
+            <div class="tray">
+              <img class="statut" src="barre/theme.svg" alt="Clair ou sombre">
+              <span class="langue">FR</span>
+              <img class="statut wifi" src="barre/wifi.svg" alt="Wi-Fi">
+              <img class="statut" src="barre/volume.svg" alt="Son">
+              <img class="statut" src="barre/batterie.svg" alt="Batterie">
+              <div class="horloge"><b id="heure">14:15</b><span id="date">vendredi 21 août</span></div>
+            </div>
           </div>
         </div>
       </div>
+      <p class="legende">Cliquez le bouton R — le menu s’ouvre et se ferme.</p>
       <img class="shot-assistant" src="captures/assistant.png" width="1024" height="720" alt="Premier démarrage de Rabaska OS : choix du style clair ou sombre">
+      <p class="legende legende-droite">Le premier allumage.</p>
     </div>
   </section>
 
   <div class="wrap">
     <section class="recit" id="systeme">
+      <p class="kicker"><b>02</b> Le système</p>
       <article class="chapitre">
         <h2>Un ordinateur, pas un chantier</h2>
         <div>
@@ -672,149 +912,195 @@
       </article>
     </section>
 
-    <h2 class="bloc-titre" id="technique">Ce qu’il y a dessous</h2>
-    <p class="bloc-lede">
-      Rabaska OS n’est pas un noyau inventé de zéro. C’est une
-      couche, volontairement fermée, posée sur un Linux connu. Voici
-      l’empilement réel, tel qu’il est construit.
-    </p>
-    <dl class="stack">
-      <div>
-        <dt>Socle</dt>
-        <dd>
-          Image Lubuntu 26.04 (famille Ubuntu, 64&nbsp;bits). Bureau
-          LXQt. Noyau Linux. Installeur Calamares. Écran de connexion
-          SDDM. Écran de démarrage Plymouth. Secure Boot conservé
-          (chargeur d’amorçage signé, non retouché).
-        </dd>
-      </div>
-      <div>
-        <dt>Session</dt>
-        <dd>
-          Défaut&nbsp;: LXQt sous Wayland, compositeur labwc (coins
-          du haut des fenêtres, 12&nbsp;px). Pas d’ombres portées&nbsp;:
-          le flou coûte trop cher sur un petit processeur. Repli au
-          login&nbsp;: LXQt sous X11, fenêtres Openbox. Sans compositeur
-          X11, le menu Rabaska a des coins carrés. C’est assumé.
-        </dd>
-      </div>
-      <div>
-        <dt>Couche Rabaska</dt>
-        <dd>
-          Thème crème et terracotta, polices Hanken Grotesk et
-          Newsreader. Menu Démarrer (recherche, quatre familles,
-          Éteindre). Assistant de premier jour (style + taille du
-          texte). Fenêtre de mises à jour en français. Barre LXQt
-          épinglée. L’habillage n’est pas un Ubuntu «&nbsp;nu&nbsp;»
-          à personnaliser comme un administrateur.
-        </dd>
-      </div>
-      <div>
-        <dt>Mises à jour</dt>
-        <dd>
-          Une fenêtre, un bouton. Trois groupes visibles&nbsp;:
-          Sécurité, Rabaska OS, Applications et système. Le
-          notificateur d’origine Lubuntu n’a pas encore été retiré&nbsp;:
-          on peut donc voir plus d’une invitation. Les correctifs de
-          nuit du socle restent actifs. La couche Rabaska dépend du
-          canal du vendeur.
-        </dd>
-      </div>
-      <div>
-        <dt>Matériel</dt>
-        <dd>
-          PC x86-64 reconditionnés. Cible de conception&nbsp;: peu de
-          mémoire, disque déjà usé, processeur lent (classe AMD&nbsp;C-50
-          1&nbsp;GHz, 2&nbsp;Go). Au démarrage, un service adapte
-          l’ordonnanceur disque, le swap compressé en mémoire (ZRAM)
-          et quelques réglages. Pas ARM, pas Apple.
-        </dd>
-      </div>
-      <div>
-        <dt>Tablette</dt>
-        <dd>
-          Sur un convertible 360° qui signale le mode tablette au
-          noyau, un clavier à l’écran (squeekboard) s’ouvre. Sur un
-          portable ordinaire — l’immense majorité du parc — rien de
-          plus ne tourne. Pas de clavier virtuel «&nbsp;au cas où&nbsp;».
-        </dd>
-      </div>
-      <div>
-        <dt>Réseau et boutique</dt>
-        <dd>
-          Les paquets snap Ubuntu sont retirés. Firefox et Chromium
-          viennent de dépôts .deb, pas de la boutique snap. Une
-          logithèque Linux (Discover) peut encore être là&nbsp;: ce
-          n’est pas un magasin d’applications de téléphone, et ce
-          n’est pas le cœur du produit.
-        </dd>
-      </div>
-      <div>
-        <dt>Vidéo et DRM</dt>
-        <dd>
-          Décodage matériel (VA-API) pour YouTube dans Chromium, quand
-          le GPU le permet. Netflix et les flux protégés passent par
-          Widevine, un composant propriétaire de Google. Qualité
-          typique sur ce parc&nbsp;: environ 720p. Ce n’est pas 4K.
-        </dd>
-      </div>
-      <div>
-        <dt>Licences</dt>
-        <dd>
-          Linux et les programmes du socle restent sous leurs licences
-          d’origine (souvent GPL). Les polices du thème sont OFL.
-          Widevine et Gemini appartiennent à Google. La couche Rabaska
-          (habillage, menu, assistant, mises à jour) est propriétaire.
-          Détail sur la page <a href="droits.html">Droits</a>.
-        </dd>
-      </div>
-    </dl>
+    <section class="partie" id="technique">
+      <p class="kicker"><b>03</b> Technique</p>
+      <h2 class="bloc-titre">Ce qu’il y a dessous</h2>
+      <p class="bloc-lede">
+        Rabaska OS n’est pas un noyau inventé de zéro. C’est une
+        couche, volontairement fermée, posée sur un Linux connu. Voici
+        l’empilement réel, tel qu’il est construit.
+      </p>
 
-    <h2 class="bloc-titre" id="limites">Pour et contre</h2>
-    <p class="bloc-lede">
-      Pas de promesse de «&nbsp;meilleur que Windows&nbsp;». Voici ce
-      que le produit fait, et ce qu’il refuse d’être.
-    </p>
-    <div class="bilan">
-      <div class="col-avantages">
-        <h3>Avantages</h3>
-        <ul>
-          <li>Déjà installé. On allume, deux questions, le bureau.</li>
-          <li>Français d’abord&nbsp;: menu, assistant, mises à jour, messages.</li>
-          <li>Léger&nbsp;: pas d’ombres, pas de flou, pensé pour le matériel qu’on a.</li>
-          <li>Menu unique, recherche, catégories. Éteindre est évident.</li>
-          <li>Un bouton pour les mises à jour, groupes en français.</li>
-          <li>Programmes du quotidien déjà là (web, courriel, bureau, vidéo, PDF).</li>
-          <li>Clair ou sombre, trois tailles de texte, bascule à tout moment.</li>
-          <li>Socle Linux/Ubuntu&nbsp;: correctifs de sécurité du socle, noyau connu.</li>
-          <li>Sur convertible, clavier à l’écran seulement quand l’écran est replié.</li>
-        </ul>
+      <aside class="franc" id="video">
+        <p class="franc-kicker">Vidéo</p>
+        <p class="franc-choc">Ce n’est pas 4K.</p>
+        <p>
+          YouTube dans Chromium&nbsp;: décodage matériel (VA-API), quand
+          le GPU le permet.
+        </p>
+        <p>
+          Sur ce parc d’occasion — écran, GPU, machine — la qualité
+          typique est environ 720p.
+        </p>
+      </aside>
+
+      <dl class="stack">
+        <div>
+          <dt>Socle</dt>
+          <dd>
+            Image Lubuntu 26.04 (famille Ubuntu, 64&nbsp;bits). Bureau
+            LXQt. Noyau Linux. Installeur Calamares. Écran de connexion
+            SDDM. Écran de démarrage Plymouth. Secure Boot conservé
+            (chargeur d’amorçage signé, non retouché).
+          </dd>
+        </div>
+        <div>
+          <dt>Session</dt>
+          <dd>
+            Défaut&nbsp;: LXQt sous Wayland, compositeur labwc (coins
+            du haut des fenêtres, 12&nbsp;px). Pas d’ombres portées&nbsp;:
+            le flou coûte trop cher sur un petit processeur. Repli au
+            login&nbsp;: LXQt sous X11, fenêtres Openbox. Sans compositeur
+            X11, le menu Rabaska a des coins carrés. C’est assumé.
+          </dd>
+        </div>
+        <div>
+          <dt>Couche Rabaska</dt>
+          <dd>
+            Thème crème et terracotta, polices Hanken Grotesk et
+            Newsreader. Menu Démarrer (recherche, quatre familles,
+            Éteindre). Assistant de premier jour (style + taille du
+            texte). Fenêtre de mises à jour en français. Barre LXQt
+            épinglée. L’habillage n’est pas un Ubuntu «&nbsp;nu&nbsp;»
+            à personnaliser comme un administrateur.
+          </dd>
+        </div>
+        <div>
+          <dt>Mises à jour</dt>
+          <dd>
+            Une fenêtre, un bouton. Trois groupes visibles&nbsp;:
+            Sécurité, Rabaska OS, Applications et système. Le
+            notificateur d’origine Lubuntu n’a pas encore été retiré&nbsp;:
+            on peut donc voir plus d’une invitation. Les correctifs de
+            nuit du socle restent actifs. La couche Rabaska dépend du
+            canal du vendeur.
+          </dd>
+        </div>
+        <div>
+          <dt>Matériel</dt>
+          <dd>
+            PC x86-64 reconditionnés. Cible de conception&nbsp;: peu de
+            mémoire, disque déjà usé, processeur lent (classe AMD&nbsp;C-50
+            1&nbsp;GHz, 2&nbsp;Go). Au démarrage, un service adapte
+            l’ordonnanceur disque, le swap compressé en mémoire (ZRAM)
+            et quelques réglages. Pas ARM, pas Apple.
+          </dd>
+        </div>
+        <div>
+          <dt>Tablette</dt>
+          <dd>
+            Sur un convertible 360° qui signale le mode tablette au
+            noyau, un clavier à l’écran (squeekboard) s’ouvre. Sur un
+            portable ordinaire — l’immense majorité du parc — rien de
+            plus ne tourne. Pas de clavier virtuel «&nbsp;au cas où&nbsp;».
+          </dd>
+        </div>
+        <div>
+          <dt>Réseau et boutique</dt>
+          <dd>
+            Les paquets snap Ubuntu sont retirés. Firefox et Chromium
+            viennent de dépôts .deb, pas de la boutique snap. Une
+            logithèque Linux (Discover) peut encore être là&nbsp;: ce
+            n’est pas un magasin d’applications de téléphone, et ce
+            n’est pas le cœur du produit.
+          </dd>
+        </div>
+        <div>
+          <dt>Vidéo</dt>
+          <dd>
+            YouTube dans Chromium&nbsp;: décodage matériel (VA-API), quand
+            le GPU le permet. Sur ce parc d’occasion (écran, GPU,
+            machine), la qualité typique est environ 720p. Ce n’est
+            pas 4K.
+          </dd>
+        </div>
+        <div>
+          <dt>Licences</dt>
+          <dd>
+            Linux et les programmes du socle restent sous leurs licences
+            d’origine (souvent GPL). Les polices du thème sont OFL.
+            Gemini (assistant de la barre) appartient à Google. La
+            couche Rabaska (habillage, menu, assistant, mises à jour)
+            est propriétaire. Détail sur la page
+            <a href="droits.html">Droits</a>.
+          </dd>
+        </div>
+      </dl>
+    </section>
+
+    <section class="partie">
+      <p class="kicker"><b>04</b> Pour et contre</p>
+      <h2 class="bloc-titre">Ce que le produit fait, et refuse</h2>
+      <p class="bloc-lede">
+        Pas de promesse de «&nbsp;meilleur que Windows&nbsp;». Voici
+        l’avantage réel, et la limite réelle.
+      </p>
+      <div class="bilan">
+        <div class="col-avantages" id="avantages">
+          <p class="sous">Pour</p>
+          <h3>Avantages</h3>
+          <ul>
+            <li>Déjà installé. On allume, deux questions, le bureau.</li>
+            <li>Français d’abord&nbsp;: menu, assistant, mises à jour, messages.</li>
+            <li>Léger&nbsp;: pas d’ombres, pas de flou, pensé pour le matériel qu’on a.</li>
+            <li>Menu unique, recherche, catégories. Éteindre est évident.</li>
+            <li>Un bouton pour les mises à jour, groupes en français.</li>
+            <li>Programmes du quotidien déjà là (web, courriel, bureau, vidéo, PDF).</li>
+            <li>Clair ou sombre, trois tailles de texte, bascule à tout moment.</li>
+            <li>Socle Linux/Ubuntu&nbsp;: correctifs de sécurité du socle, noyau connu.</li>
+            <li>Sur convertible, clavier à l’écran seulement quand l’écran est replié.</li>
+          </ul>
+        </div>
+        <div class="col-limites" id="limites">
+          <p class="sous">Contre</p>
+          <h3>Limites</h3>
+          <ul>
+            <li class="limite-forte">
+              <strong>Ce n’est pas 4K.</strong>
+              Parc d’occasion&nbsp;: écran, GPU, machine. Qualité vidéo
+              typique&nbsp;: environ 720p.
+            </li>
+            <li>Pas une distribution à télécharger. Pas d’ISO publique. Pas d’install «&nbsp;sur le PC du tiroir&nbsp;» par l’internaute.</li>
+            <li>La couche Rabaska est propriétaire. On n’a pas le droit de la copier ni de la redistribuer. Le socle Linux, si, sous ses licences.</li>
+            <li>Pas un OS de station 4K, de jeu AAA, ni un GNOME chargé. Le parc visé est d’occasion et souvent lent.</li>
+            <li>Moins de boutique que Windows ou macOS. Moins de logiciels propriétaires préinstallés. Edge n’est pas livré.</li>
+            <li>Ce n’est pas Windows. Wine ouvre certains .exe. Beaucoup échouent.</li>
+            <li>L’assistant IA est Gemini (Google), dans le navigateur. Compte Google requis. Réseau requis. Pas d’IA hors-ligne.</li>
+            <li>Sous X11 sans compositeur, coins du menu carrés. labwc n’arrondit que le haut des fenêtres, pas le bas.</li>
+            <li>L’habillage est fermé. Ce n’est pas un Ubuntu nu à peaufiner comme un admin.</li>
+            <li>Les mises à jour de la couche Rabaska dépendent du canal du vendeur. Sans ce canal, cette couche s’arrête.</li>
+            <li>Le notificateur Lubuntu d’origine est encore là en parallèle. Deux invitations possibles, le temps que ce repli parte.</li>
+            <li>PC 64&nbsp;bits Intel/AMD seulement. Pas de téléphone, pas de tablette ARM, pas de Mac Apple Silicon.</li>
+          </ul>
+        </div>
       </div>
-      <div class="col-limites">
-        <h3>Limites</h3>
-        <ul>
-          <li>Pas une distribution à télécharger. Pas d’ISO publique. Pas d’install «&nbsp;sur le PC du tiroir&nbsp;» par l’internaute.</li>
-          <li>La couche Rabaska est propriétaire. On n’a pas le droit de la copier ni de la redistribuer. Le socle Linux, si, sous ses licences.</li>
-          <li>Pas un OS de station 4K, de jeu AAA, ni un GNOME chargé. Le parc visé est d’occasion et souvent lent.</li>
-          <li>Moins de boutique que Windows ou macOS. Moins de logiciels propriétaires préinstallés. Edge n’est pas livré.</li>
-          <li>Ce n’est pas Windows. Wine ouvre certains .exe. Beaucoup échouent.</li>
-          <li>L’assistant IA est Gemini (Google), dans le navigateur. Compte Google requis. Réseau requis. Pas d’IA hors-ligne.</li>
-          <li>Sous X11 sans compositeur, coins du menu carrés. labwc n’arrondit que le haut des fenêtres, pas le bas.</li>
-          <li>L’habillage est fermé. Ce n’est pas un Ubuntu nu à peaufiner comme un admin.</li>
-          <li>Les mises à jour de la couche Rabaska dépendent du canal du vendeur. Sans ce canal, cette couche s’arrête.</li>
-          <li>Le notificateur Lubuntu d’origine est encore là en parallèle. Deux invitations possibles, le temps que ce repli parte.</li>
-          <li>Netflix et le DRM&nbsp;: Widevine propriétaire, souvent plafonné vers 720p sur ce matériel.</li>
-          <li>PC 64&nbsp;bits Intel/AMD seulement. Pas de téléphone, pas de tablette ARM, pas de Mac Apple Silicon.</li>
-        </ul>
-      </div>
-    </div>
+    </section>
     <p class="closer">
       Un système clair, en français, sur une machine qu’on n’a pas
-      besoin de racheter. C’est tout ce que Rabaska OS cherche à être.
+      besoin de racheter.
     </p>
     <footer>
-      <span>© 2026. Tous droits réservés.</span>
-      <a href="droits.html">Conditions et licences</a>
+      <div class="pied-haut">
+        <div class="pied-marque">
+          <a class="brand" href="index.html">
+            <span class="tile" aria-hidden="true">R</span>
+            Rabaska OS
+          </a>
+          <p>Livré avec la machine. Pas de téléchargement.</p>
+        </div>
+        <div class="pied-nav">
+          <a href="#os">Le bureau</a>
+          <a href="#systeme">Le système</a>
+          <a href="#technique">Technique</a>
+          <a href="#video">Vidéo</a>
+          <a href="#limites">Limites</a>
+          <a href="droits.html">Droits</a>
+        </div>
+      </div>
+      <div class="pied-bas">
+        <span>© 2026. Tous droits réservés.</span>
+        <a href="droits.html">Conditions et licences</a>
+      </div>
     </footer>
   </div>
   <script>
