@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Rabaska OS</title>
-  <meta name="description" content="Rabaska OS est un système d’exploitation clair, en français, conçu pour les ordinateurs d’occasion.">
+  <meta name="description" content="Rabaska OS est un système d’exploitation clair, en français, conçu pour les ordinateurs d’occasion. Menu simple, premier allumage guidé, mises à jour en un bouton.">
   <meta name="robots" content="index,follow">
   <meta name="referrer" content="no-referrer">
   <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self'; script-src 'unsafe-inline'; base-uri 'self'">
@@ -92,6 +92,10 @@
       transition: transform .28s var(--spring);
     }
     .brand:hover .tile { transform: rotate(-10deg) scale(1.08); }
+    nav {
+      display: flex;
+      gap: 28px;
+    }
     nav a {
       font-size: 14px;
       font-weight: 500;
@@ -126,12 +130,12 @@
       font-size: clamp(42px, 6.4vw, 76px);
       line-height: 0.98;
       letter-spacing: -0.035em;
-      max-width: 11ch;
+      max-width: 12ch;
       animation: monter .85s .06s var(--spring) both;
     }
     .lede {
       margin-top: 22px;
-      max-width: 22em;
+      max-width: 34em;
       color: var(--mut);
       font-size: 20px;
       line-height: 1.45;
@@ -178,6 +182,7 @@
       max-width: 42%;
       display: block;
       transform-origin: 16% 100%;
+      background: transparent;
       animation: menuPop .55s .55s var(--spring) both;
       transition: opacity .28s var(--spring), transform .28s var(--spring);
     }
@@ -274,29 +279,36 @@
       transition: transform .4s var(--spring);
     }
     .shot-assistant:hover { transform: translateY(-6px); }
-    .points {
+    .recit {
+      padding: 88px 0 24px;
+    }
+    .chapitre {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 40px;
-      padding: 96px 0 48px;
+      grid-template-columns: minmax(160px, 0.42fr) 1fr;
+      gap: 28px 64px;
+      padding: 44px 0;
+      border-top: 1px solid var(--bd);
     }
-    .points > div {
-      animation: monter .7s var(--spring) both;
+    .chapitre h2 {
+      font-family: "Newsreader", Georgia, serif;
+      font-weight: 500;
+      font-size: clamp(26px, 3.2vw, 34px);
+      letter-spacing: -0.03em;
+      line-height: 1.12;
     }
-    .points > div:nth-child(1) { animation-delay: .05s; }
-    .points > div:nth-child(2) { animation-delay: .12s; }
-    .points > div:nth-child(3) { animation-delay: .19s; }
-    .points h2 {
-      font-size: 15px;
-      font-weight: 600;
-      margin-bottom: 8px;
+    .chapitre p {
+      color: var(--mut);
+      font-size: 17px;
+      line-height: 1.62;
+      max-width: 38em;
     }
-    .points p { color: var(--mut); font-size: 15px; line-height: 1.55; }
+    .chapitre p + p { margin-top: 14px; }
     .closer {
-      padding: 8px 0 80px;
+      padding: 36px 0 80px;
       color: var(--mut);
       font-size: 16px;
-      max-width: 32em;
+      max-width: 38em;
+      line-height: 1.6;
     }
     footer {
       border-top: 1px solid var(--bd);
@@ -338,10 +350,11 @@
       .menu-shot { max-width: 58%; height: 68%; }
       .barre .pin:nth-of-type(n+4) { display: none; }
       .shot-assistant { width: 100%; margin-top: 20px; }
-      .points {
+      .recit { padding: 48px 0 8px; }
+      .chapitre {
         grid-template-columns: 1fr;
-        gap: 28px;
-        padding: 56px 0 32px;
+        gap: 12px;
+        padding: 32px 0;
       }
     }
     @media (prefers-reduced-motion: reduce) {
@@ -360,7 +373,11 @@
           <span class="tile" aria-hidden="true">R</span>
           Rabaska OS
         </a>
-        <nav><a href="droits.html">Droits</a></nav>
+        <nav>
+          <a href="#os">Le bureau</a>
+          <a href="#systeme">Le système</a>
+          <a href="droits.html">Droits</a>
+        </nav>
       </header>
     </div>
   </div>
@@ -370,8 +387,10 @@
       <p class="eyebrow">Système d’exploitation</p>
       <h1>L’ordinateur d’occasion, enfin familier.</h1>
       <p class="lede">
-        Un bureau clair, en français. Conçu pour le matériel
-        qu’on a déjà — pas pour celui qu’il faudrait racheter.
+        Rabaska OS est un système d’exploitation complet&nbsp;: un bureau
+        clair, en français, pensé pour le matériel qu’on a déjà — pas pour
+        celui qu’il faudrait racheter. Il arrive installé. On allume,
+        on choisit le style, on travaille.
       </p>
     </section>
   </div>
@@ -407,23 +426,156 @@
   </section>
 
   <div class="wrap">
-    <section class="points">
-      <div>
-        <h2>Le menu</h2>
-        <p>Un bouton R. Toutes les applications, groupées. Éteindre, en bas à droite.</p>
-      </div>
-      <div>
-        <h2>Le premier jour</h2>
-        <p>Clair ou sombre. La taille du texte. Ensuite, le bureau. Rien d’autre à régler.</p>
-      </div>
-      <div>
-        <h2>La machine</h2>
-        <p>Rabaska OS arrive déjà installé. Il n’y a pas de téléchargement, pas d’image à graver.</p>
-      </div>
+    <section class="recit" id="systeme">
+      <article class="chapitre">
+        <h2>Un ordinateur, pas un chantier</h2>
+        <div>
+          <p>
+            La plupart des systèmes d’exploitation d’aujourd’hui parlent
+            à des gens qui aiment les régler. Rabaska OS parle à ceux
+            qui veulent s’en servir. Le bureau est dégagé. Les mots sont
+            en français. Les boutons font ce qu’ils disent.
+          </p>
+          <p>
+            Ce n’est pas un assemblage à télécharger, ni une image à
+            graver. C’est le système livré avec la machine. Au premier
+            allumage, deux questions. Ensuite, le bureau.
+          </p>
+        </div>
+      </article>
+      <article class="chapitre">
+        <h2>Le bouton&nbsp;R</h2>
+        <div>
+          <p>
+            En bas à gauche, un carré terracotta et la lettre&nbsp;R.
+            Un clic ouvre le menu. En haut, un bonjour avec le prénom.
+            Juste en dessous, une recherche&nbsp;: on tape le début d’un
+            nom, l’application apparaît.
+          </p>
+          <p>
+            Sans chercher, les programmes sont rangés en quatre
+            familles&nbsp;: Applications, Configuration, Outils système,
+            Fichiers. Dans Applications, encore Internet, courriel,
+            photos, musique et vidéos, documents, jeux, utilitaires.
+            En bas à droite du menu&nbsp;: Éteindre.
+          </p>
+        </div>
+      </article>
+      <article class="chapitre">
+        <h2>La barre du quotidien</h2>
+        <div>
+          <p>
+            À côté du&nbsp;R, les raccourcis dont on a besoin tous les
+            jours&nbsp;: l’assistant, Internet, les fichiers, les photos,
+            le courriel. À droite, le style clair ou sombre, la langue,
+            le Wi-Fi, le son, la batterie, l’heure.
+          </p>
+          <p>
+            Rien d’autre n’encombre la barre. Ce qui sert est là. Le
+            reste se trouve dans le menu.
+          </p>
+        </div>
+      </article>
+      <article class="chapitre">
+        <h2>Le premier allumage</h2>
+        <div>
+          <p>
+            L’assistant ne pose que l’essentiel. D’abord le style&nbsp;:
+            clair ou sombre — «&nbsp;Vous pourrez changer à tout
+            moment.&nbsp;» Ensuite la taille du texte&nbsp;: normal,
+            grand, très grand — «&nbsp;Pour un affichage confortable
+            à lire.&nbsp;»
+          </p>
+          <p>
+            La langue est déjà celle de l’installation. On n’a pas à la
+            redemander. Quand c’est fini&nbsp;: «&nbsp;Tout est prêt.&nbsp;»
+            Un bouton ouvre le bureau.
+          </p>
+        </div>
+      </article>
+      <article class="chapitre">
+        <h2>Écrit en français</h2>
+        <div>
+          <p>
+            Le menu, l’assistant, les mises à jour, les messages du
+            système&nbsp;: le français n’est pas une traduction collée
+            après coup. Les phrases sont courtes. Il n’y a pas de jargon,
+            pas de mots anglais pour faire savant.
+          </p>
+          <p>
+            Un acheteur qui n’a jamais entendu parler de paquets, de
+            dépôts ou de ligne de commande n’a rien à apprendre pour
+            se servir de sa machine.
+          </p>
+        </div>
+      </article>
+      <article class="chapitre">
+        <h2>Pensé pour le matériel qu’on a déjà</h2>
+        <div>
+          <p>
+            Rabaska OS est conçu pour des ordinateurs d’occasion&nbsp;:
+            un processeur modeste, peu de mémoire, un disque qui a déjà
+            servi. Pas d’ombres, pas de flous, pas d’effets qui font
+            travailler la machine pour le décor.
+          </p>
+          <p>
+            Le bureau reste lisible. Les fenêtres restent plates. La
+            machine chauffe moins, et elle dure.
+          </p>
+        </div>
+      </article>
+      <article class="chapitre">
+        <h2>Un bouton pour tout mettre à jour</h2>
+        <div>
+          <p>
+            Quand quelque chose est prêt, une notification le dit
+            simplement. La fenêtre des mises à jour range ce qui arrive
+            en trois groupes&nbsp;: la sécurité (à installer sans
+            attendre), Rabaska OS lui-même, puis les programmes.
+          </p>
+          <p>
+            Un seul bouton suffit&nbsp;: l’ordinateur s’occupe du reste.
+            On peut aussi choisir Plus tard. Pas de terminal, pas de
+            liste technique à déchiffrer.
+          </p>
+        </div>
+      </article>
+      <article class="chapitre">
+        <h2>Ce qui est déjà là</h2>
+        <div>
+          <p>
+            Naviguer, écrire, classer des fichiers, regarder des photos,
+            envoyer un courriel&nbsp;: les programmes du quotidien sont
+            installés. L’assistant, sur la barre, est à un clic.
+          </p>
+          <p>
+            Il n’y a pas de magasin à ouvrir pour «&nbsp;commencer à
+            vraiment s’en servir&nbsp;». La machine est prête le jour
+            où on la sort de la boîte.
+          </p>
+        </div>
+      </article>
+      <article class="chapitre">
+        <h2>Pas de téléchargement</h2>
+        <div>
+          <p>
+            Rabaska OS n’est pas en libre service. Il n’y a pas d’image
+            à télécharger, pas d’installation à bricoler. Le système
+            arrive sur l’ordinateur. Copier ou redistribuer n’est pas
+            autorisé.
+          </p>
+          <p>
+            Linux et les programmes du socle restent sous leurs licences
+            d’origine. La part propre à Rabaska OS — l’habillage, le
+            menu, l’assistant, les mises à jour — est protégée.
+            Les détails sont sur la page <a href="droits.html">Droits</a>.
+          </p>
+        </div>
+      </article>
     </section>
     <p class="closer">
-      Copier ou redistribuer le système n’est pas autorisé.
-      Linux et les programmes du socle restent sous leurs licences d’origine.
+      Un système clair, en français, sur une machine qu’on n’a pas
+      besoin de racheter. C’est tout ce que Rabaska OS cherche à être.
     </p>
     <footer>
       <span>© 2026. Tous droits réservés.</span>
