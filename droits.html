@@ -101,6 +101,23 @@
     }
     .top-lien:hover { color: var(--accent); }
     .top-lien:hover::after { transform: scaleX(1); }
+    .haut-droite {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 8px;
+      min-width: 0;
+    }
+    .mail-haut {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.01em;
+      color: var(--accent);
+      overflow-wrap: anywhere;
+      text-align: right;
+    }
+    .mail-haut:hover { color: var(--ink); }
+    .mail-haut::after { display: none; }
     main { padding: 64px 0 8px; }
     .eyebrow {
       display: flex;
@@ -162,9 +179,12 @@
       display: flex;
       justify-content: space-between;
       gap: 16px;
+      flex-wrap: wrap;
     }
     footer a { color: var(--faint); }
     footer a:hover { color: var(--accent); }
+    footer a.pied-mail { color: var(--ink); font-weight: 500; }
+    footer a.pied-mail:hover { color: var(--accent); }
     @media (max-width: 640px) {
       .wrap { width: calc(100% - 40px); }
       main { padding-top: 40px; }
@@ -186,7 +206,10 @@
           <span class="tile" aria-hidden="true">R</span>
           Rabaska OS
         </a>
-        <a class="top-lien" href="index.html">Accueil</a>
+        <div class="haut-droite">
+          <a class="mail-haut" href="mailto:spmorin.mrservices@gmail.com">spmorin.mrservices@gmail.com</a>
+          <a class="top-lien" href="index.html">Accueil</a>
+        </div>
       </header>
     </div>
   </div>
@@ -241,6 +264,7 @@
     <footer>
       <div class="pied-bas">
         <span>Usage commercial · pas de redistribution</span>
+        <a class="pied-mail" href="mailto:spmorin.mrservices@gmail.com">spmorin.mrservices@gmail.com</a>
         <a href="index.html">Retour à l’accueil</a>
       </div>
     </footer>
