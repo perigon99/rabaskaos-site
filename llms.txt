@@ -1,0 +1,18 @@
+# Rabaska OS
+
+> Système d’exploitation en français pour ordinateurs d’occasion et reconditionnés. Livré installé avec la machine — pas de téléchargement public.
+
+## Pages
+
+- [Accueil](https://rabaskaos.mrservices.ca/) : présentation du bureau, accessibilité au premier démarrage, système, technique, avantages et limites
+- [Droits](https://rabaskaos.mrservices.ca/droits.html) : droit d’usage, licences du socle Linux, marques
+
+## Contact
+
+- Courriel : spmorin.mrservices@gmail.com
+
+## Notes
+
+- Contenu en français (fr-CA)
+- Pas d’ISO publique, pas d’installateur à télécharger
+- Accessibilité : quatre questions au premier allumage (style, taille, couleurs, rythme), réversibles ensuite
