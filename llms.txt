@@ -4,8 +4,8 @@
 
 ## Pages
 
-- [Accueil](https://rabaskaos.mrservices.ca/) : présentation du bureau, accessibilité au premier démarrage, système, technique, avantages et limites
-- [Droits](https://rabaskaos.mrservices.ca/droits.html) : droit d’usage, licences du socle Linux, marques
+- [Accueil](https://rabaskaos.com/) : présentation du bureau, accessibilité au premier démarrage, système, technique, avantages et limites
+- [Droits](https://rabaskaos.com/droits.html) : droit d’usage, licences du socle Linux, marques
 
 ## Contact
 

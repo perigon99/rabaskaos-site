@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://rabaskaos.mrservices.ca/sitemap.xml
+Sitemap: https://rabaskaos.com/sitemap.xml
