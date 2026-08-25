@@ -1,18 +1,20 @@
 # Rabaska OS
 
-> Système d’exploitation en français pour ordinateurs d’occasion et reconditionnés. Livré installé avec la machine — pas de téléchargement public.
+> French-language operating system for used and refurbished computers. Delivered preinstalled with the machine — no public download.
 
 ## Pages
 
-- [Accueil](https://rabaskaos.mrservices.ca/) : présentation du bureau, accessibilité au premier démarrage, système, technique, avantages et limites
-- [Droits](https://rabaskaos.mrservices.ca/droits.html) : droit d’usage, licences du socle Linux, marques
+- [Home (FR)](https://rabaskaos.com/) : desktop tour, accessibility at first boot, system, technical, benefits and limits
+- [Home (EN)](https://rabaskaos.com/en/) : English mirror of the home page
+- [Rights (FR)](https://rabaskaos.com/droits.html) : usage rights, Linux base licences, trademarks
+- [Rights (EN)](https://rabaskaos.com/en/rights.html) : English mirror of the rights page
 
 ## Contact
 
-- Courriel : spmorin.mrservices@gmail.com
+- Email: spmorin.mrservices@gmail.com
 
 ## Notes
 
-- Contenu en français (fr-CA)
-- Pas d’ISO publique, pas d’installateur à télécharger
-- Accessibilité : quatre questions au premier allumage (style, taille, couleurs, rythme), réversibles ensuite
+- Content in French (fr-CA) and English (en)
+- No public ISO, no installer to download
+- Accessibility: four questions at first power-on (style, size, colours, pace), reversible afterward
