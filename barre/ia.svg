@@ -1,11 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48" height="48">
-  <!-- Tuile « Assistant IA » de la barre des tâches : carré arrondi sarcelle
-       (colors.md → « Assistant IA » #2f7d78) + monogramme « IA » serif blanc.
-       Même système de tuile monogramme que boreal-logo-tile.svg (« R »).
-       À plat, sans ombre ni dégradé — design Rabaska OS :
-       forme / couleur / typo, pas d'artifices. Indépendant du QSS. -->
-  <rect width="48" height="48" rx="12" ry="12" fill="#2f7d78"/>
-  <text x="24" y="33" text-anchor="middle"
-        font-family="Newsreader, Georgia, 'Times New Roman', serif"
-        font-style="italic" font-weight="600" font-size="22" fill="#ffffff">IA</text>
+  
+  <rect width="48" height="48" rx="12" ry="12" fill="#2f7d78"></rect>
+  <text x="24" y="33" text-anchor="middle" font-family="Newsreader, Georgia, 'Times New Roman', serif" font-style="italic" font-weight="600" font-size="22" fill="#ffffff">IA</text>
 </svg>

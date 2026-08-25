@@ -35,1311 +35,826 @@
   }
   </script>
   <style>
-    @font-face {
-      font-family: "Hanken Grotesk";
-      src: url("fonts/HankenGrotesk.ttf") format("truetype");
-      font-weight: 100 900;
-      font-display: swap;
-    }
-    @font-face {
-      font-family: "Newsreader";
-      src: url("fonts/Newsreader.ttf") format("truetype");
-      font-weight: 100 900;
-      font-style: normal;
-      font-display: swap;
-    }
-    @font-face {
-      font-family: "Newsreader";
-      src: url("fonts/Newsreader-Italic.ttf") format("truetype");
-      font-weight: 100 900;
-      font-style: italic;
-      font-display: swap;
-    }
-    :root {
-      --bg: #e9e2d4;
-      --stage: #d8cfc0;
-      --ink: #1c1814;
-      --mut: #6b6357;
-      --faint: #9a9080;
-      --accent: #c15a34;
-      --bd: rgba(28, 23, 16, 0.14);
-      --spring: cubic-bezier(.22, 1, .36, 1);
-    }
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    html { background: var(--bg); scroll-behavior: smooth; }
-    body {
-      font-family: "Hanken Grotesk", system-ui, sans-serif;
-      color: var(--ink);
-      font-size: 17px;
-      line-height: 1.5;
-      background: var(--bg);
-    }
-    a { color: inherit; text-decoration: none; }
-    a:hover { color: var(--accent); }
-    code {
-      font-family: ui-monospace, "Cascadia Mono", Consolas, monospace;
-      font-size: 0.9em;
-    }
-    .wrap {
-      width: min(1120px, calc(100% - 48px));
-      margin-inline: auto;
-    }
-    .top {
-      position: sticky;
-      top: 0;
-      z-index: 30;
-      background: color-mix(in srgb, var(--bg) 84%, transparent);
-      backdrop-filter: blur(18px);
-      -webkit-backdrop-filter: blur(18px);
-      border-bottom: 1px solid var(--bd);
-    }
-    .top::before {
-      content: "";
-      display: block;
-      height: 3px;
-      background: var(--accent);
-    }
-    header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 20px;
-      padding: 16px 0 15px;
-    }
-    .haut-droite {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-end;
-      gap: 7px;
-      min-width: 0;
-    }
-    .mail-haut {
-      font-size: 12px;
-      font-weight: 600;
-      letter-spacing: 0.01em;
-      color: var(--accent);
-      overflow-wrap: anywhere;
-      text-align: right;
-    }
-    .mail-haut:hover { color: var(--ink); }
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      font-family: "Newsreader", Georgia, serif;
-      font-size: 21px;
-      font-weight: 500;
-      letter-spacing: -0.03em;
-    }
-    .tile {
-      width: 30px; height: 30px;
-      background: var(--accent);
-      border-radius: 8px;
-      color: #fff;
-      font-family: "Newsreader", Georgia, serif;
-      font-style: italic;
-      font-weight: 600;
-      font-size: 17px;
-      display: grid;
-      place-items: center;
-      transition: transform .32s var(--spring);
-    }
-    .brand:hover .tile { transform: rotate(-8deg) scale(1.06); }
-    nav {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: flex-end;
-      align-items: center;
-      gap: 4px 0;
-    }
-    nav a {
-      font-size: 13px;
-      font-weight: 500;
-      letter-spacing: 0.01em;
-      color: var(--mut);
-      position: relative;
-      padding: 4px 0 4px 18px;
-      transition: color .2s;
-    }
-    nav a:first-child { padding-left: 0; }
-    nav a + a::before {
-      content: "";
-      position: absolute;
-      left: 8px; top: 50%;
-      width: 3px; height: 3px;
-      margin-top: -1px;
-      border-radius: 50%;
-      background: var(--faint);
-      opacity: .7;
-    }
-    nav a::after {
-      content: "";
-      position: absolute;
-      left: 18px; right: 0; bottom: 2px;
-      height: 1px;
-      background: var(--accent);
-      transform: scaleX(0);
-      transform-origin: left;
-      transition: transform .32s var(--spring);
-    }
-    nav a:first-child::after { left: 0; }
-    nav a:hover::after { transform: scaleX(1); }
-    .hero { padding: 72px 0 8px; }
-    .eyebrow {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      font-size: 11px;
-      font-weight: 600;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 22px;
-      animation: monter .75s var(--spring) both;
-    }
-    .eyebrow i {
-      display: block;
-      width: 28px;
-      height: 1px;
-      background: var(--accent);
-      opacity: .55;
-      font-style: normal;
-    }
-    h1 {
-      font-family: "Newsreader", Georgia, serif;
-      font-weight: 500;
-      font-size: clamp(46px, 7.2vw, 90px);
-      line-height: 0.93;
-      letter-spacing: -0.038em;
-      max-width: 9.4em;
-      animation: monter .9s .08s var(--spring) both;
-    }
-    h1 em {
-      font-style: italic;
-      font-weight: 450;
-    }
-    .lede {
-      margin-top: 28px;
-      max-width: 36em;
-      color: var(--mut);
-      font-size: 20px;
-      line-height: 1.48;
-      animation: monter .9s .16s var(--spring) both;
-    }
-    .hero-lien {
-      margin-top: 32px;
-      animation: monter .9s .24s var(--spring) both;
-    }
-    .hero-lien a {
-      display: inline-flex;
-      align-items: center;
-      gap: 12px;
-      font-size: 12px;
-      font-weight: 600;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      color: var(--accent);
-    }
-    .hero-lien a span {
-      display: block;
-      width: 36px;
-      height: 1px;
-      background: var(--accent);
-      transition: width .35s var(--spring);
-    }
-    .hero-lien a:hover { color: var(--ink); }
-    .hero-lien a:hover span { width: 56px; background: var(--ink); }
-    .stage {
-      margin-top: 64px;
-      padding: 56px 0 64px;
-      background:
-        radial-gradient(ellipse 70% 50% at 50% -8%, #efe7d8 0%, var(--stage) 58%);
-    }
-    .composition {
-      max-width: 1080px;
-      margin: 0 auto;
-      padding: 0 24px;
-    }
-    .kicker {
-      display: flex;
-      align-items: baseline;
-      gap: 14px;
-      font-size: 12px;
-      font-weight: 600;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      color: var(--mut);
-      margin-bottom: 22px;
-    }
-    .kicker b {
-      color: var(--accent);
-      font-weight: 600;
-      font-variant-numeric: tabular-nums;
-    }
-    .cadre {
-      padding: 9px;
-      background: linear-gradient(180deg, #d4cbbd 0%, #c9bfb0 100%);
-      border-radius: 22px;
-      box-shadow:
-        inset 0 1px 0 rgba(255,255,255,.35),
-        0 36px 72px rgba(28, 23, 16, .16);
-      animation: cadre 1s .22s var(--spring) both;
-    }
-    .bureau {
-      position: relative;
-      background:
-        radial-gradient(ellipse 75% 45% at 50% 0%, #f3ece1 0%, #e9e2d4 68%);
-      border-radius: 14px;
-      overflow: hidden;
-      min-height: 560px;
-      height: min(640px, 72vw);
-    }
-    .filigrane {
-      position: absolute;
-      right: 36px;
-      bottom: 88px;
-      font-family: "Newsreader", Georgia, serif;
-      font-style: italic;
-      font-size: clamp(42px, 7vw, 78px);
-      color: #221d17;
-      opacity: .07;
-      pointer-events: none;
-    }
-    .menu-shot {
-      position: absolute;
-      left: 14px;
-      bottom: 74px;
-      height: min(72%, 520px);
-      width: auto;
-      max-width: 42%;
-      display: block;
-      transform-origin: 16% 100%;
-      background: transparent;
-      animation: menuPop .6s .62s var(--spring) both;
-      transition: opacity .28s var(--spring), transform .28s var(--spring);
-    }
-    .bureau.menu-ferme .menu-shot {
-      opacity: 0;
-      transform: translateY(18px) scale(.96);
-      pointer-events: none;
-      animation: none;
-    }
-    .barre {
-      position: absolute;
-      left: 0; right: 0; bottom: 0;
-      height: 60px;
-      background: #f6f2ea;
-      border-top: 1px solid var(--bd);
-      display: flex;
-      align-items: center;
-      padding: 0 12px;
-      gap: 8px;
-    }
-    .barre .sep {
-      width: 1px;
-      height: 28px;
-      background: rgba(28, 23, 16, .1);
-      margin: 0 4px;
-      flex: none;
-    }
-    .barre .pin, .demarrer {
-      width: 40px;
-      height: 40px;
-      border-radius: 11px;
-      flex: none;
-      display: block;
-      transition: transform .22s var(--spring), filter .22s;
-    }
-    .barre .pin { cursor: default; }
-    .barre .pin:hover {
-      transform: translateY(-4px) scale(1.07);
-      filter: brightness(1.08);
-    }
-    .demarrer {
-      position: relative;
-      overflow: hidden;
-      border: none;
-      background: none;
-      padding: 0;
-      cursor: pointer;
-    }
-    .demarrer img { width: 40px; height: 40px; display: block; }
-    .demarrer:hover { transform: translateY(-3px) scale(1.06); }
-    .demarrer::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(105deg, transparent 38%, rgba(255,255,255,.38) 50%, transparent 62%);
-      transform: translateX(-130%);
-      animation: shine 5s 1.6s ease-in-out infinite;
-    }
-    .barre img.statut {
-      width: 22px;
-      height: 22px;
-      display: block;
-      transition: opacity .3s, transform .22s var(--spring);
-    }
-    .barre img.statut:hover { transform: scale(1.12); }
-    .wifi { animation: souffle 2.8s ease-in-out infinite; }
-    .barre .pousse { flex: 1; }
-    .tray {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      padding-right: 4px;
-    }
-    .langue {
-      font-size: 12px;
-      font-weight: 700;
-      letter-spacing: .04em;
-      color: #736a5b;
-    }
-    .horloge {
-      text-align: right;
-      line-height: 1.15;
-      color: #221d17;
-      font-variant-numeric: tabular-nums;
-    }
-    .horloge b { display: block; font-size: 14px; font-weight: 600; }
-    .horloge span { font-size: 11px; color: #736a5b; }
-    .legende {
-      margin-top: 16px;
-      font-size: 13px;
-      color: var(--mut);
-      letter-spacing: 0.01em;
-    }
-    .shot-assistant {
-      display: block;
-      width: min(860px, 100%);
-      margin: 36px 0 0 auto;
-      border-radius: 14px;
-      animation: monter .85s .85s var(--spring) both;
-      transition: transform .45s var(--spring);
-    }
-    .shot-assistant:hover { transform: translateY(-6px); }
-    .legende-droite { text-align: right; margin-top: 12px; }
-    .confort {
-      padding: 72px 0 8px;
-    }
-    .confort .shot-assistant { margin-top: 28px; }
-    .besoins {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 0 64px;
-      margin-top: 40px;
-      border-top: 1px solid var(--bd);
-    }
-    .besoin {
-      padding: 28px 0 26px;
-      border-bottom: 1px solid var(--bd);
-      animation: monter .75s var(--spring) both;
-    }
-    .besoin:nth-child(1) { animation-delay: .06s; }
-    .besoin:nth-child(2) { animation-delay: .12s; }
-    .besoin:nth-child(3) { animation-delay: .18s; }
-    .besoin:nth-child(4) { animation-delay: .24s; }
-    .besoin b {
-      display: block;
-      font-size: 11px;
-      font-weight: 600;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 10px;
-    }
-    .besoin h3 {
-      font-family: "Newsreader", Georgia, serif;
-      font-weight: 500;
-      font-size: clamp(24px, 2.6vw, 30px);
-      letter-spacing: -0.03em;
-      line-height: 1.12;
-      margin-bottom: 8px;
-    }
-    .besoin p {
-      color: var(--mut);
-      font-size: 16px;
-      line-height: 1.5;
-      max-width: 28em;
-    }
-    .confort-suite {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 28px 64px;
-      padding: 36px 0 12px;
-    }
-    .confort-suite h3 {
-      font-family: "Newsreader", Georgia, serif;
-      font-weight: 500;
-      font-size: 22px;
-      letter-spacing: -0.03em;
-      margin-bottom: 8px;
-    }
-    .confort-suite p {
-      color: var(--mut);
-      font-size: 16px;
-      line-height: 1.55;
-      max-width: 32em;
-    }
-    .recit {
-      padding: 72px 0 16px;
-      counter-reset: chap;
-    }
-    .chapitre {
-      display: grid;
-      grid-template-columns: minmax(180px, 0.42fr) 1fr;
-      gap: 28px 72px;
-      padding: 48px 0;
-      border-top: 1px solid var(--bd);
-      counter-increment: chap;
-    }
-    .chapitre h2 {
-      font-family: "Newsreader", Georgia, serif;
-      font-weight: 500;
-      font-size: clamp(26px, 3.2vw, 36px);
-      letter-spacing: -0.03em;
-      line-height: 1.12;
-    }
-    .chapitre h2::before {
-      content: counter(chap, decimal-leading-zero);
-      display: block;
-      font-family: "Hanken Grotesk", system-ui, sans-serif;
-      font-size: 11px;
-      font-weight: 600;
-      font-style: normal;
-      letter-spacing: 0.16em;
-      color: var(--accent);
-      margin-bottom: 12px;
-    }
-    .chapitre p {
-      color: var(--mut);
-      font-size: 17px;
-      line-height: 1.65;
-      max-width: 38em;
-    }
-    .chapitre p + p { margin-top: 14px; }
-    .chapitre a {
-      color: var(--ink);
-      box-shadow: inset 0 -1px 0 var(--accent);
-      transition: color .2s, box-shadow .2s;
-    }
-    .chapitre a:hover {
-      color: var(--accent);
-      box-shadow: inset 0 -1.5px 0 var(--accent);
-    }
-    .partie { padding-top: 40px; }
-    .partie > .kicker { margin-bottom: 10px; }
-    #technique, #avantages, #limites, #os, #systeme, #video,
-    #accessibilite, #ecrire {
-      scroll-margin-top: 76px;
-    }
-    .bloc-titre {
-      font-family: "Newsreader", Georgia, serif;
-      font-weight: 500;
-      font-size: clamp(32px, 4vw, 44px);
-      letter-spacing: -0.035em;
-      line-height: 1.08;
-      padding: 0 0 12px;
-    }
-    .bloc-lede {
-      color: var(--mut);
-      font-size: 18px;
-      line-height: 1.55;
-      max-width: 40em;
-      margin-bottom: 36px;
-    }
-    .franc {
-      margin: 0 0 48px;
-      padding: 28px 0 32px 28px;
-      border-left: 3px solid var(--accent);
-    }
-    .franc-kicker {
-      font-size: 11px;
-      font-weight: 600;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 14px;
-    }
-    .franc-choc {
-      font-family: "Newsreader", Georgia, serif;
-      font-style: italic;
-      font-weight: 500;
-      font-size: clamp(34px, 5vw, 52px);
-      letter-spacing: -0.03em;
-      line-height: 1.02;
-      color: var(--ink);
-      margin-bottom: 18px;
-    }
-    .franc p {
-      color: var(--ink);
-      font-size: 18px;
-      line-height: 1.5;
-      max-width: 40em;
-    }
-    .franc p + p { margin-top: 10px; }
-    .stack {
-      display: grid;
-      gap: 0;
-      border-top: 1px solid var(--bd);
-    }
-    .stack div {
-      display: grid;
-      grid-template-columns: minmax(140px, 0.38fr) 1fr;
-      gap: 16px 48px;
-      padding: 20px 0;
-      border-bottom: 1px solid var(--bd);
-      transition: background .25s, padding-left .25s var(--spring);
-    }
-    .stack div:hover {
-      background: color-mix(in srgb, var(--accent) 5%, transparent);
-      padding-left: 8px;
-    }
-    .stack dt {
-      font-weight: 600;
-      font-size: 14px;
-    }
-    .stack dd {
-      color: var(--mut);
-      font-size: 16px;
-      line-height: 1.55;
-      max-width: 42em;
-    }
-    .stack a {
-      color: var(--ink);
-      box-shadow: inset 0 -1px 0 var(--accent);
-    }
-    .stack a:hover { color: var(--accent); }
-    .bilan {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 8px 72px;
-      padding: 8px 0 8px;
-      border-top: 1px solid var(--bd);
-    }
-    .bilan .sous {
-      font-size: 11px;
-      font-weight: 600;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      color: var(--accent);
-      padding-top: 28px;
-    }
-    .col-limites .sous { color: var(--mut); }
-    .bilan h3 {
-      font-family: "Newsreader", Georgia, serif;
-      font-weight: 500;
-      font-size: clamp(28px, 3vw, 34px);
-      letter-spacing: -0.03em;
-      margin: 6px 0 18px;
-    }
-    .bilan ul { list-style: none; }
-    .bilan li {
-      position: relative;
-      padding: 13px 0 13px 0;
-      border-bottom: 1px solid var(--bd);
-      color: var(--mut);
-      font-size: 15.5px;
-      line-height: 1.5;
-      transition: color .2s, transform .28s var(--spring), padding-left .28s var(--spring);
-    }
-    .bilan li:hover {
-      color: var(--ink);
-      transform: translateX(4px);
-    }
-    .col-avantages li { padding-left: 16px; }
-    .col-avantages li::before {
-      content: "";
-      position: absolute;
-      left: 0; top: 1.15em;
-      width: 7px; height: 1px;
-      background: var(--accent);
-    }
-    .col-limites li { padding-left: 16px; }
-    .col-limites li::before {
-      content: "";
-      position: absolute;
-      left: 0; top: 1.15em;
-      width: 7px; height: 1px;
-      background: var(--faint);
-    }
-    .limite-forte {
-      color: var(--ink);
-      font-size: 16.5px;
-      line-height: 1.48;
-      padding-top: 4px;
-      padding-bottom: 18px;
-    }
-    .limite-forte:hover { transform: none; }
-    .limite-forte::before {
-      background: var(--accent);
-      width: 12px;
-      top: 1.05em;
-    }
-    .limite-forte strong {
-      display: block;
-      font-family: "Newsreader", Georgia, serif;
-      font-style: italic;
-      font-weight: 500;
-      font-size: 26px;
-      letter-spacing: -0.03em;
-      margin-bottom: 8px;
-    }
-    .closer {
-      font-family: "Newsreader", Georgia, serif;
-      font-style: italic;
-      font-weight: 450;
-      font-size: clamp(22px, 3vw, 30px);
-      color: var(--ink);
-      letter-spacing: -0.025em;
-      max-width: 18em;
-      line-height: 1.28;
-      padding: 72px 0 8px;
-    }
-    .ecrire {
-      padding: 48px 0 64px;
-    }
-    .ecrire .kicker { margin-bottom: 14px; }
-    .ecrire-titre {
-      font-family: "Newsreader", Georgia, serif;
-      font-weight: 500;
-      font-size: clamp(28px, 3.6vw, 40px);
-      letter-spacing: -0.035em;
-      line-height: 1.08;
-      margin-bottom: 18px;
-    }
-    .ecrire-mail {
-      font-family: "Newsreader", Georgia, serif;
-      font-style: italic;
-      font-weight: 450;
-      font-size: clamp(22px, 3.2vw, 34px);
-      letter-spacing: -0.03em;
-      color: var(--ink);
-      box-shadow: inset 0 -2px 0 var(--accent);
-      transition: color .2s, box-shadow .2s;
-    }
-    .ecrire-mail:hover {
-      color: var(--accent);
-      box-shadow: inset 0 -2px 0 var(--accent);
-    }
-    footer {
-      border-top: 1px solid var(--bd);
-      padding: 36px 0 40px;
-      color: var(--faint);
-      font-size: 13px;
-    }
-    .pied-haut {
-      display: flex;
-      justify-content: space-between;
-      gap: 32px;
-      align-items: flex-start;
-      margin-bottom: 28px;
-    }
-    .pied-marque p {
-      margin-top: 10px;
-      max-width: 22em;
-      color: var(--mut);
-      font-size: 14px;
-      line-height: 1.45;
-    }
-    .pied-mail {
-      display: inline-block;
-      margin-top: 14px;
-      font-size: 15px;
-      font-weight: 500;
-    }
-    .pied-nav {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: flex-end;
-      gap: 8px 20px;
-      padding-top: 6px;
-    }
-    .pied-nav a { color: var(--mut); transition: color .2s; }
-    .pied-nav a:hover { color: var(--accent); }
-    .pied-bas {
-      display: flex;
-      justify-content: space-between;
-      gap: 16px;
-      padding-top: 18px;
-      border-top: 1px solid var(--bd);
-    }
-    footer a { color: var(--faint); transition: color .2s; }
-    footer a:hover { color: var(--accent); }
-    footer a.pied-mail,
-    .pied-bas a[href^="mailto"] {
-      color: var(--ink);
-    }
-    footer a.pied-mail:hover,
-    .pied-bas a[href^="mailto"]:hover {
-      color: var(--accent);
-    }
-    @keyframes monter {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: none; }
-    }
-    @keyframes cadre {
-      from { opacity: 0; transform: translateY(32px) scale(.978); }
-      to { opacity: 1; transform: none; }
-    }
-    @keyframes menuPop {
-      from { opacity: 0; transform: translateY(22px) scale(.94); }
-      to { opacity: 1; transform: none; }
-    }
-    @keyframes shine {
-      0%, 72% { transform: translateX(-130%); }
-      88%, 100% { transform: translateX(130%); }
-    }
-    @keyframes souffle {
-      0%, 100% { opacity: 1; }
-      50% { opacity: .4; }
-    }
-    @media (max-width: 840px) {
-      .wrap { width: calc(100% - 40px); }
-      header { flex-wrap: wrap; align-items: flex-start; }
-      .haut-droite { width: 100%; align-items: flex-start; }
-      .mail-haut { text-align: left; }
-      nav a { display: none; }
-      nav a.perm { display: inline; padding-left: 0; }
-      nav a.perm + a.perm { margin-left: 16px; }
-      nav a.perm::before, nav a.perm::after { display: none; }
-      h1 { max-width: 8em; }
-      .hero { padding-top: 48px; }
-      .stage { padding: 32px 0 40px; }
-      .cadre { padding: 6px; border-radius: 16px; }
-      .bureau { min-height: 480px; height: 520px; border-radius: 11px; }
-      .menu-shot { max-width: 58%; height: 68%; }
-      .barre .pin:nth-of-type(n+4) { display: none; }
-      .shot-assistant { width: 100%; margin-top: 24px; }
-      .legende-droite { text-align: left; }
-      .besoins, .confort-suite { grid-template-columns: 1fr; gap: 0; }
-      .confort-suite { padding-top: 12px; }
-      .confort-suite > div { padding: 20px 0; border-bottom: 1px solid var(--bd); }
-      .recit { padding: 56px 0 8px; }
-      .chapitre {
-        grid-template-columns: 1fr;
-        gap: 12px;
-        padding: 32px 0;
-      }
-      .stack div { grid-template-columns: 1fr; gap: 4px; }
-      .stack div:hover { padding-left: 0; }
-      .bilan { grid-template-columns: 1fr; gap: 8px; }
-      .franc { padding-left: 18px; }
-      .pied-haut, .pied-bas { flex-direction: column; }
-      .pied-nav { justify-content: flex-start; }
-    }
-    @media (prefers-reduced-motion: reduce) {
-      html { scroll-behavior: auto; }
-      *, *::before, *::after {
-        animation: none !important;
-        transition: none !important;
-      }
-    }
+@font-face { font-family: "Hanken Grotesk"; src: url("fonts/HankenGrotesk.ttf") format("truetype"); font-weight: 100 900; font-display: swap; }
+@font-face { font-family: "Newsreader"; src: url("fonts/Newsreader.ttf") format("truetype"); font-weight: 100 900; font-style: normal; font-display: swap; }
+@font-face { font-family: "Newsreader"; src: url("fonts/Newsreader-Italic.ttf") format("truetype"); font-weight: 100 900; font-style: italic; font-display: swap; }
+html { background: #e9e2d4; scroll-behavior: smooth; }
+body { margin: 0; background: #e9e2d4; -webkit-font-smoothing: antialiased; }
+* { box-sizing: border-box; }
+a { color: #1c1814; text-decoration: none; }
+a:hover { color: #c15a34; }
+input, select, textarea, button { font: inherit; }
+.menu-shot {
+  position: absolute; left: 14px; bottom: 76px; height: min(72%, 520px); width: auto; max-width: 42%;
+  display: block; background: transparent;
+  transition: opacity .3s cubic-bezier(.22,1,.36,1), transform .3s cubic-bezier(.22,1,.36,1);
+}
+#bureau.menu-ferme .menu-shot {
+  opacity: 0; transform: translateY(16px) scale(.96); pointer-events: none;
+}
+@keyframes monter { from { opacity: 0; transform: translateY(22px); } to { opacity: 1; transform: none; } }
+@keyframes cadre { from { opacity: 0; transform: translateY(34px) scale(.982); } to { opacity: 1; transform: none; } }
+@keyframes souffle { 0%, 100% { opacity: 1; } 50% { opacity: .45; } }
+@keyframes lueur { 0%, 72% { transform: translateX(-130%); } 88%, 100% { transform: translateX(130%); } }
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+}
+@media (max-width: 720px) {
+  .menu-shot { max-width: 58%; height: min(68%, 420px); }
+}
   </style>
 </head>
 <body>
-  <div class="top">
-    <div class="wrap">
-      <header>
-        <a class="brand" href="index.html">
-          <span class="tile" aria-hidden="true">R</span>
-          Rabaska OS
-        </a>
-        <div class="haut-droite">
-          <a class="mail-haut" href="mailto:spmorin.mrservices@gmail.com">spmorin.mrservices@gmail.com</a>
-          <nav>
-            <a href="#os">Le bureau</a>
-            <a class="perm" href="#accessibilite">Accessibilité</a>
-            <a href="#systeme">Le système</a>
-            <a href="#technique">Technique</a>
-            <a href="#avantages">Avantages</a>
-            <a href="#limites">Limites</a>
-            <a class="perm" href="#ecrire">Contact</a>
-            <a class="perm" href="droits.html">Droits</a>
-          </nav>
-        </div>
-      </header>
+
+<div style="font-family: 'Hanken Grotesk', system-ui, sans-serif; color: #1c1814; font-size: 18px; line-height: 1.5; background: #e9e2d4; overflow-x: hidden;">
+
+  <div style="position: sticky; top: 0; z-index: 40; background: rgba(233,226,212,.88); backdrop-filter: blur(20px); border-bottom: 1px solid rgba(28,23,16,.1);">
+    <div style="width: min(1240px, calc(100% - 48px)); margin-inline: auto; display: flex; align-items: center; gap: 18px; min-height: 68px; padding: 10px 0; flex-wrap: wrap;">
+      <a href="#haut" style="display: flex; align-items: center; gap: 11px; font-family: 'Newsreader', Georgia, serif; font-size: 21px; font-weight: 500; letter-spacing: -0.03em; flex: none;">
+        <span style="width: 32px; height: 32px; background: #c15a34; border-radius: 9px; color: #fff; font-family: 'Newsreader', Georgia, serif; font-style: italic; font-weight: 600; font-size: 18px; display: grid; place-items: center;">R</span>
+        Rabaska&nbsp;OS
+      </a>
+      <nav style="display: flex; align-items: center; gap: 8px 16px; margin-left: auto; font-size: 14px; font-weight: 500; flex-wrap: wrap;">
+        <a href="#visite" style="color: #6b6357;" data-hover="color:#c15a34">Visite guidée</a>
+        <a href="#logiciels" style="color: #6b6357;" data-hover="color:#c15a34">Logiciels</a>
+        <a href="#accessibilite" style="color: #6b6357;" data-hover="color:#c15a34">Accessibilité</a>
+        <a href="#comparaison" style="color: #6b6357;" data-hover="color:#c15a34">Comparaison</a>
+        <a href="#technique" style="color: #6b6357;" data-hover="color:#c15a34">Technique</a>
+        <a href="#questions" style="color: #6b6357;" data-hover="color:#c15a34">Questions</a>
+      </nav>
+      <div style="display: flex; align-items: center; gap: 14px; flex: none;">
+        <a href="#contact" style="background: #c15a34; color: #fff; font-size: 14px; font-weight: 600; padding: 10px 18px; border-radius: 999px; transition: background .2s;" data-hover="background:#ac4c2b; color:#fff">Nous écrire</a>
+      </div>
     </div>
   </div>
 
-  <div class="wrap">
-    <section class="hero">
-      <p class="eyebrow">Système d’exploitation <i></i> Livré installé</p>
-      <h1>L’ordinateur d’occasion,<br>enfin <em>familier.</em></h1>
-      <p class="lede">
-        Rabaska OS est un Linux habillé pour la revente de PC
-        d’occasion. Socle&nbsp;: Lubuntu (famille Ubuntu), bureau LXQt.
-        Par-dessus&nbsp;: un menu, un assistant, un thème et des mises
-        à jour en français. Il arrive installé. Ce n’est pas une
-        distribution à télécharger.
-      </p>
-      <p class="hero-lien"><a href="#os">Voir le bureau <span></span></a></p>
-    </section>
-  </div>
-
-  <section class="stage" id="os">
-    <div class="composition">
-      <p class="kicker"><b>01</b> Le bureau</p>
-      <div class="cadre">
-        <div class="bureau" id="bureau">
-          <div class="filigrane">Rabaska</div>
-          <img class="menu-shot" id="menu" src="captures/menu.png" width="420" height="560" alt="Menu Démarrer de Rabaska OS">
-          <div class="barre">
-            <button class="demarrer" id="demarrer" type="button" aria-expanded="true" aria-controls="menu" title="Démarrer">
-              <img src="barre/demarrer.svg" alt="">
-            </button>
-            <div class="sep"></div>
-            <img class="pin" src="barre/ia.svg" alt="Assistant">
-            <img class="pin" src="barre/internet.svg" alt="Internet">
-            <img class="pin" src="barre/fichiers.svg" alt="Fichiers">
-            <img class="pin" src="barre/photos.svg" alt="Photos">
-            <img class="pin" src="barre/courriel.svg" alt="Courriel">
-            <div class="pousse"></div>
-            <div class="tray">
-              <img class="statut" src="barre/theme.svg" alt="Clair ou sombre">
-              <span class="langue">FR</span>
-              <img class="statut wifi" src="barre/wifi.svg" alt="Wi-Fi">
-              <img class="statut" src="barre/volume.svg" alt="Son">
-              <img class="statut" src="barre/batterie.svg" alt="Batterie">
-              <div class="horloge"><b id="heure">14:15</b><span id="date">vendredi 21 août</span></div>
-            </div>
+  <section id="haut" style="width: min(1240px, calc(100% - 48px)); margin-inline: auto; padding: 76px 0 0;">
+    <div style="display: grid; grid-template-columns: 1fr; gap: 40px;">
+      <div>
+        <p style="display: flex; align-items: center; gap: 12px; margin: 0 0 26px; font-size: 11px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: #c15a34; animation: monter .8s cubic-bezier(.22,1,.36,1) both;">
+          Système d’exploitation <i style="display: block; width: 26px; height: 1px; background: #c15a34; opacity: .5;"></i> Installé avant la livraison
+        </p>
+        <h1 style="margin: 0; font-family: 'Newsreader', Georgia, serif; font-weight: 500; font-size: clamp(44px, 5.6vw, 78px); line-height: 0.95; letter-spacing: -0.04em; animation: monter .9s .08s cubic-bezier(.22,1,.36,1) both;">
+          Un ordinateur d’occasion.<br>Un système <em style="font-style: italic; font-weight: 450; color: #c15a34;">neuf.</em>
+        </h1>
+        <p style="margin: 26px 0 0; max-width: 30em; color: #6b6357; font-size: 20px; line-height: 1.5; animation: monter .9s .16s cubic-bezier(.22,1,.36,1) both;">
+          Rabaska OS remplace Windows sur des PC reconditionnés. Léger, en français, déjà installé. Vous allumez, vous répondez à quatre questions, vous êtes sur votre bureau.
+        </p>
+        <div style="display: flex; flex-wrap: wrap; gap: 12px; margin-top: 32px; animation: monter .9s .24s cubic-bezier(.22,1,.36,1) both;">
+          <a href="#visite" style="background: #c15a34; color: #fff; font-size: 16px; font-weight: 600; padding: 15px 26px; border-radius: 999px; transition: background .2s, transform .2s;" data-hover="background:#ac4c2b; color:#fff; transform:translateY(-2px)">Visite guidée du bureau</a>
+          <a href="#contact" style="border: 1px solid rgba(28,23,16,.2); color: #1c1814; font-size: 16px; font-weight: 600; padding: 15px 26px; border-radius: 999px; transition: border-color .2s, transform .2s;" data-hover="border-color:#c15a34; color:#c15a34; transform:translateY(-2px)">Poser une question</a>
+        </div>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 1px; margin-top: 44px; background: rgba(28,23,16,.1); border: 1px solid rgba(28,23,16,.1); border-radius: 16px; overflow: hidden; animation: monter .9s .32s cubic-bezier(.22,1,.36,1) both;">
+          <div style="background: #fdfbf6; padding: 18px 20px;">
+            <b style="display: block; font-family: 'Newsreader', Georgia, serif; font-size: 26px; font-weight: 500; letter-spacing: -0.02em;">Livré installé</b>
+            <span style="font-size: 14px; color: #6b6357;">Rien à télécharger, rien à graver.</span>
+          </div>
+          <div style="background: #fdfbf6; padding: 18px 20px;">
+            <b style="display: block; font-family: 'Newsreader', Georgia, serif; font-size: 26px; font-weight: 500; letter-spacing: -0.02em;">3 mois</b>
+            <span style="font-size: 14px; color: #6b6357;">de garantie sur les machines Rabaska.</span>
+          </div>
+          <div style="background: #fdfbf6; padding: 18px 20px;">
+            <b style="display: block; font-family: 'Newsreader', Georgia, serif; font-size: 26px; font-weight: 500; letter-spacing: -0.02em;">Dès 2 Go</b>
+            <span style="font-size: 14px; color: #6b6357;">de mémoire. Conçu pour le vieux matériel.</span>
+          </div>
+          <div style="background: #fdfbf6; padding: 18px 20px;">
+            <b style="display: block; font-family: 'Newsreader', Georgia, serif; font-size: 26px; font-weight: 500; letter-spacing: -0.02em;">Français</b>
+            <span style="font-size: 14px; color: #6b6357;">Menu, réglages, mises à jour, messages.</span>
           </div>
         </div>
       </div>
-      <p class="legende">Cliquez le bouton R — le menu s’ouvre et se ferme.</p>
+
     </div>
   </section>
 
-  <div class="wrap">
-    <section class="confort partie" id="accessibilite">
-      <p class="kicker"><b>02</b> Accessibilité</p>
-      <h2 class="bloc-titre">Quatre questions. Ensuite, le bureau.</h2>
-      <p class="bloc-lede">
-        L’assistant parle de besoins vécus, pas d’étiquettes.
-        Pas de «&nbsp;mode autisme&nbsp;», pas d’étiquette daltonien.
-        On répond au premier allumage. On peut tout changer ensuite.
-      </p>
-      <img class="shot-assistant" src="captures/assistant.png" width="1024" height="720" alt="Premier allumage de Rabaska OS : quatre questions, ici le style clair ou sombre">
-      <p class="legende legende-droite">Le premier allumage — style, taille, couleurs, rythme.</p>
-      <div class="besoins">
-        <div class="besoin">
-          <b>01</b>
-          <h3>Style</h3>
-          <p>Clair ou sombre.</p>
+  <section style="margin-top: 72px; padding: 52px 0 60px; background: radial-gradient(ellipse 70% 50% at 50% -8%, #efe7d8 0%, #d8cfc0 58%);">
+    <div style="width: min(1120px, calc(100% - 48px)); margin-inline: auto; animation: cadre 1s .2s cubic-bezier(.22,1,.36,1) both;">
+        <div style="padding: 9px; background: linear-gradient(180deg, #d4cbbd 0%, #c9bfb0 100%); border-radius: 22px; box-shadow: inset 0 1px 0 rgba(255,255,255,.35), 0 36px 72px rgba(28,23,16,.16);">
+          <div id="bureau" style="position: relative; background: radial-gradient(ellipse 75% 45% at 50% 0%, #f3ece1 0%, #e9e2d4 68%); border-radius: 14px; overflow: hidden; height: min(620px, 58vw); min-height: 430px;">
+            <div style="position: absolute; right: 24px; bottom: 76px; font-family: 'Newsreader', Georgia, serif; font-style: italic; font-size: clamp(44px, 6vw, 78px); color: #221d17; opacity: .07;">Rabaska</div>
+            <img src="captures/menu.png" alt="Menu Démarrer de Rabaska OS" id="menu" class="menu-shot" width="420" height="560">
+            <div style="position: absolute; left: 0; right: 0; bottom: 0; height: 60px; background: #fbf8f2; border-top: 1px solid rgba(28,23,16,.12); display: flex; align-items: center; padding: 0 10px; gap: 6px;">
+              <button type="button" id="demarrer" title="Démarrer" aria-expanded="true" aria-controls="menu" style="position: relative; overflow: hidden; width: 40px; height: 40px; border-radius: 10px; border: none; background: none; padding: 0; cursor: pointer; flex: none; transition: transform .22s cubic-bezier(.22,1,.36,1);" data-hover="transform:translateY(-3px) scale(1.06)">
+                <img src="barre/demarrer.svg" alt="" style="width: 40px; height: 40px; display: block;">
+                <span style="position: absolute; inset: 0; background: linear-gradient(105deg, transparent 38%, rgba(255,255,255,.4) 50%, transparent 62%); animation: lueur 5s 1.4s ease-in-out infinite;"></span>
+              </button>
+              <div style="width: 1px; height: 26px; background: rgba(28,23,16,.1); margin: 0 4px; flex: none;"></div>
+              <img src="barre/ia.svg" alt="Assistant" style="width: 40px; height: 40px; display: block; flex: none;">
+              <img src="barre/internet.svg" alt="Internet" style="width: 40px; height: 40px; display: block; flex: none;">
+              <img src="barre/fichiers.svg" alt="Fichiers" style="width: 40px; height: 40px; display: block; flex: none;">
+              <img src="barre/photos.svg" alt="Photos" style="width: 40px; height: 40px; display: block; flex: none;">
+              <img src="barre/courriel.svg" alt="Courriel" style="width: 40px; height: 40px; display: block; flex: none;">
+              <div style="flex: 1;"></div>
+              <div style="display: flex; align-items: center; gap: 11px; padding-right: 2px;">
+                <img src="barre/theme.svg" alt="Clair ou sombre" style="width: 22px; height: 22px; display: block;">
+                <span style="font-size: 11px; font-weight: 700; letter-spacing: .04em; color: #736a5b;">FR</span>
+                <img src="barre/wifi.svg" alt="Wi-Fi" style="width: 22px; height: 22px; display: block; animation: souffle 2.8s ease-in-out infinite;">
+                <img src="barre/volume.svg" alt="Son" style="width: 22px; height: 22px; display: block;">
+                <img src="barre/batterie.svg" alt="Batterie" style="width: 22px; height: 22px; display: block;">
+                <div style="text-align: right; line-height: 1.15; color: #221d17; font-variant-numeric: tabular-nums;"><b style="display: block; font-size: 14px; font-weight: 600;" id="heure">14:15</b><span style="font-size: 11px; color: #736a5b;" id="date">vendredi 21 août</span></div>
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="besoin">
-          <b>02</b>
-          <h3>Taille du texte</h3>
-          <p>Normal, grand, très grand.</p>
-        </div>
-        <div class="besoin">
-          <b>03</b>
-          <h3>Couleurs</h3>
-          <p>Rabaska, plus distinctes, plus contrastées. Certaines personnes les confondent.</p>
-        </div>
-        <div class="besoin">
-          <b>04</b>
-          <h3>Rythme</h3>
-          <p>Comme d’habitude, plus calme, plus simple. Certaines personnes se fatiguent vite.</p>
-        </div>
+        <p style="margin: 14px 2px 0; font-size: 13px; color: #6b6357;">Capture réelle du bureau. Cliquez le bouton&nbsp;R&nbsp;: le menu s’ouvre et se ferme, comme sur la machine.</p>
+    </div>
+  </section>
+
+  <section style="width: min(1240px, calc(100% - 48px)); margin: 88px auto 0;">
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(270px, 1fr)); gap: 20px;">
+      <div style="background: #fdfbf6; border: 1px solid rgba(28,23,16,.1); border-radius: 18px; padding: 28px; transition: transform .3s cubic-bezier(.22,1,.36,1), border-color .3s;" data-hover="transform:translateY(-4px); border-color:rgba(193,90,52,.4)">
+        <span style="display: grid; place-items: center; width: 40px; height: 40px; border-radius: 11px; background: rgba(193,90,52,.12); color: #c15a34; font-family: 'Newsreader', Georgia, serif; font-size: 20px; font-style: italic; margin-bottom: 18px;">1</span>
+        <h3 style="margin: 0 0 8px; font-family: 'Newsreader', Georgia, serif; font-weight: 500; font-size: 25px; letter-spacing: -0.03em;">C’est le système au complet</h3>
+        <p style="margin: 0; color: #6b6357; font-size: 16px; line-height: 1.55;">Pas une application ajoutée à Windows. Rabaska OS remplace Windows&nbsp;: le bureau, le menu, les réglages, les mises à jour, tout.</p>
       </div>
-      <div class="confort-suite">
-        <div>
-          <h3>Réversible</h3>
-          <p>
-            Les mêmes questions se retrouvent dans Affichage et confort.
-            Chaque écran le dit&nbsp;: vous pourrez changer à tout moment.
-          </p>
-        </div>
-        <div>
-          <h3>À la demande</h3>
-          <p>
-            Lire l’écran à voix haute (Orca) et le clavier à l’écran
-            restent à la demande — pas au premier jour.
-          </p>
-        </div>
+      <div style="background: #fdfbf6; border: 1px solid rgba(28,23,16,.1); border-radius: 18px; padding: 28px; transition: transform .3s cubic-bezier(.22,1,.36,1), border-color .3s;" data-hover="transform:translateY(-4px); border-color:rgba(193,90,52,.4)">
+        <span style="display: grid; place-items: center; width: 40px; height: 40px; border-radius: 11px; background: rgba(193,90,52,.12); color: #c15a34; font-family: 'Newsreader', Georgia, serif; font-size: 20px; font-style: italic; margin-bottom: 18px;">2</span>
+        <h3 style="margin: 0 0 8px; font-family: 'Newsreader', Georgia, serif; font-weight: 500; font-size: 25px; letter-spacing: -0.03em;">Bâti sur Linux</h3>
+        <p style="margin: 0; color: #6b6357; font-size: 16px; line-height: 1.55;">Socle Lubuntu 26.04, famille Ubuntu, bureau LXQt. Un noyau connu, des correctifs de sécurité qui continuent d’arriver.</p>
       </div>
-    </section>
+      <div style="background: #fdfbf6; border: 1px solid rgba(28,23,16,.1); border-radius: 18px; padding: 28px; transition: transform .3s cubic-bezier(.22,1,.36,1), border-color .3s;" data-hover="transform:translateY(-4px); border-color:rgba(193,90,52,.4)">
+        <span style="display: grid; place-items: center; width: 40px; height: 40px; border-radius: 11px; background: rgba(193,90,52,.12); color: #c15a34; font-family: 'Newsreader', Georgia, serif; font-size: 20px; font-style: italic; margin-bottom: 18px;">3</span>
+        <h3 style="margin: 0 0 8px; font-family: 'Newsreader', Georgia, serif; font-weight: 500; font-size: 25px; letter-spacing: -0.03em;">Il arrive avec la machine</h3>
+        <p style="margin: 0; color: #6b6357; font-size: 16px; line-height: 1.55;">Aucune image à télécharger, aucune clé USB à graver, aucune commande à taper. Vous recevez un ordinateur qui fonctionne.</p>
+      </div>
+    </div>
+  </section>
 
-    <section class="recit" id="systeme">
-      <p class="kicker"><b>03</b> Le système</p>
-      <article class="chapitre">
-        <h2>Un ordinateur, pas un chantier</h2>
-        <div>
-          <p>
-            La plupart des systèmes d’exploitation d’aujourd’hui parlent
-            à des gens qui aiment les régler. Rabaska OS parle à ceux
-            qui veulent s’en servir. Le bureau est dégagé. Les mots sont
-            en français. Les boutons font ce qu’ils disent.
-          </p>
-          <p>
-            Ce n’est pas un assemblage à télécharger, ni une image à
-            graver. C’est le système livré avec la machine. Au premier
-            allumage, quatre questions. Ensuite, le bureau.
-          </p>
-        </div>
-      </article>
-      <article class="chapitre">
-        <h2>Le bouton&nbsp;R</h2>
-        <div>
-          <p>
-            En bas à gauche, un carré terracotta et la lettre&nbsp;R.
-            Un clic ouvre le menu. En haut, un bonjour avec le prénom.
-            Juste en dessous, une recherche&nbsp;: on tape le début d’un
-            nom, l’application apparaît.
-          </p>
-          <p>
-            Sans chercher, les programmes sont rangés en quatre
-            familles&nbsp;: Applications, Configuration, Outils système,
-            Fichiers. Dans Applications, encore Internet, courriel,
-            photos, musique et vidéos, documents, jeux, utilitaires.
-            En bas à droite du menu&nbsp;: Éteindre.
-          </p>
-        </div>
-      </article>
-      <article class="chapitre">
-        <h2>La barre du quotidien</h2>
-        <div>
-          <p>
-            À côté du&nbsp;R, les raccourcis dont on a besoin tous les
-            jours&nbsp;: l’assistant, Internet, les fichiers, les photos,
-            le courriel. À droite, le style clair ou sombre, la langue,
-            le Wi-Fi, le son, la batterie, l’heure.
-          </p>
-          <p>
-            Rien d’autre n’encombre la barre. Ce qui sert est là. Le
-            reste se trouve dans le menu.
-          </p>
-        </div>
-      </article>
-      <article class="chapitre">
-        <h2>Le premier allumage</h2>
-        <div>
-          <p>
-            Quatre questions, puis le bureau. Le détail est plus haut,
-            dans <a href="#accessibilite">Accessibilité</a>&nbsp;:
-            style, taille, couleurs, rythme. On revoit tout dans
-            Affichage et confort. La langue est déjà celle de
-            l’installation. Quand c’est fini&nbsp;: «&nbsp;Tout est
-            prêt.&nbsp;» Un bouton ouvre le bureau.
-          </p>
-        </div>
-      </article>
-      <article class="chapitre">
-        <h2>Écrit en français</h2>
-        <div>
-          <p>
-            Le menu, l’assistant, les mises à jour, les messages du
-            système&nbsp;: le français n’est pas une traduction collée
-            après coup. Les phrases sont courtes. Il n’y a pas de jargon,
-            pas de mots anglais pour faire savant.
-          </p>
-          <p>
-            Un acheteur qui n’a jamais entendu parler de paquets, de
-            dépôts ou de ligne de commande n’a rien à apprendre pour
-            se servir de sa machine.
-          </p>
-        </div>
-      </article>
-      <article class="chapitre">
-        <h2>Pensé pour le matériel qu’on a déjà</h2>
-        <div>
-          <p>
-            Rabaska OS est conçu pour des ordinateurs d’occasion&nbsp;:
-            un processeur modeste, peu de mémoire, un disque qui a déjà
-            servi. Pas d’ombres, pas de flous, pas d’effets qui font
-            travailler la machine pour le décor.
-          </p>
-          <p>
-            Le bureau reste lisible. Les fenêtres restent plates. La
-            machine chauffe moins, et elle dure.
-          </p>
-        </div>
-      </article>
-      <article class="chapitre">
-        <h2>Un bouton pour tout mettre à jour</h2>
-        <div>
-          <p>
-            Quand quelque chose est prêt, une notification le dit
-            simplement. La fenêtre des mises à jour range ce qui arrive
-            en trois groupes&nbsp;: la sécurité (à installer sans
-            attendre), Rabaska OS lui-même, puis les programmes.
-          </p>
-          <p>
-            Un seul bouton suffit&nbsp;: l’ordinateur s’occupe du reste.
-            On peut aussi choisir Plus tard. Les mises à jour de la
-            couche Rabaska passent par le canal du vendeur. Sans ce
-            canal, cette couche ne bouge plus. Le socle Linux, lui,
-            continue de recevoir les correctifs de la famille Ubuntu.
-          </p>
-        </div>
-      </article>
-      <article class="chapitre">
-        <h2>Ce qui est déjà là</h2>
-        <div>
-          <p>
-            Navigateur Chromium (celui de la barre), Firefox aussi,
-            Thunderbird pour le courriel, LibreOffice (texte, tableur,
-            présentation), VLC, un lecteur PDF, l’explorateur de fichiers,
-            un visionneur de photos. Wine est là&nbsp;: un double-clic sur
-            un <code>.exe</code> tente de l’ouvrir. Ce n’est pas Windows.
-            Beaucoup de programmes Windows ne marcheront pas, surtout les
-            jeux et les gros logiciels.
-          </p>
-          <p>
-            L’assistant de la barre ouvre Gemini, le service de Google,
-            dans une fenêtre. Il faut un compte Google. Rien ne tourne
-            «&nbsp;en local&nbsp;» sur la machine. Microsoft Edge n’est
-            pas préinstallé (sa licence l’interdit)&nbsp;: un raccourci
-            permet à l’acheteur de l’installer lui-même s’il le veut.
-          </p>
-        </div>
-      </article>
-      <article class="chapitre">
-        <h2>Pas de téléchargement</h2>
-        <div>
-          <p>
-            Rabaska OS n’est pas en libre service. Il n’y a pas d’image
-            à télécharger, pas d’installation à bricoler. Le système
-            arrive sur l’ordinateur. Copier ou redistribuer n’est pas
-            autorisé.
-          </p>
-          <p>
-            Linux et les programmes du socle restent sous leurs licences
-            d’origine. La part propre à Rabaska OS — l’habillage, le
-            menu, l’assistant, les mises à jour — est protégée.
-            Les détails sont sur la page <a href="droits.html">Droits</a>.
-          </p>
-        </div>
-      </article>
-    </section>
+  <section id="visite" style="width: min(1240px, calc(100% - 48px)); margin: 104px auto 0; scroll-margin-top: 88px;">
+    <p style="margin: 0 0 14px; font-size: 11px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: #c15a34;">Visite guidée</p>
+    <h2 style="margin: 0; font-family: 'Newsreader', Georgia, serif; font-weight: 500; font-size: clamp(32px, 4vw, 50px); letter-spacing: -0.038em; line-height: 1.06; max-width: 20em;">Du premier allumage au premier clic</h2>
+    <p style="margin: 18px 0 40px; color: #6b6357; font-size: 19px; line-height: 1.55; max-width: 34em;">Quatre écrans, dans l’ordre où vous les verrez. Ce sont des captures de la machine, pas des dessins.</p>
 
-    <section class="partie" id="technique">
-      <p class="kicker"><b>04</b> Technique</p>
-      <h2 class="bloc-titre">Ce qu’il y a dessous</h2>
-      <p class="bloc-lede">
-        Rabaska OS n’est pas un noyau inventé de zéro. C’est une
-        couche, volontairement fermée, posée sur un Linux connu. Voici
-        l’empilement réel, tel qu’il est construit.
-      </p>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; align-items: start;">
+      <div style="display: flex; flex-direction: column; gap: 6px; position: sticky; top: 92px;">
+        <button type="button" class="visite-onglet" data-etape="1" aria-pressed="true" style="display:flex; gap:16px; width:100%; text-align:left; border:none; cursor:pointer; padding:18px 20px; border-radius:14px; transition:background .25s, color .25s; background:#fdfbf6; box-shadow:inset 0 0 0 1px rgba(193,90,52,.45);">
+          <span style="font-size: 12px; font-weight: 700; letter-spacing: .14em; color: #c15a34; padding-top: 4px;">01</span>
+          <span>
+            <b style="display: block; font-family: 'Newsreader', Georgia, serif; font-weight: 500; font-size: 22px; letter-spacing: -0.03em; color: #1c1814;">Le premier allumage</b>
+            <span style="font-size: 15px; color: #6b6357;">Quatre questions, puis c’est fini.</span>
+          </span>
+        </button>
+        <button type="button" class="visite-onglet" data-etape="2" aria-pressed="false" style="display:flex; gap:16px; width:100%; text-align:left; border:none; cursor:pointer; padding:18px 20px; border-radius:14px; transition:background .25s, color .25s; background:transparent;">
+          <span style="font-size: 12px; font-weight: 700; letter-spacing: .14em; color: #c15a34; padding-top: 4px;">02</span>
+          <span>
+            <b style="display: block; font-family: 'Newsreader', Georgia, serif; font-weight: 500; font-size: 22px; letter-spacing: -0.03em; color: #1c1814;">Le menu</b>
+            <span style="font-size: 15px; color: #6b6357;">Un bouton, une recherche, quatre familles.</span>
+          </span>
+        </button>
+        <button type="button" class="visite-onglet" data-etape="3" aria-pressed="false" style="display:flex; gap:16px; width:100%; text-align:left; border:none; cursor:pointer; padding:18px 20px; border-radius:14px; transition:background .25s, color .25s; background:transparent;">
+          <span style="font-size: 12px; font-weight: 700; letter-spacing: .14em; color: #c15a34; padding-top: 4px;">03</span>
+          <span>
+            <b style="display: block; font-family: 'Newsreader', Georgia, serif; font-weight: 500; font-size: 22px; letter-spacing: -0.03em; color: #1c1814;">Le bureau</b>
+            <span style="font-size: 15px; color: #6b6357;">Un fond, une barre, rien qui encombre.</span>
+          </span>
+        </button>
+        <button type="button" class="visite-onglet" data-etape="4" aria-pressed="false" style="display:flex; gap:16px; width:100%; text-align:left; border:none; cursor:pointer; padding:18px 20px; border-radius:14px; transition:background .25s, color .25s; background:transparent;">
+          <span style="font-size: 12px; font-weight: 700; letter-spacing: .14em; color: #c15a34; padding-top: 4px;">04</span>
+          <span>
+            <b style="display: block; font-family: 'Newsreader', Georgia, serif; font-weight: 500; font-size: 22px; letter-spacing: -0.03em; color: #1c1814;">Les mises à jour</b>
+            <span style="font-size: 15px; color: #6b6357;">Une fenêtre, un bouton.</span>
+          </span>
+        </button>
+      </div>
 
-      <aside class="franc" id="video">
-        <p class="franc-kicker">Vidéo</p>
-        <p class="franc-choc">Ce n’est pas 4K.</p>
-        <p>
-          YouTube dans Chromium&nbsp;: décodage matériel (VA-API), quand
-          le GPU le permet.
-        </p>
-        <p>
-          Sur ce parc d’occasion — écran, GPU, machine — la qualité
-          typique est environ 720p.
-        </p>
-      </aside>
-
-      <dl class="stack">
-        <div>
-          <dt>Socle</dt>
-          <dd>
-            Image Lubuntu 26.04 (famille Ubuntu, 64&nbsp;bits). Bureau
-            LXQt. Noyau Linux. Installeur Calamares. Écran de connexion
-            SDDM. Écran de démarrage Plymouth. Secure Boot conservé
-            (chargeur d’amorçage signé, non retouché).
-          </dd>
-        </div>
-        <div>
-          <dt>Session</dt>
-          <dd>
-            Défaut&nbsp;: LXQt sous Wayland, compositeur labwc (coins
-            du haut des fenêtres, 12&nbsp;px). Pas d’ombres portées&nbsp;:
-            le flou coûte trop cher sur un petit processeur. Repli au
-            login&nbsp;: LXQt sous X11, fenêtres Openbox. Sans compositeur
-            X11, le menu Rabaska a des coins carrés. C’est assumé.
-          </dd>
-        </div>
-        <div>
-          <dt>Couche Rabaska</dt>
-          <dd>
-            Thème crème et terracotta, polices Hanken Grotesk et
-            Newsreader. Menu Démarrer (recherche, quatre familles,
-            Éteindre). Assistant de premier jour (style, taille,
-            couleurs, rythme — besoins vécus, réversibles dans
-            Affichage et confort). Lecture à voix haute et clavier à
-            l’écran hors de cet assistant. Fenêtre de mises à jour en
-            français. Barre LXQt épinglée. L’habillage n’est pas un
-            Ubuntu «&nbsp;nu&nbsp;» à personnaliser comme un
-            administrateur.
-          </dd>
-        </div>
-        <div>
-          <dt>Mises à jour</dt>
-          <dd>
-            Une fenêtre, un bouton. Trois groupes visibles&nbsp;:
-            Sécurité, Rabaska OS, Applications et système. Le
-            notificateur d’origine Lubuntu n’a pas encore été retiré&nbsp;:
-            on peut donc voir plus d’une invitation. Les correctifs de
-            nuit du socle restent actifs. La couche Rabaska dépend du
-            canal du vendeur.
-          </dd>
-        </div>
-        <div>
-          <dt>Matériel</dt>
-          <dd>
-            PC x86-64 reconditionnés. Cible de conception&nbsp;: peu de
-            mémoire, disque déjà usé, processeur lent (classe AMD&nbsp;C-50
-            1&nbsp;GHz, 2&nbsp;Go). Au démarrage, un service adapte
-            l’ordonnanceur disque, le swap compressé en mémoire (ZRAM)
-            et quelques réglages. Pas ARM, pas Apple.
-          </dd>
-        </div>
-        <div>
-          <dt>Tablette</dt>
-          <dd>
-            Sur un convertible 360° qui signale le mode tablette au
-            noyau, un clavier à l’écran (squeekboard) s’ouvre. Sur un
-            portable ordinaire — l’immense majorité du parc — rien de
-            plus ne tourne. Pas de clavier virtuel «&nbsp;au cas où&nbsp;».
-          </dd>
-        </div>
-        <div>
-          <dt>Réseau et boutique</dt>
-          <dd>
-            Les paquets snap Ubuntu sont retirés. Firefox et Chromium
-            viennent de dépôts .deb, pas de la boutique snap. Une
-            logithèque Linux (Discover) peut encore être là&nbsp;: ce
-            n’est pas un magasin d’applications de téléphone, et ce
-            n’est pas le cœur du produit.
-          </dd>
-        </div>
-        <div>
-          <dt>Vidéo</dt>
-          <dd>
-            YouTube dans Chromium&nbsp;: décodage matériel (VA-API), quand
-            le GPU le permet. Sur ce parc d’occasion (écran, GPU,
-            machine), la qualité typique est environ 720p. Ce n’est
-            pas 4K.
-          </dd>
-        </div>
-        <div>
-          <dt>Licences</dt>
-          <dd>
-            Linux et les programmes du socle restent sous leurs licences
-            d’origine (souvent GPL). Les polices du thème sont OFL.
-            Gemini (assistant de la barre) appartient à Google. La
-            couche Rabaska (habillage, menu, assistant, mises à jour)
-            est propriétaire. Détail sur la page
-            <a href="droits.html">Droits</a>.
-          </dd>
-        </div>
-      </dl>
-    </section>
-
-    <section class="partie">
-      <p class="kicker"><b>05</b> Pour et contre</p>
-      <h2 class="bloc-titre">Ce que le produit fait, et refuse</h2>
-      <p class="bloc-lede">
-        Pas de promesse de «&nbsp;meilleur que Windows&nbsp;». Voici
-        l’avantage réel, et la limite réelle.
-      </p>
-      <div class="bilan">
-        <div class="col-avantages" id="avantages">
-          <p class="sous">Pour</p>
-          <h3>Avantages</h3>
-          <ul>
-            <li>Déjà installé. On allume, quatre questions, le bureau.</li>
-            <li>Français d’abord&nbsp;: menu, assistant, mises à jour, messages.</li>
-            <li>Léger&nbsp;: pas d’ombres, pas de flou, pensé pour le matériel qu’on a.</li>
-            <li>Menu unique, recherche, catégories. Éteindre est évident.</li>
-            <li>Un bouton pour les mises à jour, groupes en français.</li>
-            <li>Programmes du quotidien déjà là (web, courriel, bureau, vidéo, PDF).</li>
-            <li>Clair ou sombre, trois tailles, couleurs et rythme — à revoir dans Affichage et confort.</li>
-            <li>Lire l’écran à voix haute et clavier à l’écran&nbsp;: à la demande, jamais imposés au premier jour.</li>
-            <li>Socle Linux/Ubuntu&nbsp;: correctifs de sécurité du socle, noyau connu.</li>
-            <li>Sur convertible, clavier à l’écran aussi quand l’écran est replié.</li>
+      <div>
+        <div class="visite-panneau" data-etape="1" style="display: block;">
+          <div style="background: linear-gradient(180deg, #ded6c7 0%, #d8cfc0 100%); border: 1px solid rgba(28,23,16,.1); border-radius: 20px; padding: 22px; display: grid; place-items: center; min-height: 380px;">
+            <img src="captures/assistant.png" alt="Premier allumage : choisissez votre style, clair ou sombre" style="display: block; width: 100%; max-height: 460px; object-fit: contain; border-radius: 10px;">
+          </div>
+          <h3 style="margin: 26px 0 10px; font-family: 'Newsreader', Georgia, serif; font-weight: 500; font-size: 28px; letter-spacing: -0.03em;">« Choisissez votre style »</h3>
+          <p style="margin: 0 0 18px; color: #6b6357; font-size: 17px; line-height: 1.6; max-width: 40em;">Au tout premier démarrage, l’ordinateur pose quatre questions&nbsp;: le style (clair ou sombre), la taille du texte, les couleurs, le rythme. Chaque écran rappelle qu’on pourra changer plus tard. À la fin&nbsp;: «&nbsp;Tout est prêt&nbsp;», puis un bouton «&nbsp;Ouvrir mon bureau&nbsp;».</p>
+          <ul style="list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; font-size: 16px; color: #1c1814;">
+            <li style="display: flex; gap: 10px;"><span style="color: #c15a34;">—</span> Pas de compte à créer, pas de mot de passe à inventer.</li>
+            <li style="display: flex; gap: 10px;"><span style="color: #c15a34;">—</span> Pas d’étiquette médicale&nbsp;: on parle de confort, pas de diagnostic.</li>
+            <li style="display: flex; gap: 10px;"><span style="color: #c15a34;">—</span> Les mêmes réglages se retrouvent ensuite dans «&nbsp;Affichage et confort&nbsp;».</li>
           </ul>
         </div>
-        <div class="col-limites" id="limites">
-          <p class="sous">Contre</p>
-          <h3>Limites</h3>
-          <ul>
-            <li class="limite-forte">
-              <strong>Ce n’est pas 4K.</strong>
-              Parc d’occasion&nbsp;: écran, GPU, machine. Qualité vidéo
-              typique&nbsp;: environ 720p.
-            </li>
-            <li>Pas une distribution à télécharger. Pas d’ISO publique. Pas d’install «&nbsp;sur le PC du tiroir&nbsp;» par l’internaute.</li>
-            <li>La couche Rabaska est propriétaire. On n’a pas le droit de la copier ni de la redistribuer. Le socle Linux, si, sous ses licences.</li>
-            <li>Pas un OS de station 4K, de jeu AAA, ni un GNOME chargé. Le parc visé est d’occasion et souvent lent.</li>
-            <li>Moins de boutique que Windows ou macOS. Moins de logiciels propriétaires préinstallés. Edge n’est pas livré.</li>
-            <li>Ce n’est pas Windows. Wine ouvre certains .exe. Beaucoup échouent.</li>
-            <li>L’assistant IA est Gemini (Google), dans le navigateur. Compte Google requis. Réseau requis. Pas d’IA hors-ligne.</li>
-            <li>Sous X11 sans compositeur, coins du menu carrés. labwc n’arrondit que le haut des fenêtres, pas le bas.</li>
-            <li>L’habillage est fermé. Ce n’est pas un Ubuntu nu à peaufiner comme un admin.</li>
-            <li>Les mises à jour de la couche Rabaska dépendent du canal du vendeur. Sans ce canal, cette couche s’arrête.</li>
-            <li>Le notificateur Lubuntu d’origine est encore là en parallèle. Deux invitations possibles, le temps que ce repli parte.</li>
-            <li>PC 64&nbsp;bits Intel/AMD seulement. Pas de téléphone, pas de tablette ARM, pas de Mac Apple Silicon.</li>
+
+        <div class="visite-panneau" data-etape="2" style="display: none;">
+          <div style="background: linear-gradient(180deg, #ded6c7 0%, #d8cfc0 100%); border: 1px solid rgba(28,23,16,.1); border-radius: 20px; padding: 22px; display: grid; place-items: center; min-height: 380px;">
+            <img src="captures/menu.png" alt="Menu Démarrer : bonjour, recherche, quatre familles" style="display: block; max-height: 460px; width: auto; max-width: 100%; object-fit: contain; border-radius: 10px;">
+          </div>
+          <h3 style="margin: 26px 0 10px; font-family: 'Newsreader', Georgia, serif; font-weight: 500; font-size: 28px; letter-spacing: -0.03em;">Le bouton R, en bas à gauche</h3>
+          <p style="margin: 0 0 18px; color: #6b6357; font-size: 17px; line-height: 1.6; max-width: 40em;">Un clic ouvre le menu. En haut, un bonjour avec le prénom. Dessous, une recherche&nbsp;: on tape le début d’un nom, le programme apparaît. Sans chercher, tout est rangé en quatre familles&nbsp;: Applications, Configuration, Outils système, Fichiers. En bas à droite&nbsp;: Éteindre.</p>
+          <ul style="list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; font-size: 16px; color: #1c1814;">
+            <li style="display: flex; gap: 10px;"><span style="color: #c15a34;">—</span> Lignes hautes de 44&nbsp;px au minimum&nbsp;: on clique sans viser.</li>
+            <li style="display: flex; gap: 10px;"><span style="color: #c15a34;">—</span> Dans Applications&nbsp;: Internet, courriel, photos, musique et vidéos, documents, jeux, utilitaires.</li>
+            <li style="display: flex; gap: 10px;"><span style="color: #c15a34;">—</span> La tuyauterie technique est cachée&nbsp;: pas de winecfg, pas de regedit dans le menu.</li>
+          </ul>
+        </div>
+
+        <div class="visite-panneau" data-etape="3" style="display: none;">
+          <div style="background: linear-gradient(180deg, #ded6c7 0%, #d8cfc0 100%); border: 1px solid rgba(28,23,16,.1); border-radius: 20px; padding: 22px; display: grid; place-items: center; min-height: 380px;">
+            <img src="captures/bureau.png" alt="Le bureau de Rabaska OS avec le menu ouvert" style="display: block; width: 100%; max-height: 460px; object-fit: contain; border-radius: 10px;">
+          </div>
+          <h3 style="margin: 26px 0 10px; font-family: 'Newsreader', Georgia, serif; font-weight: 500; font-size: 28px; letter-spacing: -0.03em;">Une barre, et c’est tout</h3>
+          <p style="margin: 0 0 18px; color: #6b6357; font-size: 17px; line-height: 1.6; max-width: 40em;">À côté du R, les cinq raccourcis du quotidien&nbsp;: l’assistant, Internet, les fichiers, les photos, le courriel. À droite&nbsp;: clair ou sombre, la langue, le Wi-Fi, le son, la batterie, l’heure. Rien d’autre. Le reste vit dans le menu.</p>
+          <ul style="list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; font-size: 16px; color: #1c1814;">
+            <li style="display: flex; gap: 10px;"><span style="color: #c15a34;">—</span> Aucune ombre, aucun flou&nbsp;: la machine travaille pour vous, pas pour le décor.</li>
+            <li style="display: flex; gap: 10px;"><span style="color: #c15a34;">—</span> Fenêtres plates, coins arrondis en haut (compositeur labwc, Wayland).</li>
+            <li style="display: flex; gap: 10px;"><span style="color: #c15a34;">—</span> Le fond et le thème restent en place après les mises à jour.</li>
+          </ul>
+        </div>
+
+        <div class="visite-panneau" data-etape="4" style="display: none;">
+          <div style="background: linear-gradient(180deg, #ded6c7 0%, #d8cfc0 100%); border: 1px solid rgba(28,23,16,.1); border-radius: 20px; padding: 28px; display: grid; gap: 14px; align-content: center; min-height: 380px;">
+            <p style="margin: 0; font-size: 12px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: #c15a34;">Mises à jour</p>
+            <div style="background: #fdfbf6; border-radius: 12px; padding: 16px 18px; border: 1px solid rgba(28,23,16,.1);"><b style="display:block;font-size:16px;margin-bottom:3px;">Sécurité</b><span style="color:#6b6357;font-size:15px;">À installer sans attendre.</span></div>
+            <div style="background: #fdfbf6; border-radius: 12px; padding: 16px 18px; border: 1px solid rgba(28,23,16,.1);"><b style="display:block;font-size:16px;margin-bottom:3px;">Rabaska OS</b><span style="color:#6b6357;font-size:15px;">Améliorations par le canal du vendeur.</span></div>
+            <div style="background: #fdfbf6; border-radius: 12px; padding: 16px 18px; border: 1px solid rgba(28,23,16,.1);"><b style="display:block;font-size:16px;margin-bottom:3px;">Applications et système</b><span style="color:#6b6357;font-size:15px;">Nouvelles versions de vos programmes.</span></div>
+            <p style="margin: 4px 0 0; font-size: 14px; color: #6b6357;">Un bouton «&nbsp;Tout mettre à jour&nbsp;». Ou «&nbsp;Plus tard&nbsp;».</p>
+          </div>
+          <h3 style="margin: 26px 0 10px; font-family: 'Newsreader', Georgia, serif; font-weight: 500; font-size: 28px; letter-spacing: -0.03em;">« Tout mettre à jour »</h3>
+          <p style="margin: 0 0 18px; color: #6b6357; font-size: 17px; line-height: 1.6; max-width: 40em;">Quand quelque chose est prêt, une notification le dit en français. La fenêtre range ce qui arrive en trois groupes&nbsp;: Sécurité, Rabaska OS, Applications et système. Un bouton fait le reste. On peut répondre «&nbsp;Plus tard&nbsp;».</p>
+          <ul style="list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; font-size: 16px; color: #1c1814;">
+            <li style="display: flex; gap: 10px;"><span style="color: #c15a34;">—</span> Aucun terminal, aucune commande à taper.</li>
+            <li style="display: flex; gap: 10px;"><span style="color: #c15a34;">—</span> Les correctifs de sécurité du socle Ubuntu continuent la nuit.</li>
+            <li style="display: flex; gap: 10px;"><span style="color: #c15a34;">—</span> La couche Rabaska se met à jour par le canal du vendeur.</li>
           </ul>
         </div>
       </div>
-    </section>
-    <p class="closer">
-      Un système clair, en français, sur une machine qu’on n’a pas
-      besoin de racheter.
+    </div>
+  </section>
+
+  <section id="logiciels" style="width: min(1240px, calc(100% - 48px)); margin: 104px auto 0; scroll-margin-top: 88px;">
+    <p style="margin: 0 0 14px; font-size: 11px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: #c15a34;">Ce qui est déjà installé</p>
+    <h2 style="margin: 0; font-family: 'Newsreader', Georgia, serif; font-weight: 500; font-size: clamp(32px, 4vw, 50px); letter-spacing: -0.038em; line-height: 1.06; max-width: 22em;">Vous n’avez rien à installer le premier jour</h2>
+    <p style="margin: 18px 0 40px; color: #6b6357; font-size: 19px; line-height: 1.55; max-width: 36em;">Les programmes du quotidien sont là, et ils portent des noms français dans le menu.</p>
+
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px;">
+      <div style="display: flex; gap: 16px; background: #fdfbf6; border: 1px solid rgba(28,23,16,.1); border-radius: 16px; padding: 22px; transition: border-color .25s, transform .25s cubic-bezier(.22,1,.36,1);" data-hover="border-color:rgba(193,90,52,.4); transform:translateY(-3px)">
+        <img src="barre/internet.svg" alt="" style="width: 42px; height: 42px; flex: none;">
+        <div>
+          <b style="display: block; font-size: 17px; margin-bottom: 4px;">Internet</b>
+          <span style="color: #6b6357; font-size: 15.5px; line-height: 1.5;">Chromium et Firefox. Netflix, Disney+ et Spotify fonctionnent dans le navigateur.</span>
+        </div>
+      </div>
+      <div style="display: flex; gap: 16px; background: #fdfbf6; border: 1px solid rgba(28,23,16,.1); border-radius: 16px; padding: 22px; transition: border-color .25s, transform .25s cubic-bezier(.22,1,.36,1);" data-hover="border-color:rgba(193,90,52,.4); transform:translateY(-3px)">
+        <img src="barre/courriel.svg" alt="" style="width: 42px; height: 42px; flex: none;">
+        <div>
+          <b style="display: block; font-size: 17px; margin-bottom: 4px;">Courriel</b>
+          <span style="color: #6b6357; font-size: 15.5px; line-height: 1.5;">Thunderbird. Vos comptes, vos messages et vos pièces jointes dans une seule fenêtre.</span>
+        </div>
+      </div>
+      <div style="display: flex; gap: 16px; background: #fdfbf6; border: 1px solid rgba(28,23,16,.1); border-radius: 16px; padding: 22px; transition: border-color .25s, transform .25s cubic-bezier(.22,1,.36,1);" data-hover="border-color:rgba(193,90,52,.4); transform:translateY(-3px)">
+        <span style="display: grid; place-items: center; width: 42px; height: 42px; border-radius: 11px; background: #2f7d78; color: #fff; font-family: 'Newsreader', Georgia, serif; font-size: 20px; flex: none;">D</span>
+        <div>
+          <b style="display: block; font-size: 17px; margin-bottom: 4px;">Documents</b>
+          <span style="color: #6b6357; font-size: 15.5px; line-height: 1.5;">LibreOffice&nbsp;: texte, tableur, présentation. Ouvre et enregistre les fichiers Word, Excel et PowerPoint.</span>
+        </div>
+      </div>
+      <div style="display: flex; gap: 16px; background: #fdfbf6; border: 1px solid rgba(28,23,16,.1); border-radius: 16px; padding: 22px; transition: border-color .25s, transform .25s cubic-bezier(.22,1,.36,1);" data-hover="border-color:rgba(193,90,52,.4); transform:translateY(-3px)">
+        <img src="barre/photos.svg" alt="" style="width: 42px; height: 42px; flex: none;">
+        <div>
+          <b style="display: block; font-size: 17px; margin-bottom: 4px;">Photos</b>
+          <span style="color: #6b6357; font-size: 15.5px; line-height: 1.5;">Visionneur d’images. Vos photos depuis un dossier, une clé USB ou une carte mémoire.</span>
+        </div>
+      </div>
+      <div style="display: flex; gap: 16px; background: #fdfbf6; border: 1px solid rgba(28,23,16,.1); border-radius: 16px; padding: 22px; transition: border-color .25s, transform .25s cubic-bezier(.22,1,.36,1);" data-hover="border-color:rgba(193,90,52,.4); transform:translateY(-3px)">
+        <span style="display: grid; place-items: center; width: 42px; height: 42px; border-radius: 11px; background: #8a4a6b; color: #fff; font-family: 'Newsreader', Georgia, serif; font-size: 20px; flex: none;">M</span>
+        <div>
+          <b style="display: block; font-size: 17px; margin-bottom: 4px;">Musique et vidéos</b>
+          <span style="color: #6b6357; font-size: 15.5px; line-height: 1.5;">VLC lit à peu près tous les formats de son et d’image, depuis le disque ou une clé.</span>
+        </div>
+      </div>
+      <div style="display: flex; gap: 16px; background: #fdfbf6; border: 1px solid rgba(28,23,16,.1); border-radius: 16px; padding: 22px; transition: border-color .25s, transform .25s cubic-bezier(.22,1,.36,1);" data-hover="border-color:rgba(193,90,52,.4); transform:translateY(-3px)">
+        <img src="barre/fichiers.svg" alt="" style="width: 42px; height: 42px; flex: none;">
+        <div>
+          <b style="display: block; font-size: 17px; margin-bottom: 4px;">Fichiers</b>
+          <span style="color: #6b6357; font-size: 15.5px; line-height: 1.5;">L’explorateur&nbsp;: dossiers, clés USB, disques externes. Et un lecteur PDF pour lire et imprimer.</span>
+        </div>
+      </div>
+      <div style="display: flex; gap: 16px; background: #fdfbf6; border: 1px solid rgba(28,23,16,.1); border-radius: 16px; padding: 22px; transition: border-color .25s, transform .25s cubic-bezier(.22,1,.36,1);" data-hover="border-color:rgba(193,90,52,.4); transform:translateY(-3px)">
+        <img src="barre/ia.svg" alt="" style="width: 42px; height: 42px; flex: none;">
+        <div>
+          <b style="display: block; font-size: 17px; margin-bottom: 4px;">Assistant IA</b>
+          <span style="color: #6b6357; font-size: 15.5px; line-height: 1.5;">Ouvre Gemini, le service de Google, dans une fenêtre. Compte Google et internet requis. Rien ne tourne sur la machine.</span>
+        </div>
+      </div>
+      <div style="display: flex; gap: 16px; background: #fdfbf6; border: 1px solid rgba(28,23,16,.1); border-radius: 16px; padding: 22px; transition: border-color .25s, transform .25s cubic-bezier(.22,1,.36,1);" data-hover="border-color:rgba(193,90,52,.4); transform:translateY(-3px)">
+        <span style="display: grid; place-items: center; width: 42px; height: 42px; border-radius: 11px; background: #8a7d6a; color: #fff; font-size: 13px; font-weight: 700; flex: none;">.exe</span>
+        <div>
+          <b style="display: block; font-size: 17px; margin-bottom: 4px;">Programmes Windows</b>
+          <span style="color: #6b6357; font-size: 15.5px; line-height: 1.5;">Wine tente d’ouvrir certains <code style="font-family: ui-monospace, Consolas, monospace; font-size: .92em;">.exe</code>. Beaucoup échouent&nbsp;— surtout les jeux et les gros logiciels.</span>
+        </div>
+      </div>
+      <div style="display: flex; gap: 16px; background: #fdfbf6; border: 1px solid rgba(28,23,16,.1); border-radius: 16px; padding: 22px; transition: border-color .25s, transform .25s cubic-bezier(.22,1,.36,1);" data-hover="border-color:rgba(193,90,52,.4); transform:translateY(-3px)">
+        <span style="display: grid; place-items: center; width: 42px; height: 42px; border-radius: 11px; background: #6b6459; color: #fff; font-family: 'Newsreader', Georgia, serif; font-size: 20px; flex: none;">R</span>
+        <div>
+          <b style="display: block; font-size: 17px; margin-bottom: 4px;">Affichage et confort</b>
+          <span style="color: #6b6357; font-size: 15.5px; line-height: 1.5;">Style, taille du texte, couleurs, rythme&nbsp;: les quatre questions du premier jour, à revoir quand vous voulez.</span>
+        </div>
+      </div>
+    </div>
+
+    <p style="margin: 24px 0 0; padding: 20px 22px; background: rgba(28,23,16,.045); border-radius: 14px; color: #1c1814; font-size: 15.5px; line-height: 1.6; max-width: 68em;">
+      Microsoft Edge n’est pas préinstallé&nbsp;: sa licence l’interdit. Un raccourci permet de l’installer soi-même. Les paquets snap d’Ubuntu sont retirés&nbsp;— Firefox et Chromium viennent des dépôts .deb officiels, plus rapides à démarrer sur une vieille machine.
     </p>
-    <section class="ecrire" id="ecrire" aria-labelledby="contact-titre">
-      <p class="kicker">Contact</p>
-      <h2 class="ecrire-titre" id="contact-titre">Une question sur Rabaska&nbsp;OS.</h2>
-      <a class="ecrire-mail" href="mailto:spmorin.mrservices@gmail.com">spmorin.mrservices@gmail.com</a>
-    </section>
-    <footer>
-      <div class="pied-haut">
-        <div class="pied-marque">
-          <a class="brand" href="index.html">
-            <span class="tile" aria-hidden="true">R</span>
-            Rabaska OS
-          </a>
-          <p>Livré avec la machine. Pas de téléchargement.</p>
-          <a class="pied-mail" href="mailto:spmorin.mrservices@gmail.com">spmorin.mrservices@gmail.com</a>
+
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1px; margin-top: 40px; background: rgba(28,23,16,.1); border: 1px solid rgba(28,23,16,.1); border-radius: 16px; overflow: hidden;">
+      <div style="background: #e9e2d4; padding: 22px;"><b style="display: block; font-size: 16px; margin-bottom: 4px;">Naviguer</b><span style="font-size: 14.5px; color: #6b6357;">Sites, banque, courriel web, impôts en ligne.</span></div>
+      <div style="background: #e9e2d4; padding: 22px;"><b style="display: block; font-size: 16px; margin-bottom: 4px;">Écrire</b><span style="font-size: 14.5px; color: #6b6357;">Lettres, budget, CV, présentations.</span></div>
+      <div style="background: #e9e2d4; padding: 22px;"><b style="display: block; font-size: 16px; margin-bottom: 4px;">Regarder</b><span style="font-size: 14.5px; color: #6b6357;">YouTube et Netflix, autour de 720p sur ce parc.</span></div>
+      <div style="background: #e9e2d4; padding: 22px;"><b style="display: block; font-size: 16px; margin-bottom: 4px;">Écouter</b><span style="font-size: 14.5px; color: #6b6357;">Radio web, Spotify, vos fichiers.</span></div>
+      <div style="background: #e9e2d4; padding: 22px;"><b style="display: block; font-size: 16px; margin-bottom: 4px;">Ranger</b><span style="font-size: 14.5px; color: #6b6357;">Photos, documents, clés USB.</span></div>
+    </div>
+  </section>
+
+  <section id="accessibilite" style="width: min(1240px, calc(100% - 48px)); margin: 104px auto 0; scroll-margin-top: 88px;">
+    <p style="margin: 0 0 14px; font-size: 11px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: #c15a34;">Confort et accessibilité</p>
+    <h2 style="margin: 0; font-family: 'Newsreader', Georgia, serif; font-weight: 500; font-size: clamp(32px, 4vw, 50px); letter-spacing: -0.038em; line-height: 1.06; max-width: 20em;">Quatre questions, et l’écran s’adapte à vous</h2>
+    <p style="margin: 18px 0 40px; color: #6b6357; font-size: 19px; line-height: 1.55; max-width: 38em;">On parle de confort, jamais de diagnostic. Aucune étiquette. Et tout se change plus tard, dans «&nbsp;Affichage et confort&nbsp;».</p>
+
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;">
+      <div style="background: #fdfbf6; border: 1px solid rgba(28,23,16,.1); border-radius: 18px; padding: 26px;">
+        <div style="display: flex; align-items: baseline; gap: 10px; margin-bottom: 18px;">
+          <span style="font-size: 12px; font-weight: 700; letter-spacing: .14em; color: #c15a34;">01</span>
+          <h3 style="margin: 0; font-family: 'Newsreader', Georgia, serif; font-weight: 500; font-size: 26px; letter-spacing: -0.03em;">Le style</h3>
         </div>
-        <div class="pied-nav">
-          <a href="#os">Le bureau</a>
-          <a href="#accessibilite">Accessibilité</a>
-          <a href="#systeme">Le système</a>
-          <a href="#technique">Technique</a>
-          <a href="#limites">Limites</a>
-          <a href="#ecrire">Contact</a>
-          <a href="droits.html">Droits</a>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px;">
+          <div>
+            <div style="background: #e9e2d4; border: 1px solid rgba(28,23,16,.14); border-radius: 12px; padding: 10px; height: 104px; display: flex; flex-direction: column; gap: 7px;">
+              <div style="height: 14px; background: #fbf8f2; border-radius: 5px;"></div>
+              <div style="flex: 1; background: #fdfbf6; border-radius: 7px;"></div>
+              <div style="display: flex; gap: 6px; align-items: center;">
+                <span style="width: 14px; height: 14px; border-radius: 4px; background: #c15a34;"></span>
+                <span style="flex: 1; height: 8px; border-radius: 4px; background: rgba(28,23,16,.12);"></span>
+              </div>
+            </div>
+            <p style="margin: 10px 0 0; font-size: 15px; font-weight: 600;">Clair</p>
+          </div>
+          <div>
+            <div style="background: #141210; border: 1px solid rgba(242,237,226,.17); border-radius: 12px; padding: 10px; height: 104px; display: flex; flex-direction: column; gap: 7px;">
+              <div style="height: 14px; background: #1e1b15; border-radius: 5px;"></div>
+              <div style="flex: 1; background: #28241d; border-radius: 7px;"></div>
+              <div style="display: flex; gap: 6px; align-items: center;">
+                <span style="width: 14px; height: 14px; border-radius: 4px; background: #c15a34;"></span>
+                <span style="flex: 1; height: 8px; border-radius: 4px; background: rgba(242,237,226,.16);"></span>
+              </div>
+            </div>
+            <p style="margin: 10px 0 0; font-size: 15px; font-weight: 600;">Sombre</p>
+          </div>
+        </div>
+        <p style="margin: 16px 0 0; color: #6b6357; font-size: 15.5px; line-height: 1.55;">Le même bureau, deux ambiances. Un bouton dans la barre bascule d’un style à l’autre, n’importe quand.</p>
+      </div>
+
+      <div style="background: #fdfbf6; border: 1px solid rgba(28,23,16,.1); border-radius: 18px; padding: 26px;">
+        <div style="display: flex; align-items: baseline; gap: 10px; margin-bottom: 18px;">
+          <span style="font-size: 12px; font-weight: 700; letter-spacing: .14em; color: #c15a34;">02</span>
+          <h3 style="margin: 0; font-family: 'Newsreader', Georgia, serif; font-weight: 500; font-size: 26px; letter-spacing: -0.03em;">La taille du texte</h3>
+        </div>
+        <div style="display: grid; gap: 10px;">
+          <div style="display: flex; align-items: center; gap: 14px; padding: 10px 14px; background: rgba(28,23,16,.04); border-radius: 10px;">
+            <span style="font-size: 12px; font-weight: 700; color: #736a5b; width: 78px; flex: none;">NORMAL</span>
+            <span style="font-size: 15px;">Rechercher une application</span>
+          </div>
+          <div style="display: flex; align-items: center; gap: 14px; padding: 10px 14px; background: rgba(28,23,16,.04); border-radius: 10px;">
+            <span style="font-size: 12px; font-weight: 700; color: #736a5b; width: 78px; flex: none;">GRAND</span>
+            <span style="font-size: 17px;">Rechercher une application</span>
+          </div>
+          <div style="display: flex; align-items: center; gap: 14px; padding: 10px 14px; background: rgba(28,23,16,.04); border-radius: 10px;">
+            <span style="font-size: 12px; font-weight: 700; color: #736a5b; width: 78px; flex: none;">TRÈS GRAND</span>
+            <span style="font-size: 19px;">Rechercher une application</span>
+          </div>
+        </div>
+        <p style="margin: 16px 0 0; color: #6b6357; font-size: 15.5px; line-height: 1.55;">Tout grossit ensemble&nbsp;: le menu, les fenêtres, les messages. Pas juste un zoom sur une partie de l’écran.</p>
+      </div>
+
+      <div style="background: #fdfbf6; border: 1px solid rgba(28,23,16,.1); border-radius: 18px; padding: 26px;">
+        <div style="display: flex; align-items: baseline; gap: 10px; margin-bottom: 18px;">
+          <span style="font-size: 12px; font-weight: 700; letter-spacing: .14em; color: #c15a34;">03</span>
+          <h3 style="margin: 0; font-family: 'Newsreader', Georgia, serif; font-weight: 500; font-size: 26px; letter-spacing: -0.03em;">Les couleurs</h3>
+        </div>
+        <div style="display: grid; gap: 10px;">
+          <div style="display: flex; align-items: center; gap: 14px;">
+            <span style="display: flex; gap: 5px; flex: none;">
+              <span style="width: 26px; height: 26px; border-radius: 7px; background: #c15a34;"></span>
+              <span style="width: 26px; height: 26px; border-radius: 7px; background: #8a4a6b;"></span>
+            </span>
+            <span><b style="font-size: 16px;">Rabaska</b><span style="display: block; font-size: 14.5px; color: #6b6357;">Terracotta, le réglage d’origine.</span></span>
+          </div>
+          <div style="display: flex; align-items: center; gap: 14px;">
+            <span style="display: flex; gap: 5px; flex: none;">
+              <span style="width: 26px; height: 26px; border-radius: 7px; background: #3f6ea8;"></span>
+              <span style="width: 26px; height: 26px; border-radius: 7px; background: #8a4a6b;"></span>
+            </span>
+            <span><b style="font-size: 16px;">Plus distinctes</b><span style="display: block; font-size: 14.5px; color: #6b6357;">Pour qui confond le brun et le vert.</span></span>
+          </div>
+          <div style="display: flex; align-items: center; gap: 14px;">
+            <span style="display: flex; gap: 5px; flex: none;">
+              <span style="width: 26px; height: 26px; border-radius: 7px; background: #8f3d22;"></span>
+              <span style="width: 26px; height: 26px; border-radius: 7px; background: #000;"></span>
+            </span>
+            <span><b style="font-size: 16px;">Plus contrastées</b><span style="display: block; font-size: 14.5px; color: #6b6357;">Traits nets, noir sur crème, viser WCAG AA.</span></span>
+          </div>
+        </div>
+        <p style="margin: 16px 0 0; color: #6b6357; font-size: 15.5px; line-height: 1.55;">Trois vraies palettes, pas un filtre posé sur l’écran. Le style clair ou sombre reste indépendant.</p>
+      </div>
+
+      <div style="background: #fdfbf6; border: 1px solid rgba(28,23,16,.1); border-radius: 18px; padding: 26px;">
+        <div style="display: flex; align-items: baseline; gap: 10px; margin-bottom: 18px;">
+          <span style="font-size: 12px; font-weight: 700; letter-spacing: .14em; color: #c15a34;">04</span>
+          <h3 style="margin: 0; font-family: 'Newsreader', Georgia, serif; font-weight: 500; font-size: 26px; letter-spacing: -0.03em;">Le rythme</h3>
+        </div>
+        <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px;">
+          <span style="border: 1px solid rgba(28,23,16,.16); border-radius: 999px; padding: 9px 16px; font-size: 15px; font-weight: 600;">Comme d’habitude</span>
+          <span style="border: 1px solid rgba(28,23,16,.16); border-radius: 999px; padding: 9px 16px; font-size: 15px; font-weight: 600;">Plus calme</span>
+          <span style="border: 1px solid rgba(28,23,16,.16); border-radius: 999px; padding: 9px 16px; font-size: 15px; font-weight: 600;">Plus simple</span>
+        </div>
+        <p style="margin: 0; color: #6b6357; font-size: 15.5px; line-height: 1.55;">Certaines personnes se fatiguent vite&nbsp;: moins d’animations, moins de choses à l’écran, des textes plus aérés. C’est une question de confort, pas une étiquette.</p>
+      </div>
+    </div>
+
+    <p style="margin: 20px 0 0; padding: 20px 22px; background: rgba(28,23,16,.045); border-radius: 14px; color: #1c1814; font-size: 15.5px; line-height: 1.6;">
+      Lire l’écran à voix haute (Orca) et le clavier à l’écran restent <b>à la demande</b>&nbsp;— jamais imposés le premier jour. Sur un portable convertible 360°, le clavier à l’écran s’ouvre tout seul quand l’écran est replié.
+    </p>
+  </section>
+
+  <section id="maj" style="margin: 104px 0 0; background: #141210; color: #f2ede2; padding: 88px 0; scroll-margin-top: 68px;">
+    <div style="width: min(1240px, calc(100% - 48px)); margin-inline: auto;">
+      <div style="display: grid; grid-template-columns: 1fr; gap: 56px; align-items: center; max-width: 720px;">
+        <div>
+          <p style="margin: 0 0 14px; font-size: 11px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: #a89f8d;">Mises à jour et sécurité</p>
+          <h2 style="margin: 0 0 20px; font-family: 'Newsreader', Georgia, serif; font-weight: 500; font-size: clamp(30px, 3.6vw, 46px); letter-spacing: -0.038em; line-height: 1.06;">Un bouton. Pas de terminal.</h2>
+          <p style="margin: 0 0 26px; color: #a89f8d; font-size: 18px; line-height: 1.55;">La fenêtre range ce qui arrive en trois groupes, en français, avec le nombre de mises à jour de chacun.</p>
+          <div style="display: grid; gap: 12px;">
+            <div style="background: #232019; border-radius: 12px; padding: 16px 18px;">
+              <b style="display: block; font-size: 16px; margin-bottom: 3px;">Sécurité</b>
+              <span style="color: #a89f8d; font-size: 15px;">Protègent votre ordinateur. À installer sans attendre.</span>
+            </div>
+            <div style="background: #232019; border-radius: 12px; padding: 16px 18px;">
+              <b style="display: block; font-size: 16px; margin-bottom: 3px;">Rabaska OS</b>
+              <span style="color: #a89f8d; font-size: 15px;">Les améliorations de la couche Rabaska, par le canal du vendeur.</span>
+            </div>
+            <div style="background: #232019; border-radius: 12px; padding: 16px 18px;">
+              <b style="display: block; font-size: 16px; margin-bottom: 3px;">Applications et système</b>
+              <span style="color: #a89f8d; font-size: 15px;">Nouvelles versions de vos programmes.</span>
+            </div>
+          </div>
+          <p style="margin: 22px 0 0; color: #a89f8d; font-size: 15.5px; line-height: 1.6;">Le socle Linux continue de recevoir les correctifs de la famille Ubuntu. Sans le canal du vendeur, la couche Rabaska n’évolue plus. Le notificateur d’origine de Lubuntu est encore présent&nbsp;: vous pouvez voir deux invitations pour un temps.</p>
         </div>
       </div>
-      <div class="pied-bas">
-        <span>© 2026. Tous droits réservés.</span>
-        <a href="mailto:spmorin.mrservices@gmail.com">spmorin.mrservices@gmail.com</a>
-        <a href="droits.html">Conditions et licences</a>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-top: 64px; padding-top: 48px; border-top: 1px solid rgba(242,237,226,.12);">
+        <div>
+          <h3 style="margin: 0 0 8px; font-family: 'Newsreader', Georgia, serif; font-weight: 500; font-size: 24px; letter-spacing: -0.03em;">L’assistant est chez Google</h3>
+          <p style="margin: 0; color: #a89f8d; font-size: 15.5px; line-height: 1.6;">Le bouton Assistant ouvre Gemini dans une fenêtre du navigateur. Compte Google et internet requis. Aucune intelligence artificielle ne tourne sur votre machine.</p>
+        </div>
+        <div>
+          <h3 style="margin: 0 0 8px; font-family: 'Newsreader', Georgia, serif; font-weight: 500; font-size: 24px; letter-spacing: -0.03em;">D’où viennent les logiciels</h3>
+          <p style="margin: 0; color: #a89f8d; font-size: 15.5px; line-height: 1.6;">Des dépôts .deb officiels (Ubuntu, Mozilla). Les paquets snap sont retirés. La couche Rabaska vient d’un seul canal&nbsp;: celui du vendeur.</p>
+        </div>
+        <div>
+          <h3 style="margin: 0 0 8px; font-family: 'Newsreader', Georgia, serif; font-weight: 500; font-size: 24px; letter-spacing: -0.03em;">Secure Boot conservé</h3>
+          <p style="margin: 0; color: #a89f8d; font-size: 15.5px; line-height: 1.6;">Le chargeur d’amorçage signé n’est pas retouché. La machine démarre comme le constructeur l’a prévu.</p>
+        </div>
       </div>
-    </footer>
-  </div>
-  <script>
-    (function () {
-      var bureau = document.getElementById("bureau");
-      var btn = document.getElementById("demarrer");
-      if (btn && bureau) {
-        btn.addEventListener("click", function () {
-          var ferme = bureau.classList.toggle("menu-ferme");
-          btn.setAttribute("aria-expanded", ferme ? "false" : "true");
-        });
-      }
-      var heure = document.getElementById("heure");
-      var date = document.getElementById("date");
-      function tick() {
-        var n = new Date();
-        var h = String(n.getHours()).padStart(2, "0");
-        var m = String(n.getMinutes()).padStart(2, "0");
-        if (heure) heure.textContent = h + ":" + m;
-        if (date) date.textContent = n.toLocaleDateString("fr-CA", {
-          weekday: "long", day: "numeric", month: "long"
-        });
-      }
-      tick();
-      setInterval(tick, 1000);
-    })();
-  </script>
+    </div>
+  </section>
+
+  <section id="comparaison" style="width: min(1240px, calc(100% - 48px)); margin: 104px auto 0; scroll-margin-top: 88px;">
+    <p style="margin: 0 0 14px; font-size: 11px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: #c15a34;">Comparaison honnête</p>
+    <h2 style="margin: 0; font-family: 'Newsreader', Georgia, serif; font-weight: 500; font-size: clamp(32px, 4vw, 50px); letter-spacing: -0.038em; line-height: 1.06; max-width: 22em;">Rabaska OS ou Windows, sur la même vieille machine</h2>
+    <p style="margin: 18px 0 40px; color: #6b6357; font-size: 19px; line-height: 1.55; max-width: 36em;">Nous ne dirons pas que c’est mieux partout. Voici les deux colonnes, côte à côte.</p>
+
+    <div style="overflow-x: auto; padding-bottom: 6px;"><div style="border: 1px solid rgba(28,23,16,.12); border-radius: 18px; overflow: hidden; background: rgba(28,23,16,.1); display: grid; grid-template-columns: minmax(150px, 0.9fr) minmax(205px, 1.05fr) minmax(205px, 1.05fr); gap: 1px; min-width: 640px;">
+      <div style="background: #e9e2d4; padding: 16px 20px; font-size: 12px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: #6b6357;">Critère</div>
+      <div style="background: #fdfbf6; padding: 16px 20px; display: flex; align-items: center; gap: 9px;">
+        <span style="width: 22px; height: 22px; background: #c15a34; border-radius: 6px; color: #fff; font-family: 'Newsreader', Georgia, serif; font-style: italic; font-size: 13px; display: grid; place-items: center;">R</span>
+        <b style="font-size: 16px;">Rabaska OS</b>
+      </div>
+      <div style="background: #e9e2d4; padding: 16px 20px;"><b style="font-size: 16px; color: #6b6357;">Windows sur ce même PC</b></div>
+
+      <div style="background: #e9e2d4; padding: 18px 20px; font-weight: 600; font-size: 15.5px;">Un PC de 2011, 2 Go de mémoire</div>
+      <div style="background: #fdfbf6; padding: 18px 20px; font-size: 15.5px; line-height: 1.5;">Conçu pour ça. Au démarrage, la machine ajuste le disque et le swap compressé (ZRAM).</div>
+      <div style="background: #e9e2d4; padding: 18px 20px; font-size: 15.5px; line-height: 1.5; color: #6b6357;">Windows 11 exige un processeur récent et TPM 2.0. Windows 10 ne reçoit plus de mises à jour depuis octobre 2025.</div>
+
+      <div style="background: #e9e2d4; padding: 18px 20px; font-weight: 600; font-size: 15.5px;">Licence du système</div>
+      <div style="background: #fdfbf6; padding: 18px 20px; font-size: 15.5px; line-height: 1.5;">Incluse avec la machine. Rien à acheter, aucune clé à entrer.</div>
+      <div style="background: #e9e2d4; padding: 18px 20px; font-size: 15.5px; line-height: 1.5; color: #6b6357;">Une licence Windows valide est nécessaire.</div>
+
+      <div style="background: #e9e2d4; padding: 18px 20px; font-weight: 600; font-size: 15.5px;">Logiciels du quotidien</div>
+      <div style="background: #fdfbf6; padding: 18px 20px; font-size: 15.5px; line-height: 1.5;">Web, courriel, bureautique, vidéo, PDF&nbsp;: déjà installés, gratuits.</div>
+      <div style="background: #e9e2d4; padding: 18px 20px; font-size: 15.5px; line-height: 1.5; color: #6b6357;">À installer un par un. La suite Office se paie.</div>
+
+      <div style="background: #e9e2d4; padding: 18px 20px; font-weight: 600; font-size: 15.5px;">Vos programmes Windows (.exe)</div>
+      <div style="background: #fdfbf6; padding: 18px 20px; font-size: 15.5px; line-height: 1.5;">Certains s’ouvrent par Wine. Beaucoup échouent&nbsp;— c’est la vraie limite.</div>
+      <div style="background: #e9e2d4; padding: 18px 20px; font-size: 15.5px; line-height: 1.5; color: #6b6357;">Tous, évidemment.</div>
+
+      <div style="background: #e9e2d4; padding: 18px 20px; font-weight: 600; font-size: 15.5px;">Jeux</div>
+      <div style="background: #fdfbf6; padding: 18px 20px; font-size: 15.5px; line-height: 1.5;">Non. Ce n’est pas la machine pour ça.</div>
+      <div style="background: #e9e2d4; padding: 18px 20px; font-size: 15.5px; line-height: 1.5; color: #6b6357;">Selon la machine&nbsp;; rarement les jeux récents sur ce parc.</div>
+
+      <div style="background: #e9e2d4; padding: 18px 20px; font-weight: 600; font-size: 15.5px;">Vidéo</div>
+      <div style="background: #fdfbf6; padding: 18px 20px; font-size: 15.5px; line-height: 1.5;">Netflix, YouTube, Disney+, Spotify. Autour de 720p sur ce parc.</div>
+      <div style="background: #e9e2d4; padding: 18px 20px; font-size: 15.5px; line-height: 1.5; color: #6b6357;">Selon la machine et le pilote.</div>
+
+      <div style="background: #e9e2d4; padding: 18px 20px; font-weight: 600; font-size: 15.5px;">Mises à jour</div>
+      <div style="background: #fdfbf6; padding: 18px 20px; font-size: 15.5px; line-height: 1.5;">Une fenêtre, trois groupes en français, un bouton.</div>
+      <div style="background: #e9e2d4; padding: 18px 20px; font-size: 15.5px; line-height: 1.5; color: #6b6357;">Windows Update, quand la version est encore suivie.</div>
+    </div></div>
+
+    <p style="margin: 24px 0 0; font-family: 'Newsreader', Georgia, serif; font-style: italic; font-size: clamp(20px, 2.4vw, 27px); line-height: 1.35; letter-spacing: -0.025em; max-width: 30em;">S’il vous faut un logiciel Windows précis, un jeu récent ou de la 4K&nbsp;: gardez Windows. On vous le dira avant la vente.</p>
+  </section>
+  
+
+  <section id="technique" style="width: min(1240px, calc(100% - 48px)); margin: 104px auto 0; scroll-margin-top: 88px;">
+    <p style="margin: 0 0 14px; font-size: 11px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: #c15a34;">Fiche technique</p>
+    <h2 style="margin: 0; font-family: 'Newsreader', Georgia, serif; font-weight: 500; font-size: clamp(32px, 4vw, 50px); letter-spacing: -0.038em; line-height: 1.06; max-width: 20em;">Ce qu’il y a dessous, sans arrondir</h2>
+    <p style="margin: 18px 0 40px; color: #6b6357; font-size: 19px; line-height: 1.55; max-width: 38em;">Rabaska OS n’est pas un noyau inventé de zéro&nbsp;: c’est une couche fermée, posée sur un Linux connu. Voici l’empilement réel, tel qu’il est construit.</p>
+
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 16px;">
+      <div style="background: #fdfbf6; border: 1px solid rgba(28,23,16,.1); border-radius: 16px; padding: 24px;">
+        <b style="display: block; font-size: 12px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: #c15a34; margin-bottom: 10px;">Socle</b>
+        <p style="margin: 0; color: #1c1814; font-size: 16px; line-height: 1.55;">Image Lubuntu 26.04 (famille Ubuntu, 64&nbsp;bits). Bureau LXQt, noyau Linux, installeur Calamares, écran de connexion SDDM, démarrage Plymouth. Secure Boot conservé.</p>
+      </div>
+      <div style="background: #fdfbf6; border: 1px solid rgba(28,23,16,.1); border-radius: 16px; padding: 24px;">
+        <b style="display: block; font-size: 12px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: #c15a34; margin-bottom: 10px;">Session</b>
+        <p style="margin: 0; color: #1c1814; font-size: 16px; line-height: 1.55;">Par défaut&nbsp;: LXQt sous Wayland, compositeur labwc (coins du haut arrondis, 12&nbsp;px). Aucune ombre portée&nbsp;: le flou coûte trop cher sur un petit processeur. Repli&nbsp;: LXQt sous X11 avec Openbox.</p>
+      </div>
+      <div style="background: #fdfbf6; border: 1px solid rgba(28,23,16,.1); border-radius: 16px; padding: 24px;">
+        <b style="display: block; font-size: 12px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: #c15a34; margin-bottom: 10px;">Couche Rabaska</b>
+        <p style="margin: 0; color: #1c1814; font-size: 16px; line-height: 1.55;">Thème crème et terracotta, polices Hanken Grotesk et Newsreader. Menu Démarrer (recherche, quatre familles, Éteindre), assistant du premier jour, fenêtre de mises à jour en français, barre LXQt épinglée.</p>
+      </div>
+      <div style="background: #fdfbf6; border: 1px solid rgba(28,23,16,.1); border-radius: 16px; padding: 24px;">
+        <b style="display: block; font-size: 12px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: #c15a34; margin-bottom: 10px;">Matériel visé</b>
+        <p style="margin: 0; color: #1c1814; font-size: 16px; line-height: 1.55;">PC x86-64 reconditionnés. Cible de conception&nbsp;: peu de mémoire, disque déjà usé, processeur lent (classe AMD C-50 1&nbsp;GHz, 2&nbsp;Go). Au démarrage, un service ajuste l’ordonnanceur disque et la ZRAM. Pas ARM, pas Apple.</p>
+      </div>
+      <div style="background: #fdfbf6; border: 1px solid rgba(28,23,16,.1); border-radius: 16px; padding: 24px;">
+        <b style="display: block; font-size: 12px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: #c15a34; margin-bottom: 10px;">Vidéo</b>
+        <p style="margin: 0; color: #1c1814; font-size: 16px; line-height: 1.55;">YouTube dans Chromium avec décodage matériel (VA-API) quand le GPU le permet. Netflix, Disney+ et Spotify dans le navigateur. Qualité typique sur ce parc&nbsp;: environ 720p.</p>
+      </div>
+      <div style="background: #fdfbf6; border: 1px solid rgba(28,23,16,.1); border-radius: 16px; padding: 24px;">
+        <b style="display: block; font-size: 12px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: #c15a34; margin-bottom: 10px;">Tablette</b>
+        <p style="margin: 0; color: #1c1814; font-size: 16px; line-height: 1.55;">Sur un convertible 360° qui signale le mode tablette au noyau, un clavier à l’écran (squeekboard) s’ouvre. Sur un portable ordinaire, rien de plus ne tourne&nbsp;— pas de clavier virtuel «&nbsp;au cas où&nbsp;».</p>
+      </div>
+      <div style="background: #fdfbf6; border: 1px solid rgba(28,23,16,.1); border-radius: 16px; padding: 24px;">
+        <b style="display: block; font-size: 12px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: #c15a34; margin-bottom: 10px;">Réseau et logithèque</b>
+        <p style="margin: 0; color: #1c1814; font-size: 16px; line-height: 1.55;">Les paquets snap d’Ubuntu sont retirés&nbsp;: Firefox et Chromium viennent de dépôts .deb. Une logithèque Linux (Discover) peut être présente&nbsp;; ce n’est pas un magasin d’applications de téléphone.</p>
+      </div>
+      <div style="background: #fdfbf6; border: 1px solid rgba(28,23,16,.1); border-radius: 16px; padding: 24px;">
+        <b style="display: block; font-size: 12px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: #c15a34; margin-bottom: 10px;">Licences</b>
+        <p style="margin: 0; color: #1c1814; font-size: 16px; line-height: 1.55;">Linux et les programmes du socle restent sous leurs licences d’origine (souvent GPL). Les polices du thème sont OFL. Gemini appartient à Google. La couche Rabaska&nbsp;— habillage, menu, assistant, mises à jour&nbsp;— est propriétaire.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="limites" style="width: min(1240px, calc(100% - 48px)); margin: 104px auto 0; scroll-margin-top: 88px;">
+    <p style="margin: 0 0 14px; font-size: 11px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: #c15a34;">Limites</p>
+    <h2 style="margin: 0 0 36px; font-family: 'Newsreader', Georgia, serif; font-weight: 500; font-size: clamp(32px, 4vw, 50px); letter-spacing: -0.038em; line-height: 1.06; max-width: 20em;">Ce que Rabaska OS ne fait pas</h2>
+
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 16px; align-items: stretch;">
+      <div style="grid-row: span 2; background: #fdfbf6; border: 1px solid rgba(193,90,52,.35); border-radius: 18px; padding: 30px; display: flex; flex-direction: column; justify-content: center;">
+        <p style="margin: 0 0 14px; font-size: 11px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: #c15a34;">La limite principale</p>
+        <p style="margin: 0 0 14px; font-family: 'Newsreader', Georgia, serif; font-style: italic; font-weight: 500; font-size: clamp(32px, 3.6vw, 46px); letter-spacing: -0.03em; line-height: 1.02;">Ce n’est pas 4K.</p>
+        <p style="margin: 0; color: #1c1814; font-size: 17px; line-height: 1.55;">Écran, carte graphique, processeur&nbsp;: c’est un parc d’occasion. La vidéo tourne autour de 720p. Si vous cherchez une station 4K ou du jeu récent, ce n’est pas le bon produit&nbsp;— et nous le dirons.</p>
+      </div>
+      <div style="background: #e9e2d4; border: 1px solid rgba(28,23,16,.14); border-radius: 18px; padding: 24px;">
+        <b style="display: block; font-size: 17px; margin-bottom: 6px;">Ce n’est pas Windows</b>
+        <span style="color: #6b6357; font-size: 15.5px; line-height: 1.55;">Wine ouvre certains .exe&nbsp;; beaucoup échouent. Les jeux et les gros logiciels professionnels, non.</span>
+      </div>
+      <div style="background: #e9e2d4; border: 1px solid rgba(28,23,16,.14); border-radius: 18px; padding: 24px;">
+        <b style="display: block; font-size: 17px; margin-bottom: 6px;">Pas de téléchargement</b>
+        <span style="color: #6b6357; font-size: 15.5px; line-height: 1.55;">Aucune ISO publique. Le système arrive sur la machine et ne se copie pas légalement.</span>
+      </div>
+      <div style="background: #e9e2d4; border: 1px solid rgba(28,23,16,.14); border-radius: 18px; padding: 24px;">
+        <b style="display: block; font-size: 17px; margin-bottom: 6px;">Un habillage fermé</b>
+        <span style="color: #6b6357; font-size: 15.5px; line-height: 1.55;">Ce n’est pas un Ubuntu nu à peaufiner comme un administrateur. Le thème et le menu sont figés.</span>
+      </div>
+      <div style="background: #e9e2d4; border: 1px solid rgba(28,23,16,.14); border-radius: 18px; padding: 24px;">
+        <b style="display: block; font-size: 17px; margin-bottom: 6px;">Dépend du canal du vendeur</b>
+        <span style="color: #6b6357; font-size: 15.5px; line-height: 1.55;">Sans ce canal, la couche Rabaska s’arrête d’évoluer. Le socle Linux continue, lui.</span>
+      </div>
+      <div style="background: #e9e2d4; border: 1px solid rgba(28,23,16,.14); border-radius: 18px; padding: 24px;">
+        <b style="display: block; font-size: 17px; margin-bottom: 6px;">PC 64 bits seulement</b>
+        <span style="color: #6b6357; font-size: 15.5px; line-height: 1.55;">Intel ou AMD. Pas de téléphone, pas de tablette ARM, pas de Mac Apple Silicon.</span>
+      </div>
+      <div style="background: #e9e2d4; border: 1px solid rgba(28,23,16,.14); border-radius: 18px; padding: 24px;">
+        <b style="display: block; font-size: 17px; margin-bottom: 6px;">Deux invitations possibles</b>
+        <span style="color: #6b6357; font-size: 15.5px; line-height: 1.55;">Le notificateur d’origine de Lubuntu est encore là&nbsp;: on peut voir deux avis de mise à jour, le temps qu’il parte.</span>
+      </div>
+      <div style="background: #e9e2d4; border: 1px solid rgba(28,23,16,.14); border-radius: 18px; padding: 24px;">
+        <b style="display: block; font-size: 17px; margin-bottom: 6px;">Sous X11, coins carrés</b>
+        <span style="color: #6b6357; font-size: 15.5px; line-height: 1.55;">Sans compositeur, le menu a des coins carrés. C’est assumé&nbsp;: mieux vaut ça que du flou qui ralentit.</span>
+      </div>
+    </div>
+  </section>
+
+  <section id="questions" style="width: min(1240px, calc(100% - 48px)); margin: 104px auto 0; scroll-margin-top: 88px;">
+    <p style="margin: 0 0 14px; font-size: 11px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: #c15a34;">Questions d’acheteur</p>
+    <h2 style="margin: 0 0 40px; font-family: 'Newsreader', Georgia, serif; font-weight: 500; font-size: clamp(32px, 4vw, 50px); letter-spacing: -0.038em; line-height: 1.06; max-width: 20em;">Les dix questions qu’on nous pose</h2>
+
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 0 56px;">
+      <div style="padding: 22px 0; border-top: 1px solid rgba(28,23,16,.14);">
+        <b style="display: block; font-size: 18px; margin-bottom: 7px;">Est-ce que c’est Windows&nbsp;?</b>
+        <span style="color: #6b6357; font-size: 16px; line-height: 1.6;">Non. C’est un système Linux. Les gestes sont les mêmes&nbsp;— cliquer, double-cliquer, une barre en bas, un menu&nbsp;— mais les noms et l’apparence changent.</span>
+      </div>
+      <div style="padding: 22px 0; border-top: 1px solid rgba(28,23,16,.14);">
+        <b style="display: block; font-size: 18px; margin-bottom: 7px;">Mes fichiers Word et Excel&nbsp;?</b>
+        <span style="color: #6b6357; font-size: 16px; line-height: 1.6;">LibreOffice les ouvre, les modifie et les enregistre. Pour un document très complexe, la mise en page peut bouger un peu.</span>
+      </div>
+      <div style="padding: 22px 0; border-top: 1px solid rgba(28,23,16,.14);">
+        <b style="display: block; font-size: 18px; margin-bottom: 7px;">Puis-je regarder Netflix&nbsp;?</b>
+        <span style="color: #6b6357; font-size: 16px; line-height: 1.6;">Oui, dans Chromium. Disney+ et Spotify aussi. Qualité typique&nbsp;: environ 720p.</span>
+      </div>
+      <div style="padding: 22px 0; border-top: 1px solid rgba(28,23,16,.14);">
+        <b style="display: block; font-size: 18px; margin-bottom: 7px;">Et mes vieux programmes .exe&nbsp;?</b>
+        <span style="color: #6b6357; font-size: 16px; line-height: 1.6;">Un double-clic tente de les ouvrir avec Wine. Certains marchent, beaucoup non. Dites-nous lesquels comptent&nbsp;: on vérifie avant la vente.</span>
+      </div>
+      <div style="padding: 22px 0; border-top: 1px solid rgba(28,23,16,.14);">
+        <b style="display: block; font-size: 18px; margin-bottom: 7px;">Puis-je installer d’autres logiciels&nbsp;?</b>
+        <span style="color: #6b6357; font-size: 16px; line-height: 1.6;">Oui, depuis les dépôts Linux. C’est l’habillage Rabaska (thème, menu, assistant) qui reste fermé, pas la machine.</span>
+      </div>
+      <div style="padding: 22px 0; border-top: 1px solid rgba(28,23,16,.14);">
+        <b style="display: block; font-size: 18px; margin-bottom: 7px;">Combien de temps les mises à jour&nbsp;?</b>
+        <span style="color: #6b6357; font-size: 16px; line-height: 1.6;">Le socle reçoit les correctifs de la famille Ubuntu. La couche Rabaska se met à jour par notre canal, aussi longtemps que nous le tenons.</span>
+      </div>
+      <div style="padding: 22px 0; border-top: 1px solid rgba(28,23,16,.14);">
+        <b style="display: block; font-size: 18px; margin-bottom: 7px;">Faut-il un compte pour l’assistant&nbsp;?</b>
+        <span style="color: #6b6357; font-size: 16px; line-height: 1.6;">Oui&nbsp;: un compte Google et une connexion. L’assistant ouvre Gemini dans le navigateur. Sans compte, le reste de la machine fonctionne pareil.</span>
+      </div>
+      <div style="padding: 22px 0; border-top: 1px solid rgba(28,23,16,.14);">
+        <b style="display: block; font-size: 18px; margin-bottom: 7px;">Puis-je le télécharger pour mon vieux PC&nbsp;?</b>
+        <span style="color: #6b6357; font-size: 16px; line-height: 1.6;">Non. Il n’existe pas d’image publique. Rabaska OS est livré installé sur une machine que nous préparons.</span>
+      </div>
+      <div style="padding: 22px 0; border-top: 1px solid rgba(28,23,16,.14);">
+        <b style="display: block; font-size: 18px; margin-bottom: 7px;">Et si la machine brise&nbsp;?</b>
+        <span style="color: #6b6357; font-size: 16px; line-height: 1.6;">Les machines Rabaska sont garanties 3&nbsp;mois. Écrivez-nous&nbsp;: on regarde avec vous avant de parler de réparation.</span>
+      </div>
+      <div style="padding: 22px 0; border-top: 1px solid rgba(28,23,16,.14); border-bottom: 1px solid rgba(28,23,16,.14);">
+        <b style="display: block; font-size: 18px; margin-bottom: 7px;">Ça marche sur un Mac ou une tablette&nbsp;?</b>
+        <span style="color: #6b6357; font-size: 16px; line-height: 1.6;">Non. PC 64&nbsp;bits Intel ou AMD seulement. Sur un portable convertible, le mode tablette est reconnu.</span>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" style="width: min(1240px, calc(100% - 48px)); margin: 104px auto 0; scroll-margin-top: 88px;">
+    <div style="background: #fdfbf6; border: 1px solid rgba(28,23,16,.1); border-radius: 22px; padding: 44px; display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 48px;">
+      <div>
+        <p style="margin: 0 0 14px; font-size: 11px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: #c15a34;">Nous écrire</p>
+        <h2 style="margin: 0 0 14px; font-family: 'Newsreader', Georgia, serif; font-weight: 500; font-size: clamp(30px, 3.4vw, 42px); letter-spacing: -0.035em; line-height: 1.06;">Une question, un besoin précis&nbsp;?</h2>
+        <p style="margin: 0 0 28px; color: #6b6357; font-size: 17px; line-height: 1.55;">Dites-nous ce que la machine doit faire. On répond franchement, même quand la réponse est «&nbsp;non&nbsp;».</p>
+        <form id="form-contact" style="display: grid; gap: 14px;">
+          <label style="display: grid; gap: 6px;">
+            <span style="font-size: 14px; font-weight: 600;">Votre nom</span>
+            <input type="text" name="nom" id="f-nom" autocomplete="name" required placeholder="Camille Tremblay" style="border: 1px solid rgba(28,23,16,.18); background: #fff; border-radius: 10px; padding: 13px 14px; font-size: 16px; color: #1c1814;">
+          </label>
+          <label style="display: grid; gap: 6px;">
+            <span style="font-size: 14px; font-weight: 600;">Votre courriel</span>
+            <input type="email" name="courriel" id="f-courriel" autocomplete="email" required placeholder="camille@exemple.ca" style="border: 1px solid rgba(28,23,16,.18); background: #fff; border-radius: 10px; padding: 13px 14px; font-size: 16px; color: #1c1814;">
+          </label>
+          <label style="display: grid; gap: 6px;">
+            <span style="font-size: 14px; font-weight: 600;">Sujet</span>
+            <select name="sujet" id="f-sujet" style="border: 1px solid rgba(28,23,16,.18); background: #fff; border-radius: 10px; padding: 13px 14px; font-size: 16px; color: #1c1814;">
+              <option>Acheter une machine</option>
+              <option>Vérifier si un logiciel fonctionne</option>
+              <option>Question technique</option>
+              <option>Garantie ou réparation</option>
+              <option>Autre</option>
+            </select>
+          </label>
+          <label style="display: grid; gap: 6px;">
+            <span style="font-size: 14px; font-weight: 600;">Votre message</span>
+            <textarea rows="4" name="message" id="f-message" required placeholder="Ce que je veux faire avec l’ordinateur…" style="border: 1px solid rgba(28,23,16,.18); background: #fff; border-radius: 10px; padding: 13px 14px; font-size: 16px; color: #1c1814; resize: vertical; font-family: inherit;"></textarea>
+          </label>
+          <button type="submit" style="justify-self: start; background: #c15a34; color: #fff; border: none; font-size: 16px; font-weight: 600; padding: 15px 28px; border-radius: 999px; cursor: pointer; transition: background .2s, transform .2s;" data-hover="background:#ac4c2b; transform:translateY(-2px)">Envoyer le message</button>
+          <span style="font-size: 13.5px; color: #9a9080;">Le bouton ouvre votre logiciel de courriel avec le message déjà écrit.</span>
+        </form>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 14px;">
+        <div style="background: #e9e2d4; border-radius: 16px; padding: 22px;">
+          <b style="display: block; font-size: 12px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: #6b6357; margin-bottom: 8px;">Courriel direct</b>
+          <a href="mailto:spmorin.mrservices@gmail.com" style="font-family: 'Newsreader', Georgia, serif; font-size: 21px; letter-spacing: -0.02em; box-shadow: inset 0 -2px 0 #c15a34; overflow-wrap: anywhere;">spmorin.mrservices@gmail.com</a>
+        </div>
+        <div style="background: #e9e2d4; border-radius: 16px; padding: 22px;">
+          <b style="display: block; font-size: 12px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: #6b6357; margin-bottom: 8px;">Garantie</b>
+          <span style="font-size: 16px; line-height: 1.55;">3 mois sur les machines Rabaska. La couche Rabaska continue de recevoir les mises à jour par notre canal.</span>
+        </div>
+        <div style="background: #e9e2d4; border-radius: 16px; padding: 22px;">
+          <b style="display: block; font-size: 12px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: #6b6357; margin-bottom: 8px;">Zone desservie</b>
+          <span style="font-size: 16px; line-height: 1.55;">Écrivez-nous avec votre ville&nbsp;: on vous dit tout de suite si on peut vous livrer ou vous rencontrer.</span>
+        </div>
+        <div style="background: #e9e2d4; border-radius: 16px; padding: 22px;">
+          <b style="display: block; font-size: 12px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: #6b6357; margin-bottom: 8px;">À savoir</b>
+          <span style="font-size: 16px; line-height: 1.55;">Rabaska OS n’est pas en vente séparément et ne se télécharge pas. Il est livré installé sur la machine.</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer style="width: min(1240px, calc(100% - 48px)); margin: 88px auto 0; padding: 40px 0 56px; border-top: 1px solid rgba(28,23,16,.14);">
+    <div style="display: flex; justify-content: space-between; gap: 40px; flex-wrap: wrap;">
+      <div>
+        <a href="#haut" style="display: flex; align-items: center; gap: 10px; font-family: 'Newsreader', Georgia, serif; font-size: 21px; font-weight: 500; letter-spacing: -0.03em;">
+          <span style="width: 30px; height: 30px; background: #c15a34; border-radius: 8px; color: #fff; font-family: 'Newsreader', Georgia, serif; font-style: italic; font-weight: 600; font-size: 17px; display: grid; place-items: center;">R</span>
+          Rabaska&nbsp;OS
+        </a>
+        <p style="margin: 12px 0 0; max-width: 24em; color: #6b6357; font-size: 15px; line-height: 1.5;">Un système clair, en français, sur une machine qu’on n’a pas besoin de racheter. Livré installé&nbsp;— pas de téléchargement.</p>
+      </div>
+      <div style="display: flex; gap: 48px; font-size: 15px;">
+        <div style="display: flex; flex-direction: column; gap: 9px;">
+          <a href="#visite" style="color: #6b6357;">Visite guidée</a>
+          <a href="#logiciels" style="color: #6b6357;">Logiciels</a>
+          <a href="#accessibilite" style="color: #6b6357;">Accessibilité</a>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 9px;">
+          <a href="#comparaison" style="color: #6b6357;">Comparaison</a>
+          <a href="#technique" style="color: #6b6357;">Technique</a>
+          <a href="#limites" style="color: #6b6357;">Limites</a>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 9px;">
+          <a href="#questions" style="color: #6b6357;">Questions</a>
+          <a href="#contact" style="color: #6b6357;">Nous écrire</a>
+          <a href="droits.html" style="color: #6b6357;">Droits</a></div>
+      </div>
+    </div>
+    <div style="display: flex; justify-content: space-between; gap: 20px; flex-wrap: wrap; margin-top: 36px; padding-top: 20px; border-top: 1px solid rgba(28,23,16,.1); font-size: 13.5px; color: #9a9080;">
+      <span>© 2026. Tous droits réservés.</span>
+      <a href="mailto:spmorin.mrservices@gmail.com" style="color: #1c1814;">spmorin.mrservices@gmail.com</a>
+      <span>Linux et les programmes du socle restent sous leurs licences d’origine. La couche Rabaska est propriétaire.</span>
+    </div>
+  </footer>
+</div>
+
+<script>
+(function () {
+  function applyHover(el) {
+    var hover = el.getAttribute("data-hover");
+    if (!hover) return;
+    if (!el.getAttribute("data-base-style")) {
+      el.setAttribute("data-base-style", el.getAttribute("style") || "");
+    }
+    el.addEventListener("mouseenter", function () {
+      var base = el.getAttribute("data-base-style") || "";
+      var map = {};
+      base.split(";").forEach(function (p) {
+        var i = p.indexOf(":");
+        if (i > 0) map[p.slice(0, i).trim()] = p.slice(i + 1).trim();
+      });
+      hover.split(";").forEach(function (p) {
+        var i = p.indexOf(":");
+        if (i > 0) map[p.slice(0, i).trim()] = p.slice(i + 1).trim();
+      });
+      el.style.cssText = Object.keys(map).map(function (k) { return k + ":" + map[k]; }).join(";");
+    });
+    el.addEventListener("mouseleave", function () {
+      el.setAttribute("style", el.getAttribute("data-base-style") || "");
+    });
+  }
+  document.querySelectorAll("[data-hover]").forEach(applyHover);
+
+  var bureau = document.getElementById("bureau");
+  var btn = document.getElementById("demarrer");
+  if (btn && bureau) {
+    btn.addEventListener("click", function () {
+      var ferme = bureau.classList.toggle("menu-ferme");
+      btn.setAttribute("aria-expanded", ferme ? "false" : "true");
+    });
+  }
+
+  var ongletActif = "display:flex; gap:16px; width:100%; text-align:left; border:none; cursor:pointer; padding:18px 20px; border-radius:14px; transition:background .25s, color .25s; background:#fdfbf6; box-shadow:inset 0 0 0 1px rgba(193,90,52,.45);";
+  var ongletInactif = "display:flex; gap:16px; width:100%; text-align:left; border:none; cursor:pointer; padding:18px 20px; border-radius:14px; transition:background .25s, color .25s; background:transparent;";
+  function showEtape(n) {
+    document.querySelectorAll(".visite-panneau").forEach(function (p) {
+      p.style.display = String(p.getAttribute("data-etape")) === String(n) ? "block" : "none";
+    });
+    document.querySelectorAll(".visite-onglet").forEach(function (b) {
+      var on = String(b.getAttribute("data-etape")) === String(n);
+      var next = on ? ongletActif : ongletInactif;
+      b.setAttribute("style", next);
+      b.setAttribute("data-base-style", next);
+      b.setAttribute("aria-pressed", on ? "true" : "false");
+    });
+  }
+  document.querySelectorAll(".visite-onglet").forEach(function (b) {
+    b.addEventListener("click", function () { showEtape(b.getAttribute("data-etape")); });
+  });
+
+  var heure = document.getElementById("heure");
+  var date = document.getElementById("date");
+  function tick() {
+    var n = new Date();
+    if (heure) heure.textContent = String(n.getHours()).padStart(2, "0") + ":" + String(n.getMinutes()).padStart(2, "0");
+    if (date) date.textContent = n.toLocaleDateString("fr-CA", { weekday: "long", day: "numeric", month: "long" });
+  }
+  tick();
+  setInterval(tick, 1000);
+
+  var form = document.getElementById("form-contact");
+  if (form) {
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+      var nom = document.getElementById("f-nom").value;
+      var courriel = document.getElementById("f-courriel").value;
+      var sujet = document.getElementById("f-sujet").value;
+      var message = document.getElementById("f-message").value;
+      var corps = "Nom : " + nom + "\nCourriel : " + courriel + "\nSujet : " + sujet + "\n\n" + message;
+      window.location.href = "mailto:spmorin.mrservices@gmail.com?subject=" +
+        encodeURIComponent("Rabaska OS — " + sujet) + "&body=" + encodeURIComponent(corps);
+    });
+  }
+})();
+</script>
 </body>
 </html>
