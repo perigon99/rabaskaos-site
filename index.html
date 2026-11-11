@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Rabaska OS — système d’exploitation en français pour PC d’occasion</title>
-  <meta name="description" content="Rabaska OS est le système d’exploitation en français de MR Services, livré installé sur ses ordinateurs d’occasion et reconditionnés. Accessibilité dès le premier démarrage : style, taille du texte, couleurs, rythme.">
+  <meta name="description" content="Rabaska OS, de MR Services, remplace Windows sur des PC d’occasion : un système d’exploitation en français, livré installé, accessible dès le premier allumage.">
   <meta name="author" content="MR Services">
   <meta name="robots" content="index,follow">
   <meta name="referrer" content="no-referrer">
@@ -19,38 +19,166 @@
   <meta property="og:url" content="https://rabaskaos.com/">
   <meta property="og:title" content="Rabaska OS — système d’exploitation en français pour PC d’occasion">
   <meta property="og:description" content="Système d’exploitation en français pour ordinateurs d’occasion et reconditionnés. Livré installé. Accessibilité au premier démarrage.">
-  <meta property="og:image" content="https://rabaskaos.com/captures/menu.png">
-  <meta property="og:image:alt" content="Menu Démarrer de Rabaska OS">
+  <meta property="og:image" content="https://rabaskaos.com/captures/partage-fr.png">
+  <meta property="og:image:alt" content="Rabaska OS par MR Services : un ordinateur d’occasion, un système neuf.">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:type" content="image/png">
+  <meta name="twitter:image:alt" content="Rabaska OS par MR Services : un ordinateur d’occasion, un système neuf.">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Rabaska OS — système d’exploitation en français pour PC d’occasion">
   <meta name="twitter:description" content="Système d’exploitation en français pour ordinateurs d’occasion et reconditionnés. Livré installé. Accessibilité au premier démarrage.">
-  <meta name="twitter:image" content="https://rabaskaos.com/captures/menu.png">
+  <meta name="twitter:image" content="https://rabaskaos.com/captures/partage-fr.png">
   <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self'; script-src 'unsafe-inline'; base-uri 'self'">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="fonts/Newsreader.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/HankenGrotesk.woff2" as="font" type="font/woff2" crossorigin>
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "SoftwareApplication",
-    "name": "Rabaska OS",
-    "url": "https://rabaskaos.com/",
-    "description": "Système d’exploitation en français pour ordinateurs d’occasion et reconditionnés, livré installé, avec accessibilité dès le premier démarrage.",
-    "inLanguage": "fr-CA",
-    "applicationCategory": "OperatingSystem",
-    "operatingSystem": "Linux",
-    "author": { "@id": "https://mrservices.ca/#organisation" },
-    "publisher": {
-      "@type": "Organization",
-      "@id": "https://mrservices.ca/#organisation",
-      "name": "MR Services",
-      "url": "https://mrservices.ca/",
-      "address": { "@type": "PostalAddress", "addressLocality": "Montréal", "addressRegion": "QC", "addressCountry": "CA" }
-    }
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://mrservices.ca/#organisation",
+        "name": "MR Services",
+        "url": "https://mrservices.ca/",
+        "description": "Atelier d’ordinateurs et de logiciels à Pointe-aux-Trembles, Montréal : vente d’ordinateurs reconditionnés, réparation, développement de logiciels.",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Montréal",
+          "addressRegion": "QC",
+          "addressCountry": "CA"
+        }
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://rabaskaos.com/#site",
+        "url": "https://rabaskaos.com/",
+        "name": "Rabaska OS",
+        "inLanguage": [
+          "fr-CA",
+          "en"
+        ],
+        "publisher": {
+          "@id": "https://mrservices.ca/#organisation"
+        }
+      },
+      {
+        "@type": "SoftwareApplication",
+        "@id": "https://rabaskaos.com/#rabaska-os",
+        "name": "Rabaska OS",
+        "url": "https://rabaskaos.com/",
+        "description": "Système d’exploitation en français pour ordinateurs d’occasion et reconditionnés, livré installé par MR Services, avec accessibilité dès le premier démarrage.",
+        "inLanguage": "fr-CA",
+        "applicationCategory": "OperatingSystem",
+        "operatingSystem": "Linux",
+        "image": "https://rabaskaos.com/captures/partage-fr.png",
+        "screenshot": "https://rabaskaos.com/captures/bureau.png",
+        "author": {
+          "@id": "https://mrservices.ca/#organisation"
+        },
+        "publisher": {
+          "@id": "https://mrservices.ca/#organisation"
+        }
+      },
+      {
+        "@type": "FAQPage",
+        "@id": "https://rabaskaos.com/#questions",
+        "url": "https://rabaskaos.com/",
+        "inLanguage": "fr-CA",
+        "isPartOf": {
+          "@id": "https://rabaskaos.com/#site"
+        },
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Est-ce que c’est Windows ?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Non. C’est un système Linux. Les gestes sont les mêmes — cliquer, double-cliquer, une barre en bas, un menu — mais les noms et l’apparence changent."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Mes fichiers Word et Excel ?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "LibreOffice les ouvre, les modifie et les enregistre. Pour un document très complexe, la mise en page peut bouger un peu."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Puis-je regarder Netflix ?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Beaucoup de services vidéo s’utilisent dans le navigateur. Qualité et expérience selon le service et la machine — parc d’occasion, typiquement autour de 720p, pas de 4K."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Et mes vieux programmes .exe ?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Un double-clic tente de les ouvrir avec Wine. Certains marchent, beaucoup non. Dites-nous lesquels comptent : on vérifie avant la vente."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Puis-je installer d’autres logiciels ?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Oui, depuis les dépôts Linux. C’est l’habillage Rabaska (thème, menu, assistant) qui reste fermé, pas la machine."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Combien de temps les mises à jour ?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Le socle reçoit les correctifs de la famille Ubuntu. La couche Rabaska se met à jour par notre canal, aussi longtemps que nous le tenons."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Faut-il un compte pour l’assistant ?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Oui : un compte Google et une connexion. L’assistant ouvre Gemini dans le navigateur. Sans compte, le reste de la machine fonctionne pareil."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Puis-je le télécharger pour mon vieux PC ?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Non. Il n’existe pas d’image publique. Rabaska OS est livré installé sur une machine que nous préparons."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Et si la machine brise ?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Les machines Rabaska sont garanties 3 mois. Écrivez-nous : on regarde avec vous avant de parler de réparation."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Ça marche sur un Mac ou une tablette ?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Non. PC 64 bits Intel ou AMD seulement. Sur un portable convertible, le mode tablette est reconnu."
+            }
+          }
+        ]
+      }
+    ]
   }
   </script>
   <style>
-@font-face { font-family: "Hanken Grotesk"; src: url("fonts/HankenGrotesk.ttf") format("truetype"); font-weight: 100 900; font-display: swap; }
-@font-face { font-family: "Newsreader"; src: url("fonts/Newsreader.ttf") format("truetype"); font-weight: 100 900; font-style: normal; font-display: swap; }
-@font-face { font-family: "Newsreader"; src: url("fonts/Newsreader-Italic.ttf") format("truetype"); font-weight: 100 900; font-style: italic; font-display: swap; }
+@font-face { font-family: "Hanken Grotesk"; src: url("fonts/HankenGrotesk.woff2") format("woff2"); font-weight: 100 900; font-display: swap; }
+@font-face { font-family: "Newsreader"; src: url("fonts/Newsreader.woff2") format("woff2"); font-weight: 100 900; font-style: normal; font-display: swap; }
+@font-face { font-family: "Newsreader"; src: url("fonts/Newsreader-Italic.woff2") format("woff2"); font-weight: 100 900; font-style: italic; font-display: swap; }
 html { background: #e9e2d4; scroll-behavior: smooth; }
 body { margin: 0; background: #e9e2d4; -webkit-font-smoothing: antialiased; }
 * { box-sizing: border-box; }
@@ -240,7 +368,7 @@ input, select, textarea, button { font: inherit; }
       <div>
         <div class="visite-panneau" data-etape="1" style="display: block;">
           <div style="background: linear-gradient(180deg, #ded6c7 0%, #d8cfc0 100%); border: 1px solid rgba(28,23,16,.1); border-radius: 20px; padding: 22px; display: grid; place-items: center; min-height: 380px;">
-            <img src="captures/assistant.png" alt="Premier allumage : choisissez votre style, clair ou sombre" style="display: block; width: 100%; max-height: 460px; object-fit: contain; border-radius: 10px;">
+            <img src="captures/assistant.png" alt="Premier allumage : choisissez votre style, clair ou sombre" width="2048" height="1440" loading="lazy" decoding="async" style="display: block; width: 100%; height: auto; max-height: 460px; object-fit: contain; border-radius: 10px;">
           </div>
           <h3 style="margin: 26px 0 10px; font-family: 'Newsreader', Georgia, serif; font-weight: 500; font-size: 28px; letter-spacing: -0.03em;">« Choisissez votre style »</h3>
           <p style="margin: 0 0 18px; color: #6b6357; font-size: 17px; line-height: 1.6; max-width: 40em;">Au tout premier démarrage, l’ordinateur pose quatre questions&nbsp;: le style (clair ou sombre), la taille du texte, les couleurs, le rythme. Chaque écran rappelle qu’on pourra changer plus tard. À la fin&nbsp;: «&nbsp;Tout est prêt&nbsp;», puis un bouton «&nbsp;Ouvrir mon bureau&nbsp;».</p>
@@ -253,7 +381,7 @@ input, select, textarea, button { font: inherit; }
 
         <div class="visite-panneau" data-etape="2" style="display: none;">
           <div style="background: linear-gradient(180deg, #ded6c7 0%, #d8cfc0 100%); border: 1px solid rgba(28,23,16,.1); border-radius: 20px; padding: 22px; display: grid; place-items: center; min-height: 380px;">
-            <img src="captures/menu.png" alt="Menu Démarrer : bonjour, recherche, quatre familles" style="display: block; max-height: 460px; width: auto; max-width: 100%; object-fit: contain; border-radius: 10px;">
+            <img src="captures/menu.png" alt="Menu Démarrer : bonjour, recherche, quatre familles" width="840" height="1120" loading="lazy" decoding="async" style="display: block; max-height: 460px; width: auto; height: auto; max-width: 100%; object-fit: contain; border-radius: 10px;">
           </div>
           <h3 style="margin: 26px 0 10px; font-family: 'Newsreader', Georgia, serif; font-weight: 500; font-size: 28px; letter-spacing: -0.03em;">Le bouton R, en bas à gauche</h3>
           <p style="margin: 0 0 18px; color: #6b6357; font-size: 17px; line-height: 1.6; max-width: 40em;">Un clic ouvre le menu. En haut, un bonjour avec le prénom. Dessous, une recherche&nbsp;: on tape le début d’un nom, le programme apparaît. Sans chercher, tout est rangé en quatre familles&nbsp;: Applications, Configuration, Outils système, Fichiers. En bas à droite&nbsp;: Éteindre.</p>
@@ -266,7 +394,7 @@ input, select, textarea, button { font: inherit; }
 
         <div class="visite-panneau" data-etape="3" style="display: none;">
           <div style="background: linear-gradient(180deg, #ded6c7 0%, #d8cfc0 100%); border: 1px solid rgba(28,23,16,.1); border-radius: 20px; padding: 22px; display: grid; place-items: center; min-height: 380px;">
-            <img src="captures/bureau.png" alt="Le bureau de Rabaska OS avec le menu ouvert" style="display: block; width: 100%; max-height: 460px; object-fit: contain; border-radius: 10px;">
+            <img src="captures/bureau.png" alt="Le bureau de Rabaska OS avec le menu ouvert" width="1280" height="800" loading="lazy" decoding="async" style="display: block; width: 100%; height: auto; max-height: 460px; object-fit: contain; border-radius: 10px;">
           </div>
           <h3 style="margin: 26px 0 10px; font-family: 'Newsreader', Georgia, serif; font-weight: 500; font-size: 28px; letter-spacing: -0.03em;">Une barre, et c’est tout</h3>
           <p style="margin: 0 0 18px; color: #6b6357; font-size: 17px; line-height: 1.6; max-width: 40em;">À côté du R, les cinq raccourcis du quotidien&nbsp;: l’assistant, Internet, les fichiers, les photos, le courriel. À droite&nbsp;: clair ou sombre, la langue, le Wi-Fi, le son, la batterie, l’heure. Rien d’autre. Le reste vit dans le menu.</p>

@@ -3,6 +3,7 @@
         xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://rabaskaos.com/</loc>
+    <lastmod>2026-11-11</lastmod>
     <xhtml:link rel="alternate" hreflang="fr-CA" href="https://rabaskaos.com/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://rabaskaos.com/en/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://rabaskaos.com/"/>
@@ -11,6 +12,7 @@
   </url>
   <url>
     <loc>https://rabaskaos.com/en/</loc>
+    <lastmod>2026-11-11</lastmod>
     <xhtml:link rel="alternate" hreflang="fr-CA" href="https://rabaskaos.com/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://rabaskaos.com/en/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://rabaskaos.com/"/>
@@ -19,6 +21,7 @@
   </url>
   <url>
     <loc>https://rabaskaos.com/droits.html</loc>
+    <lastmod>2026-11-11</lastmod>
     <xhtml:link rel="alternate" hreflang="fr-CA" href="https://rabaskaos.com/droits.html"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://rabaskaos.com/en/rights.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://rabaskaos.com/droits.html"/>
@@ -27,6 +30,7 @@
   </url>
   <url>
     <loc>https://rabaskaos.com/en/rights.html</loc>
+    <lastmod>2026-11-11</lastmod>
     <xhtml:link rel="alternate" hreflang="fr-CA" href="https://rabaskaos.com/droits.html"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://rabaskaos.com/en/rights.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://rabaskaos.com/droits.html"/>

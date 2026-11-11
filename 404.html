@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="fr-CA">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Page introuvable — Rabaska OS</title>
+  <meta name="robots" content="noindex">
+  <meta name="referrer" content="no-referrer">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self'; base-uri 'self'">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <style>
+    @font-face { font-family: "Hanken Grotesk"; src: url("/fonts/HankenGrotesk.woff2") format("woff2"); font-weight: 100 900; font-display: swap; }
+    @font-face { font-family: "Newsreader"; src: url("/fonts/Newsreader.woff2") format("woff2"); font-weight: 100 900; font-display: swap; }
+    @font-face { font-family: "Newsreader"; src: url("/fonts/Newsreader-Italic.woff2") format("woff2"); font-weight: 100 900; font-style: italic; font-display: swap; }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { background: #e9e2d4; }
+    body {
+      font-family: "Hanken Grotesk", system-ui, sans-serif; color: #1c1814;
+      font-size: 17px; line-height: 1.55;
+      min-height: 100vh; display: grid; place-items: center; padding: 40px 20px;
+    }
+    main { width: min(560px, 100%); }
+    .marque { display: flex; align-items: center; gap: 10px; font-family: "Newsreader", Georgia, serif; font-size: 21px; font-weight: 500; letter-spacing: -0.03em; color: #1c1814; text-decoration: none; }
+    .tuile { width: 30px; height: 30px; background: #c15a34; border-radius: 8px; color: #fff; font-style: italic; font-weight: 600; font-size: 17px; display: grid; place-items: center; }
+    h1 { font-family: "Newsreader", Georgia, serif; font-weight: 500; font-size: clamp(38px, 7vw, 54px); letter-spacing: -0.035em; line-height: 1.04; margin: 48px 0 14px; }
+    h1 em { font-style: italic; font-weight: 450; color: #c15a34; }
+    p { color: #6b6357; margin-bottom: 28px; }
+    .liens { display: flex; flex-wrap: wrap; gap: 12px; }
+    .liens a { font-size: 16px; font-weight: 600; padding: 13px 22px; border-radius: 999px; text-decoration: none; border: 1px solid rgba(28,23,16,.2); color: #1c1814; }
+    .liens a.principal { background: #c15a34; border-color: #c15a34; color: #fff; }
+    .liens a:hover { border-color: #c15a34; }
+    .liens a.principal:hover { background: #ac4c2b; }
+    .en { margin-top: 40px; padding-top: 20px; border-top: 1px solid rgba(28,23,16,.14); font-size: 15px; color: #6b6357; }
+    .en a { color: #1c1814; font-weight: 600; }
+  </style>
+</head>
+<body>
+  <main>
+    <a class="marque" href="/"><span class="tuile" aria-hidden="true">R</span>Rabaska OS</a>
+    <h1>Cette page <em>n’existe pas.</em></h1>
+    <p>Le lien est peut-être ancien ou mal copié. Tout le reste est à sa place.</p>
+    <div class="liens">
+      <a class="principal" href="/">Retour à l’accueil</a>
+      <a href="/#questions">Questions fréquentes</a>
+      <a href="https://mrservices.ca/" hreflang="fr">MR Services</a>
+    </div>
+    <p class="en" lang="en">Page not found. <a href="/en/">Go to the English home page</a>.</p>
+  </main>
+</body>
+</html>

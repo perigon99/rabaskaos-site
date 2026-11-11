@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Rabaska OS — French operating system for used PCs</title>
-  <meta name="description" content="Rabaska OS is the French-language operating system from MR Services, delivered preinstalled on its used and refurbished computers. Accessibility from the first boot: style, text size, colours, pace.">
+  <meta name="description" content="Rabaska OS by MR Services replaces Windows on used PCs: a French-language operating system, preinstalled and accessible from the very first boot.">
   <meta name="author" content="MR Services">
   <meta name="robots" content="index,follow">
   <meta name="referrer" content="no-referrer">
@@ -19,38 +19,166 @@
   <meta property="og:url" content="https://rabaskaos.com/en/">
   <meta property="og:title" content="Rabaska OS — French operating system for used PCs">
   <meta property="og:description" content="French-language operating system for used and refurbished computers. Delivered preinstalled. Accessibility from the first boot.">
-  <meta property="og:image" content="https://rabaskaos.com/captures/menu.png">
-  <meta property="og:image:alt" content="Rabaska OS Start menu">
+  <meta property="og:image" content="https://rabaskaos.com/captures/partage-en.png">
+  <meta property="og:image:alt" content="Rabaska OS by MR Services: a used computer, a new system.">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:type" content="image/png">
+  <meta name="twitter:image:alt" content="Rabaska OS by MR Services: a used computer, a new system.">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Rabaska OS — French operating system for used PCs">
   <meta name="twitter:description" content="French-language operating system for used and refurbished computers. Delivered preinstalled. Accessibility from the first boot.">
-  <meta name="twitter:image" content="https://rabaskaos.com/captures/menu.png">
+  <meta name="twitter:image" content="https://rabaskaos.com/captures/partage-en.png">
   <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self'; script-src 'unsafe-inline'; base-uri 'self'">
   <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="../fonts/Newsreader.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="../fonts/HankenGrotesk.woff2" as="font" type="font/woff2" crossorigin>
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "SoftwareApplication",
-    "name": "Rabaska OS",
-    "url": "https://rabaskaos.com/en/",
-    "description": "French-language operating system for used and refurbished computers, delivered preinstalled, with accessibility from the first boot.",
-    "inLanguage": "en",
-    "applicationCategory": "OperatingSystem",
-    "operatingSystem": "Linux",
-    "author": { "@id": "https://mrservices.ca/#organisation" },
-    "publisher": {
-      "@type": "Organization",
-      "@id": "https://mrservices.ca/#organisation",
-      "name": "MR Services",
-      "url": "https://mrservices.ca/",
-      "address": { "@type": "PostalAddress", "addressLocality": "Montréal", "addressRegion": "QC", "addressCountry": "CA" }
-    }
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://mrservices.ca/#organisation",
+        "name": "MR Services",
+        "url": "https://mrservices.ca/",
+        "description": "Computer and software workshop in Pointe-aux-Trembles, Montréal: refurbished computers, repair, software development.",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Montréal",
+          "addressRegion": "QC",
+          "addressCountry": "CA"
+        }
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://rabaskaos.com/#site",
+        "url": "https://rabaskaos.com/",
+        "name": "Rabaska OS",
+        "inLanguage": [
+          "fr-CA",
+          "en"
+        ],
+        "publisher": {
+          "@id": "https://mrservices.ca/#organisation"
+        }
+      },
+      {
+        "@type": "SoftwareApplication",
+        "@id": "https://rabaskaos.com/en/#rabaska-os",
+        "name": "Rabaska OS",
+        "url": "https://rabaskaos.com/en/",
+        "description": "French-language operating system for used and refurbished computers, preinstalled by MR Services, with accessibility from the first boot.",
+        "inLanguage": "en",
+        "applicationCategory": "OperatingSystem",
+        "operatingSystem": "Linux",
+        "image": "https://rabaskaos.com/captures/partage-en.png",
+        "screenshot": "https://rabaskaos.com/captures/bureau.png",
+        "author": {
+          "@id": "https://mrservices.ca/#organisation"
+        },
+        "publisher": {
+          "@id": "https://mrservices.ca/#organisation"
+        }
+      },
+      {
+        "@type": "FAQPage",
+        "@id": "https://rabaskaos.com/en/#questions",
+        "url": "https://rabaskaos.com/en/",
+        "inLanguage": "en",
+        "isPartOf": {
+          "@id": "https://rabaskaos.com/#site"
+        },
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Is this Windows?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No. It is a Linux system. The gestures are the same — click, double-click, a bar at the bottom, a menu — but names and look change."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "My Word and Excel files?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "LibreOffice opens, edits, and saves them. For a very complex document, layout may shift a little."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can I watch Netflix?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Many video services are used in the browser. Quality and experience depend on the service and the machine — used-PC fleet, typically around 720p, not 4K."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "And my old .exe programs?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "A double-click tries to open them with Wine. Some work, many do not. Tell us which ones matter: we check before the sale."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can I install other software?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes, from Linux repositories. It is the Rabaska look (theme, menu, assistant) that stays closed, not the machine."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How long do updates last?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "The base gets Ubuntu-family security fixes. The Rabaska layer updates through our channel, for as long as we keep it."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Do I need an account for the assistant?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes: a Google account and a connection. The assistant opens Gemini in the browser. Without an account, the rest of the machine works the same."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can I download it for my old PC?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No. There is no public image. Rabaska OS is delivered preinstalled on a machine we prepare."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What if the machine breaks?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Rabaska machines have a 3-month warranty. Write to us: we look with you before talking about repair."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Does it work on a Mac or tablet?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No. 64-bit Intel or AMD PCs only. On a convertible laptop, tablet mode is recognized."
+            }
+          }
+        ]
+      }
+    ]
   }
   </script>
   <style>
-@font-face { font-family: "Hanken Grotesk"; src: url("../fonts/HankenGrotesk.ttf") format("truetype"); font-weight: 100 900; font-display: swap; }
-@font-face { font-family: "Newsreader"; src: url("../fonts/Newsreader.ttf") format("truetype"); font-weight: 100 900; font-style: normal; font-display: swap; }
-@font-face { font-family: "Newsreader"; src: url("../fonts/Newsreader-Italic.ttf") format("truetype"); font-weight: 100 900; font-style: italic; font-display: swap; }
+@font-face { font-family: "Hanken Grotesk"; src: url("../fonts/HankenGrotesk.woff2") format("woff2"); font-weight: 100 900; font-display: swap; }
+@font-face { font-family: "Newsreader"; src: url("../fonts/Newsreader.woff2") format("woff2"); font-weight: 100 900; font-style: normal; font-display: swap; }
+@font-face { font-family: "Newsreader"; src: url("../fonts/Newsreader-Italic.woff2") format("woff2"); font-weight: 100 900; font-style: italic; font-display: swap; }
 html { background: #e9e2d4; scroll-behavior: smooth; }
 body { margin: 0; background: #e9e2d4; -webkit-font-smoothing: antialiased; }
 * { box-sizing: border-box; }
@@ -185,7 +313,7 @@ input, select, textarea, button { font: inherit; }
       <div style="background: #fdfbf6; border: 1px solid rgba(28,23,16,.1); border-radius: 18px; padding: 28px; transition: transform .3s cubic-bezier(.22,1,.36,1), border-color .3s;" data-hover="transform:translateY(-4px); border-color:rgba(193,90,52,.4)">
         <span style="display: grid; place-items: center; width: 40px; height: 40px; border-radius: 11px; background: rgba(193,90,52,.12); color: #c15a34; font-family: 'Newsreader', Georgia, serif; font-size: 20px; font-style: italic; margin-bottom: 18px;">1</span>
         <h3 style="margin: 0 0 8px; font-family: 'Newsreader', Georgia, serif; font-weight: 500; font-size: 25px; letter-spacing: -0.03em;">It is the full system</h3>
-        <p style="margin: 0; color: #6b6357; font-size: 16px; line-height: 1.55;">Not an app added on top of Windows. Rabaska OS replaces Windows&nbsp;: desktop, menu, settings, updates — everything.</p>
+        <p style="margin: 0; color: #6b6357; font-size: 16px; line-height: 1.55;">Not an app added on top of Windows. Rabaska OS replaces Windows: desktop, menu, settings, updates — everything.</p>
       </div>
       <div style="background: #fdfbf6; border: 1px solid rgba(28,23,16,.1); border-radius: 18px; padding: 28px; transition: transform .3s cubic-bezier(.22,1,.36,1), border-color .3s;" data-hover="transform:translateY(-4px); border-color:rgba(193,90,52,.4)">
         <span style="display: grid; place-items: center; width: 40px; height: 40px; border-radius: 11px; background: rgba(193,90,52,.12); color: #c15a34; font-family: 'Newsreader', Georgia, serif; font-size: 20px; font-style: italic; margin-bottom: 18px;">2</span>
@@ -240,38 +368,38 @@ input, select, textarea, button { font: inherit; }
       <div>
         <div class="visite-panneau" data-etape="1" style="display: block;">
           <div style="background: linear-gradient(180deg, #ded6c7 0%, #d8cfc0 100%); border: 1px solid rgba(28,23,16,.1); border-radius: 20px; padding: 22px; display: grid; place-items: center; min-height: 380px;">
-            <img src="../captures/assistant.png" alt="First boot: choose your style, light or dark" style="display: block; width: 100%; max-height: 460px; object-fit: contain; border-radius: 10px;">
+            <img src="../captures/assistant.png" alt="First boot: choose your style, light or dark" width="2048" height="1440" loading="lazy" decoding="async" style="display: block; width: 100%; height: auto; max-height: 460px; object-fit: contain; border-radius: 10px;">
           </div>
           <h3 style="margin: 26px 0 10px; font-family: 'Newsreader', Georgia, serif; font-weight: 500; font-size: 28px; letter-spacing: -0.03em;">“Choose your style”</h3>
-          <p style="margin: 0 0 18px; color: #6b6357; font-size: 17px; line-height: 1.6; max-width: 40em;">On the very first boot, the computer asks four questions&nbsp;: style (light or dark), text size, colours, pace. Each screen reminds you that you can change later. At the end&nbsp;: “Everything is ready”, then a button “Open my desktop”.</p>
+          <p style="margin: 0 0 18px; color: #6b6357; font-size: 17px; line-height: 1.6; max-width: 40em;">On the very first boot, the computer asks four questions: style (light or dark), text size, colours, pace. Each screen reminds you that you can change later. At the end: “Everything is ready”, then a button “Open my desktop”.</p>
           <ul style="list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; font-size: 16px; color: #1c1814;">
             <li style="display: flex; gap: 10px;"><span style="color: #c15a34;">—</span> No account to create, no password to invent.</li>
-            <li style="display: flex; gap: 10px;"><span style="color: #c15a34;">—</span> No medical label&nbsp;: we talk about comfort, not diagnosis.</li>
+            <li style="display: flex; gap: 10px;"><span style="color: #c15a34;">—</span> No medical label: we talk about comfort, not diagnosis.</li>
             <li style="display: flex; gap: 10px;"><span style="color: #c15a34;">—</span> The same settings later live under “Display and comfort”.</li>
           </ul>
         </div>
 
         <div class="visite-panneau" data-etape="2" style="display: none;">
           <div style="background: linear-gradient(180deg, #ded6c7 0%, #d8cfc0 100%); border: 1px solid rgba(28,23,16,.1); border-radius: 20px; padding: 22px; display: grid; place-items: center; min-height: 380px;">
-            <img src="../captures/menu.png" alt="Start menu: greeting, search, four families" style="display: block; max-height: 460px; width: auto; max-width: 100%; object-fit: contain; border-radius: 10px;">
+            <img src="../captures/menu.png" alt="Start menu: greeting, search, four families" width="840" height="1120" loading="lazy" decoding="async" style="display: block; max-height: 460px; width: auto; height: auto; max-width: 100%; object-fit: contain; border-radius: 10px;">
           </div>
           <h3 style="margin: 26px 0 10px; font-family: 'Newsreader', Georgia, serif; font-weight: 500; font-size: 28px; letter-spacing: -0.03em;">The R button, bottom left</h3>
-          <p style="margin: 0 0 18px; color: #6b6357; font-size: 17px; line-height: 1.6; max-width: 40em;">One click opens the menu. At the top, a greeting with the first name. Below, a search&nbsp;: type the start of a name, the program appears. Without searching, everything sits in four families&nbsp;: Applications, Settings, System tools, Files. Bottom right&nbsp;: Shut down.</p>
+          <p style="margin: 0 0 18px; color: #6b6357; font-size: 17px; line-height: 1.6; max-width: 40em;">One click opens the menu. At the top, a greeting with the first name. Below, a search: type the start of a name, the program appears. Without searching, everything sits in four families: Applications, Settings, System tools, Files. Bottom right: Shut down.</p>
           <ul style="list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; font-size: 16px; color: #1c1814;">
-            <li style="display: flex; gap: 10px;"><span style="color: #c15a34;">—</span> Rows at least 44&nbsp;px tall&nbsp;: easy to click without aiming hard.</li>
-            <li style="display: flex; gap: 10px;"><span style="color: #c15a34;">—</span> Under Applications&nbsp;: Internet, email, photos, music and video, documents, games, utilities.</li>
-            <li style="display: flex; gap: 10px;"><span style="color: #c15a34;">—</span> Technical plumbing is hidden&nbsp;: no winecfg, no regedit in the menu.</li>
+            <li style="display: flex; gap: 10px;"><span style="color: #c15a34;">—</span> Rows at least 44&nbsp;px tall: easy to click without aiming hard.</li>
+            <li style="display: flex; gap: 10px;"><span style="color: #c15a34;">—</span> Under Applications: Internet, email, photos, music and video, documents, games, utilities.</li>
+            <li style="display: flex; gap: 10px;"><span style="color: #c15a34;">—</span> Technical plumbing is hidden: no winecfg, no regedit in the menu.</li>
           </ul>
         </div>
 
         <div class="visite-panneau" data-etape="3" style="display: none;">
           <div style="background: linear-gradient(180deg, #ded6c7 0%, #d8cfc0 100%); border: 1px solid rgba(28,23,16,.1); border-radius: 20px; padding: 22px; display: grid; place-items: center; min-height: 380px;">
-            <img src="../captures/bureau.png" alt="Rabaska OS desktop with the menu open" style="display: block; width: 100%; max-height: 460px; object-fit: contain; border-radius: 10px;">
+            <img src="../captures/bureau.png" alt="Rabaska OS desktop with the menu open" width="1280" height="800" loading="lazy" decoding="async" style="display: block; width: 100%; height: auto; max-height: 460px; object-fit: contain; border-radius: 10px;">
           </div>
           <h3 style="margin: 26px 0 10px; font-family: 'Newsreader', Georgia, serif; font-weight: 500; font-size: 28px; letter-spacing: -0.03em;">A bar, and that is all</h3>
-          <p style="margin: 0 0 18px; color: #6b6357; font-size: 17px; line-height: 1.6; max-width: 40em;">Beside the R, five everyday shortcuts&nbsp;: assistant, Internet, files, photos, email. On the right&nbsp;: light or dark, language, Wi-Fi, sound, battery, clock. Nothing else. The rest lives in the menu.</p>
+          <p style="margin: 0 0 18px; color: #6b6357; font-size: 17px; line-height: 1.6; max-width: 40em;">Beside the R, five everyday shortcuts: assistant, Internet, files, photos, email. On the right: light or dark, language, Wi-Fi, sound, battery, clock. Nothing else. The rest lives in the menu.</p>
           <ul style="list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; font-size: 16px; color: #1c1814;">
-            <li style="display: flex; gap: 10px;"><span style="color: #c15a34;">—</span> No shadows, no blur&nbsp;: the machine works for you, not for decoration.</li>
+            <li style="display: flex; gap: 10px;"><span style="color: #c15a34;">—</span> No shadows, no blur: the machine works for you, not for decoration.</li>
             <li style="display: flex; gap: 10px;"><span style="color: #c15a34;">—</span> Flat windows, rounded top corners (labwc compositor, Wayland).</li>
             <li style="display: flex; gap: 10px;"><span style="color: #c15a34;">—</span> Wallpaper and theme stay in place after updates.</li>
           </ul>
@@ -286,7 +414,7 @@ input, select, textarea, button { font: inherit; }
             <p style="margin: 4px 0 0; font-size: 14px; color: #6b6357;">One button “Update everything”. Or “Later”.</p>
           </div>
           <h3 style="margin: 26px 0 10px; font-family: 'Newsreader', Georgia, serif; font-weight: 500; font-size: 28px; letter-spacing: -0.03em;">“Update everything”</h3>
-          <p style="margin: 0 0 18px; color: #6b6357; font-size: 17px; line-height: 1.6; max-width: 40em;">When something is ready, a notification says so in French. The window sorts what arrives into three groups&nbsp;: Security, Rabaska OS, Apps and system. One button does the rest. You can answer “Later”.</p>
+          <p style="margin: 0 0 18px; color: #6b6357; font-size: 17px; line-height: 1.6; max-width: 40em;">When something is ready, a notification says so in French. The window sorts what arrives into three groups: Security, Rabaska OS, Apps and system. One button does the rest. You can answer “Later”.</p>
           <ul style="list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; font-size: 16px; color: #1c1814;">
             <li style="display: flex; gap: 10px;"><span style="color: #c15a34;">—</span> No terminal, no commands to type.</li>
             <li style="display: flex; gap: 10px;"><span style="color: #c15a34;">—</span> Security fixes from the Ubuntu base keep arriving overnight.</li>
@@ -321,7 +449,7 @@ input, select, textarea, button { font: inherit; }
         <span style="display: grid; place-items: center; width: 42px; height: 42px; border-radius: 11px; background: #2f7d78; color: #fff; font-family: 'Newsreader', Georgia, serif; font-size: 20px; flex: none;">D</span>
         <div>
           <b style="display: block; font-size: 17px; margin-bottom: 4px;">Documents</b>
-          <span style="color: #6b6357; font-size: 15.5px; line-height: 1.5;">LibreOffice&nbsp;: text, spreadsheet, presentation. Opens and saves Word, Excel, and PowerPoint files.</span>
+          <span style="color: #6b6357; font-size: 15.5px; line-height: 1.5;">LibreOffice: text, spreadsheet, presentation. Opens and saves Word, Excel, and PowerPoint files.</span>
         </div>
       </div>
       <div style="display: flex; gap: 16px; background: #fdfbf6; border: 1px solid rgba(28,23,16,.1); border-radius: 16px; padding: 22px; transition: border-color .25s, transform .25s cubic-bezier(.22,1,.36,1);" data-hover="border-color:rgba(193,90,52,.4); transform:translateY(-3px)">
@@ -342,7 +470,7 @@ input, select, textarea, button { font: inherit; }
         <img src="../barre/fichiers.svg" alt="" style="width: 42px; height: 42px; flex: none;">
         <div>
           <b style="display: block; font-size: 17px; margin-bottom: 4px;">Files</b>
-          <span style="color: #6b6357; font-size: 15.5px; line-height: 1.5;">The file manager&nbsp;: folders, USB sticks, external drives. Plus a PDF reader to view and print.</span>
+          <span style="color: #6b6357; font-size: 15.5px; line-height: 1.5;">The file manager: folders, USB sticks, external drives. Plus a PDF reader to view and print.</span>
         </div>
       </div>
       <div style="display: flex; gap: 16px; background: #fdfbf6; border: 1px solid rgba(28,23,16,.1); border-radius: 16px; padding: 22px; transition: border-color .25s, transform .25s cubic-bezier(.22,1,.36,1);" data-hover="border-color:rgba(193,90,52,.4); transform:translateY(-3px)">
@@ -363,19 +491,19 @@ input, select, textarea, button { font: inherit; }
         <span style="display: grid; place-items: center; width: 42px; height: 42px; border-radius: 11px; background: #6b6459; color: #fff; font-family: 'Newsreader', Georgia, serif; font-size: 20px; flex: none;">R</span>
         <div>
           <b style="display: block; font-size: 17px; margin-bottom: 4px;">Display and comfort</b>
-          <span style="color: #6b6357; font-size: 15.5px; line-height: 1.5;">Style, text size, colours, pace&nbsp;: the four day-one questions, ready to revisit anytime.</span>
+          <span style="color: #6b6357; font-size: 15.5px; line-height: 1.5;">Style, text size, colours, pace: the four day-one questions, ready to revisit anytime.</span>
         </div>
       </div>
     </div>
 
     <p style="margin: 24px 0 0; padding: 20px 22px; background: rgba(28,23,16,.045); border-radius: 14px; color: #1c1814; font-size: 15.5px; line-height: 1.6; max-width: 68em;">
-      Microsoft Edge is not preinstalled&nbsp;: its licence forbids it. A shortcut lets you install it yourself. Ubuntu snap packages are removed&nbsp;— Firefox and Chromium come from official .deb repositories, faster to start on an older machine.
+      Microsoft Edge is not preinstalled: its licence forbids it. A shortcut lets you install it yourself. Ubuntu snap packages are removed&nbsp;— Firefox and Chromium come from official .deb repositories, faster to start on an older machine.
     </p>
 
     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1px; margin-top: 40px; background: rgba(28,23,16,.1); border: 1px solid rgba(28,23,16,.1); border-radius: 16px; overflow: hidden;">
       <div style="background: #e9e2d4; padding: 22px;"><b style="display: block; font-size: 16px; margin-bottom: 4px;">Browse</b><span style="font-size: 14.5px; color: #6b6357;">Sites, banking, webmail, online taxes.</span></div>
       <div style="background: #e9e2d4; padding: 22px;"><b style="display: block; font-size: 16px; margin-bottom: 4px;">Write</b><span style="font-size: 14.5px; color: #6b6357;">Letters, budget, resume, presentations.</span></div>
-      <div style="background: #e9e2d4; padding: 22px;"><b style="display: block; font-size: 16px; margin-bottom: 4px;">Watch</b><span style="font-size: 14.5px; color: #6b6357;">YouTube and web streaming&nbsp;; quality depends on the service and the machine.</span></div>
+      <div style="background: #e9e2d4; padding: 22px;"><b style="display: block; font-size: 16px; margin-bottom: 4px;">Watch</b><span style="font-size: 14.5px; color: #6b6357;">YouTube and web streaming; quality depends on the service and the machine.</span></div>
       <div style="background: #e9e2d4; padding: 22px;"><b style="display: block; font-size: 16px; margin-bottom: 4px;">Listen</b><span style="font-size: 14.5px; color: #6b6357;">Web radio, Spotify, your own files.</span></div>
       <div style="background: #e9e2d4; padding: 22px;"><b style="display: block; font-size: 16px; margin-bottom: 4px;">Organize</b><span style="font-size: 14.5px; color: #6b6357;">Photos, documents, USB sticks.</span></div>
     </div>
@@ -383,8 +511,8 @@ input, select, textarea, button { font: inherit; }
 
   <section id="compatibilite" style="width: min(1240px, calc(100% - 48px)); margin: 104px auto 0; scroll-margin-top: 88px;">
     <p style="margin: 0 0 14px; font-size: 11px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: #c15a34;">Everyday use</p>
-    <h2 style="margin: 0; font-family: 'Newsreader', Georgia, serif; font-weight: 500; font-size: clamp(32px, 4vw, 50px); letter-spacing: -0.038em; line-height: 1.06; max-width: 24em;">Known software&nbsp;: what works well, what causes trouble</h2>
-    <p style="margin: 18px 0 40px; color: #6b6357; font-size: 19px; line-height: 1.55; max-width: 40em;">So you can decide before you buy. An indicative everyday list&nbsp;; for a specific case, we check with you.</p>
+    <h2 style="margin: 0; font-family: 'Newsreader', Georgia, serif; font-weight: 500; font-size: clamp(32px, 4vw, 50px); letter-spacing: -0.038em; line-height: 1.06; max-width: 24em;">Known software: what works well, what causes trouble</h2>
+    <p style="margin: 18px 0 40px; color: #6b6357; font-size: 19px; line-height: 1.55; max-width: 40em;">So you can decide before you buy. An indicative everyday list; for a specific case, we check with you.</p>
 
     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 20px;">
       <div style="background: #fdfbf6; border: 1px solid rgba(47,125,120,.28); border-radius: 18px; padding: 28px 26px;">
@@ -425,7 +553,7 @@ input, select, textarea, button { font: inherit; }
           </li>
           <li>
             <b style="display: block; font-size: 16px; margin-bottom: 3px;">Adobe Creative Cloud</b>
-            <span style="color: #6b6357; font-size: 15.5px; line-height: 1.5;">Photoshop, Premiere, Illustrator, Lightroom. Alternatives&nbsp;: GIMP or Photopea (browser).</span>
+            <span style="color: #6b6357; font-size: 15.5px; line-height: 1.5;">Photoshop, Premiere, Illustrator, Lightroom. Alternatives: GIMP or Photopea (browser).</span>
           </li>
           <li>
             <b style="display: block; font-size: 16px; margin-bottom: 3px;">Recent games with anti-cheat</b>
@@ -437,7 +565,7 @@ input, select, textarea, button { font: inherit; }
           </li>
           <li>
             <b style="display: block; font-size: 16px; margin-bottom: 3px;">iTunes for Windows</b>
-            <span style="color: #6b6357; font-size: 15.5px; line-height: 1.5;">The Windows app does not install. Music and media&nbsp;: browser, Spotify, or VLC.</span>
+            <span style="color: #6b6357; font-size: 15.5px; line-height: 1.5;">The Windows app does not install. Music and media: browser, Spotify, or VLC.</span>
           </li>
         </ul>
       </div>
@@ -501,7 +629,7 @@ input, select, textarea, button { font: inherit; }
             <span style="font-size: 19px;">Search for an application</span>
           </div>
         </div>
-        <p style="margin: 16px 0 0; color: #6b6357; font-size: 15.5px; line-height: 1.55;">Everything grows together&nbsp;: menu, windows, messages. Not just a zoom on one part of the screen.</p>
+        <p style="margin: 16px 0 0; color: #6b6357; font-size: 15.5px; line-height: 1.55;">Everything grows together: menu, windows, messages. Not just a zoom on one part of the screen.</p>
       </div>
 
       <div style="background: #fdfbf6; border: 1px solid rgba(28,23,16,.1); border-radius: 18px; padding: 26px;">
@@ -545,7 +673,7 @@ input, select, textarea, button { font: inherit; }
           <span style="border: 1px solid rgba(28,23,16,.16); border-radius: 999px; padding: 9px 16px; font-size: 15px; font-weight: 600;">Calmer</span>
           <span style="border: 1px solid rgba(28,23,16,.16); border-radius: 999px; padding: 9px 16px; font-size: 15px; font-weight: 600;">Simpler</span>
         </div>
-        <p style="margin: 0; color: #6b6357; font-size: 15.5px; line-height: 1.55;">Some people tire quickly&nbsp;: fewer animations, less on screen, more open text. That is comfort, not a label.</p>
+        <p style="margin: 0; color: #6b6357; font-size: 15.5px; line-height: 1.55;">Some people tire quickly: fewer animations, less on screen, more open text. That is comfort, not a label.</p>
       </div>
     </div>
 
@@ -575,7 +703,7 @@ input, select, textarea, button { font: inherit; }
               <span style="color: #a89f8d; font-size: 15px;">New versions of your programs.</span>
             </div>
           </div>
-          <p style="margin: 22px 0 0; color: #a89f8d; font-size: 15.5px; line-height: 1.6;">The Linux base keeps receiving Ubuntu-family security fixes. Without the MR Services channel, the Rabaska layer stops evolving. Lubuntu’s original notifier is still present&nbsp;: you may see two invitations for a while.</p>
+          <p style="margin: 22px 0 0; color: #a89f8d; font-size: 15.5px; line-height: 1.6;">The Linux base keeps receiving Ubuntu-family security fixes. Without the MR Services channel, the Rabaska layer stops evolving. Lubuntu’s original notifier is still present: you may see two invitations for a while.</p>
         </div>
       </div>
 
@@ -586,7 +714,7 @@ input, select, textarea, button { font: inherit; }
         </div>
         <div>
           <h3 style="margin: 0 0 8px; font-family: 'Newsreader', Georgia, serif; font-weight: 500; font-size: 24px; letter-spacing: -0.03em;">Where software comes from</h3>
-          <p style="margin: 0; color: #a89f8d; font-size: 15.5px; line-height: 1.6;">Official .deb repositories (Ubuntu, Mozilla). Snap packages are removed. The Rabaska layer comes from one channel&nbsp;: the one run by MR Services.</p>
+          <p style="margin: 0; color: #a89f8d; font-size: 15.5px; line-height: 1.6;">Official .deb repositories (Ubuntu, Mozilla). Snap packages are removed. The Rabaska layer comes from one channel: the one run by MR Services.</p>
         </div>
         <div>
           <h3 style="margin: 0 0 8px; font-family: 'Newsreader', Georgia, serif; font-weight: 500; font-size: 24px; letter-spacing: -0.03em;">Secure Boot kept</h3>
@@ -618,7 +746,7 @@ input, select, textarea, button { font: inherit; }
       <div style="background: #e9e2d4; padding: 18px 20px; font-size: 15.5px; line-height: 1.5; color: #6b6357;">A valid Windows licence is required.</div>
 
       <div style="background: #e9e2d4; padding: 18px 20px; font-weight: 600; font-size: 15.5px;">Everyday software</div>
-      <div style="background: #fdfbf6; padding: 18px 20px; font-size: 15.5px; line-height: 1.5;">Web, email, office, video, PDF&nbsp;: already installed, free.</div>
+      <div style="background: #fdfbf6; padding: 18px 20px; font-size: 15.5px; line-height: 1.5;">Web, email, office, video, PDF: already installed, free.</div>
       <div style="background: #e9e2d4; padding: 18px 20px; font-size: 15.5px; line-height: 1.5; color: #6b6357;">Install one by one. Office suite costs money.</div>
 
       <div style="background: #e9e2d4; padding: 18px 20px; font-weight: 600; font-size: 15.5px;">Your Windows programs (.exe)</div>
@@ -627,7 +755,7 @@ input, select, textarea, button { font: inherit; }
 
       <div style="background: #e9e2d4; padding: 18px 20px; font-weight: 600; font-size: 15.5px;">Games</div>
       <div style="background: #fdfbf6; padding: 18px 20px; font-size: 15.5px; line-height: 1.5;">No. This is not the machine for that.</div>
-      <div style="background: #e9e2d4; padding: 18px 20px; font-size: 15.5px; line-height: 1.5; color: #6b6357;">Depends on the machine&nbsp;; rarely recent games on this fleet.</div>
+      <div style="background: #e9e2d4; padding: 18px 20px; font-size: 15.5px; line-height: 1.5; color: #6b6357;">Depends on the machine; rarely recent games on this fleet.</div>
 
       <div style="background: #e9e2d4; padding: 18px 20px; font-weight: 600; font-size: 15.5px;">Video</div>
       <div style="background: #fdfbf6; padding: 18px 20px; font-size: 15.5px; line-height: 1.5;">YouTube, Spotify, and streaming in the browser. Quality depends on the service and the machine&nbsp;— typically around 720p, not 4K.</div>
@@ -638,14 +766,14 @@ input, select, textarea, button { font: inherit; }
       <div style="background: #e9e2d4; padding: 18px 20px; font-size: 15.5px; line-height: 1.5; color: #6b6357;">Windows Update, while the version is still supported.</div>
     </div></div>
 
-    <p style="margin: 24px 0 0; font-family: 'Newsreader', Georgia, serif; font-style: italic; font-size: clamp(20px, 2.4vw, 27px); line-height: 1.35; letter-spacing: -0.025em; max-width: 30em;">If you need a specific Windows program, a recent game, or 4K&nbsp;: keep Windows. We will tell you before the sale.</p>
+    <p style="margin: 24px 0 0; font-family: 'Newsreader', Georgia, serif; font-style: italic; font-size: clamp(20px, 2.4vw, 27px); line-height: 1.35; letter-spacing: -0.025em; max-width: 30em;">If you need a specific Windows program, a recent game, or 4K: keep Windows. We will tell you before the sale.</p>
   </section>
   
 
   <section id="technique" style="width: min(1240px, calc(100% - 48px)); margin: 104px auto 0; scroll-margin-top: 88px;">
     <p style="margin: 0 0 14px; font-size: 11px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: #c15a34;">Technical sheet</p>
     <h2 style="margin: 0; font-family: 'Newsreader', Georgia, serif; font-weight: 500; font-size: clamp(32px, 4vw, 50px); letter-spacing: -0.038em; line-height: 1.06; max-width: 20em;">What sits underneath, without rounding</h2>
-    <p style="margin: 18px 0 40px; color: #6b6357; font-size: 19px; line-height: 1.55; max-width: 38em;">Rabaska OS is not a kernel invented from scratch&nbsp;: it is a closed layer on a known Linux. Here is the real stack, as built.</p>
+    <p style="margin: 18px 0 40px; color: #6b6357; font-size: 19px; line-height: 1.55; max-width: 38em;">Rabaska OS is not a kernel invented from scratch: it is a closed layer on a known Linux. Here is the real stack, as built.</p>
 
     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 16px;">
       <div style="background: #fdfbf6; border: 1px solid rgba(28,23,16,.1); border-radius: 16px; padding: 24px;">
@@ -654,7 +782,7 @@ input, select, textarea, button { font: inherit; }
       </div>
       <div style="background: #fdfbf6; border: 1px solid rgba(28,23,16,.1); border-radius: 16px; padding: 24px;">
         <b style="display: block; font-size: 12px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: #c15a34; margin-bottom: 10px;">Session</b>
-        <p style="margin: 0; color: #1c1814; font-size: 16px; line-height: 1.55;">Default&nbsp;: LXQt on Wayland, labwc compositor (rounded top corners, 12&nbsp;px). No drop shadows&nbsp;: blur costs too much on a small CPU. Fallback&nbsp;: LXQt on X11 with Openbox.</p>
+        <p style="margin: 0; color: #1c1814; font-size: 16px; line-height: 1.55;">Default: LXQt on Wayland, labwc compositor (rounded top corners, 12&nbsp;px). No drop shadows: blur costs too much on a small CPU. Fallback: LXQt on X11 with Openbox.</p>
       </div>
       <div style="background: #fdfbf6; border: 1px solid rgba(28,23,16,.1); border-radius: 16px; padding: 24px;">
         <b style="display: block; font-size: 12px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: #c15a34; margin-bottom: 10px;">Rabaska layer</b>
@@ -662,11 +790,11 @@ input, select, textarea, button { font: inherit; }
       </div>
       <div style="background: #fdfbf6; border: 1px solid rgba(28,23,16,.1); border-radius: 16px; padding: 24px;">
         <b style="display: block; font-size: 12px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: #c15a34; margin-bottom: 10px;">Target hardware</b>
-        <p style="margin: 0; color: #1c1814; font-size: 16px; line-height: 1.55;">Refurbished x86-64 PCs. Design target&nbsp;: little memory, a worn disk, a slow CPU (AMD C-50 class 1&nbsp;GHz, 2&nbsp;GB). At boot, a service tunes the disk scheduler and ZRAM. Not ARM, not Apple.</p>
+        <p style="margin: 0; color: #1c1814; font-size: 16px; line-height: 1.55;">Refurbished x86-64 PCs. Design target: little memory, a worn disk, a slow CPU (AMD C-50 class 1&nbsp;GHz, 2&nbsp;GB). At boot, a service tunes the disk scheduler and ZRAM. Not ARM, not Apple.</p>
       </div>
       <div style="background: #fdfbf6; border: 1px solid rgba(28,23,16,.1); border-radius: 16px; padding: 24px;">
         <b style="display: block; font-size: 12px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: #c15a34; margin-bottom: 10px;">Video</b>
-        <p style="margin: 0; color: #1c1814; font-size: 16px; line-height: 1.55;">YouTube in Chromium with hardware decode (VA-API) when the GPU allows. Spotify and many video services in the browser. Typical quality on this fleet&nbsp;: about 720p&nbsp;— not 4K.</p>
+        <p style="margin: 0; color: #1c1814; font-size: 16px; line-height: 1.55;">YouTube in Chromium with hardware decode (VA-API) when the GPU allows. Spotify and many video services in the browser. Typical quality on this fleet: about 720p&nbsp;— not 4K.</p>
       </div>
       <div style="background: #fdfbf6; border: 1px solid rgba(28,23,16,.1); border-radius: 16px; padding: 24px;">
         <b style="display: block; font-size: 12px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: #c15a34; margin-bottom: 10px;">Tablet</b>
@@ -674,7 +802,7 @@ input, select, textarea, button { font: inherit; }
       </div>
       <div style="background: #fdfbf6; border: 1px solid rgba(28,23,16,.1); border-radius: 16px; padding: 24px;">
         <b style="display: block; font-size: 12px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: #c15a34; margin-bottom: 10px;">Network and software store</b>
-        <p style="margin: 0; color: #1c1814; font-size: 16px; line-height: 1.55;">Ubuntu snap packages are removed&nbsp;: Firefox and Chromium come from .deb repos. A Linux software store (Discover) may be present&nbsp;; it is not a phone app store.</p>
+        <p style="margin: 0; color: #1c1814; font-size: 16px; line-height: 1.55;">Ubuntu snap packages are removed: Firefox and Chromium come from .deb repos. A Linux software store (Discover) may be present; it is not a phone app store.</p>
       </div>
       <div style="background: #fdfbf6; border: 1px solid rgba(28,23,16,.1); border-radius: 16px; padding: 24px;">
         <b style="display: block; font-size: 12px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: #c15a34; margin-bottom: 10px;">Licences</b>
@@ -691,11 +819,11 @@ input, select, textarea, button { font: inherit; }
       <div style="grid-row: span 2; background: #fdfbf6; border: 1px solid rgba(193,90,52,.35); border-radius: 18px; padding: 30px; display: flex; flex-direction: column; justify-content: center;">
         <p style="margin: 0 0 14px; font-size: 11px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: #c15a34;">The main limit</p>
         <p style="margin: 0 0 14px; font-family: 'Newsreader', Georgia, serif; font-style: italic; font-weight: 500; font-size: clamp(32px, 3.6vw, 46px); letter-spacing: -0.03em; line-height: 1.02;">This is not 4K.</p>
-        <p style="margin: 0; color: #1c1814; font-size: 17px; line-height: 1.55;">Screen, graphics card, CPU&nbsp;: this is a used-PC fleet. Video runs around 720p. If you want a 4K workstation or recent games, this is not the right product&nbsp;— and we will say so.</p>
+        <p style="margin: 0; color: #1c1814; font-size: 17px; line-height: 1.55;">Screen, graphics card, CPU: this is a used-PC fleet. Video runs around 720p. If you want a 4K workstation or recent games, this is not the right product&nbsp;— and we will say so.</p>
       </div>
       <div style="background: #e9e2d4; border: 1px solid rgba(28,23,16,.14); border-radius: 18px; padding: 24px;">
         <b style="display: block; font-size: 17px; margin-bottom: 6px;">This is not Windows</b>
-        <span style="color: #6b6357; font-size: 15.5px; line-height: 1.55;">Wine opens some .exe files&nbsp;; many fail. Games and large professional apps, no.</span>
+        <span style="color: #6b6357; font-size: 15.5px; line-height: 1.55;">Wine opens some .exe files; many fail. Games and large professional apps, no.</span>
       </div>
       <div style="background: #e9e2d4; border: 1px solid rgba(28,23,16,.14); border-radius: 18px; padding: 24px;">
         <b style="display: block; font-size: 17px; margin-bottom: 6px;">No download</b>
@@ -715,11 +843,11 @@ input, select, textarea, button { font: inherit; }
       </div>
       <div style="background: #e9e2d4; border: 1px solid rgba(28,23,16,.14); border-radius: 18px; padding: 24px;">
         <b style="display: block; font-size: 17px; margin-bottom: 6px;">Two invitations possible</b>
-        <span style="color: #6b6357; font-size: 15.5px; line-height: 1.55;">Lubuntu’s original notifier is still there&nbsp;: you may see two update notices until it is gone.</span>
+        <span style="color: #6b6357; font-size: 15.5px; line-height: 1.55;">Lubuntu’s original notifier is still there: you may see two update notices until it is gone.</span>
       </div>
       <div style="background: #e9e2d4; border: 1px solid rgba(28,23,16,.14); border-radius: 18px; padding: 24px;">
         <b style="display: block; font-size: 17px; margin-bottom: 6px;">Under X11, square corners</b>
-        <span style="color: #6b6357; font-size: 15.5px; line-height: 1.55;">Without a compositor, the menu has square corners. That is intentional&nbsp;: better than blur that slows things down.</span>
+        <span style="color: #6b6357; font-size: 15.5px; line-height: 1.55;">Without a compositor, the menu has square corners. That is intentional: better than blur that slows things down.</span>
       </div>
     </div>
   </section>
@@ -730,43 +858,43 @@ input, select, textarea, button { font: inherit; }
 
     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 0 56px;">
       <div style="padding: 22px 0; border-top: 1px solid rgba(28,23,16,.14);">
-        <b style="display: block; font-size: 18px; margin-bottom: 7px;">Is this Windows&nbsp;?</b>
+        <b style="display: block; font-size: 18px; margin-bottom: 7px;">Is this Windows?</b>
         <span style="color: #6b6357; font-size: 16px; line-height: 1.6;">No. It is a Linux system. The gestures are the same&nbsp;— click, double-click, a bar at the bottom, a menu&nbsp;— but names and look change.</span>
       </div>
       <div style="padding: 22px 0; border-top: 1px solid rgba(28,23,16,.14);">
-        <b style="display: block; font-size: 18px; margin-bottom: 7px;">My Word and Excel files&nbsp;?</b>
+        <b style="display: block; font-size: 18px; margin-bottom: 7px;">My Word and Excel files?</b>
         <span style="color: #6b6357; font-size: 16px; line-height: 1.6;">LibreOffice opens, edits, and saves them. For a very complex document, layout may shift a little.</span>
       </div>
       <div style="padding: 22px 0; border-top: 1px solid rgba(28,23,16,.14);">
-        <b style="display: block; font-size: 18px; margin-bottom: 7px;">Can I watch Netflix&nbsp;?</b>
+        <b style="display: block; font-size: 18px; margin-bottom: 7px;">Can I watch Netflix?</b>
         <span style="color: #6b6357; font-size: 16px; line-height: 1.6;">Many video services are used in the browser. Quality and experience depend on the service and the machine&nbsp;— used-PC fleet, typically around 720p, not 4K.</span>
       </div>
       <div style="padding: 22px 0; border-top: 1px solid rgba(28,23,16,.14);">
-        <b style="display: block; font-size: 18px; margin-bottom: 7px;">And my old .exe programs&nbsp;?</b>
-        <span style="color: #6b6357; font-size: 16px; line-height: 1.6;">A double-click tries to open them with Wine. Some work, many do not. Tell us which ones matter&nbsp;: we check before the sale.</span>
+        <b style="display: block; font-size: 18px; margin-bottom: 7px;">And my old .exe programs?</b>
+        <span style="color: #6b6357; font-size: 16px; line-height: 1.6;">A double-click tries to open them with Wine. Some work, many do not. Tell us which ones matter: we check before the sale.</span>
       </div>
       <div style="padding: 22px 0; border-top: 1px solid rgba(28,23,16,.14);">
-        <b style="display: block; font-size: 18px; margin-bottom: 7px;">Can I install other software&nbsp;?</b>
+        <b style="display: block; font-size: 18px; margin-bottom: 7px;">Can I install other software?</b>
         <span style="color: #6b6357; font-size: 16px; line-height: 1.6;">Yes, from Linux repositories. It is the Rabaska look (theme, menu, assistant) that stays closed, not the machine.</span>
       </div>
       <div style="padding: 22px 0; border-top: 1px solid rgba(28,23,16,.14);">
-        <b style="display: block; font-size: 18px; margin-bottom: 7px;">How long do updates last&nbsp;?</b>
+        <b style="display: block; font-size: 18px; margin-bottom: 7px;">How long do updates last?</b>
         <span style="color: #6b6357; font-size: 16px; line-height: 1.6;">The base gets Ubuntu-family security fixes. The Rabaska layer updates through our channel, for as long as we keep it.</span>
       </div>
       <div style="padding: 22px 0; border-top: 1px solid rgba(28,23,16,.14);">
-        <b style="display: block; font-size: 18px; margin-bottom: 7px;">Do I need an account for the assistant&nbsp;?</b>
-        <span style="color: #6b6357; font-size: 16px; line-height: 1.6;">Yes&nbsp;: a Google account and a connection. The assistant opens Gemini in the browser. Without an account, the rest of the machine works the same.</span>
+        <b style="display: block; font-size: 18px; margin-bottom: 7px;">Do I need an account for the assistant?</b>
+        <span style="color: #6b6357; font-size: 16px; line-height: 1.6;">Yes: a Google account and a connection. The assistant opens Gemini in the browser. Without an account, the rest of the machine works the same.</span>
       </div>
       <div style="padding: 22px 0; border-top: 1px solid rgba(28,23,16,.14);">
-        <b style="display: block; font-size: 18px; margin-bottom: 7px;">Can I download it for my old PC&nbsp;?</b>
+        <b style="display: block; font-size: 18px; margin-bottom: 7px;">Can I download it for my old PC?</b>
         <span style="color: #6b6357; font-size: 16px; line-height: 1.6;">No. There is no public image. Rabaska OS is delivered preinstalled on a machine we prepare.</span>
       </div>
       <div style="padding: 22px 0; border-top: 1px solid rgba(28,23,16,.14);">
-        <b style="display: block; font-size: 18px; margin-bottom: 7px;">What if the machine breaks&nbsp;?</b>
-        <span style="color: #6b6357; font-size: 16px; line-height: 1.6;">Rabaska machines have a 3-month warranty. Write to us&nbsp;: we look with you before talking about repair.</span>
+        <b style="display: block; font-size: 18px; margin-bottom: 7px;">What if the machine breaks?</b>
+        <span style="color: #6b6357; font-size: 16px; line-height: 1.6;">Rabaska machines have a 3-month warranty. Write to us: we look with you before talking about repair.</span>
       </div>
       <div style="padding: 22px 0; border-top: 1px solid rgba(28,23,16,.14); border-bottom: 1px solid rgba(28,23,16,.14);">
-        <b style="display: block; font-size: 18px; margin-bottom: 7px;">Does it work on a Mac or tablet&nbsp;?</b>
+        <b style="display: block; font-size: 18px; margin-bottom: 7px;">Does it work on a Mac or tablet?</b>
         <span style="color: #6b6357; font-size: 16px; line-height: 1.6;">No. 64-bit Intel or AMD PCs only. On a convertible laptop, tablet mode is recognized.</span>
       </div>
     </div>
@@ -776,7 +904,7 @@ input, select, textarea, button { font: inherit; }
     <div style="background: #fdfbf6; border: 1px solid rgba(28,23,16,.1); border-radius: 22px; padding: clamp(22px, 5vw, 44px); display: grid; grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr)); gap: 48px;">
       <div>
         <p style="margin: 0 0 14px; font-size: 11px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: #c15a34;">Contact us</p>
-        <h2 style="margin: 0 0 14px; font-family: 'Newsreader', Georgia, serif; font-weight: 500; font-size: clamp(30px, 3.4vw, 42px); letter-spacing: -0.035em; line-height: 1.06;">A question, a clear need&nbsp;?</h2>
+        <h2 style="margin: 0 0 14px; font-family: 'Newsreader', Georgia, serif; font-weight: 500; font-size: clamp(30px, 3.4vw, 42px); letter-spacing: -0.035em; line-height: 1.06;">A question, a clear need?</h2>
         <p style="margin: 0 0 28px; color: #6b6357; font-size: 17px; line-height: 1.55;">Tell us what the machine must do. We answer honestly, even when the answer is “no”.</p>
         <form id="form-contact" style="display: grid; gap: 14px;">
           <label style="display: grid; gap: 6px;">
@@ -825,7 +953,7 @@ input, select, textarea, button { font: inherit; }
         </div>
         <div style="background: #e9e2d4; border-radius: 16px; padding: 22px;">
           <b style="display: block; font-size: 12px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: #6b6357; margin-bottom: 8px;">Service area</b>
-          <span style="font-size: 16px; line-height: 1.55;">Write to us with your city&nbsp;: we say right away if we can deliver or meet you.</span>
+          <span style="font-size: 16px; line-height: 1.55;">Write to us with your city: we say right away if we can deliver or meet you.</span>
         </div>
         <div style="background: #e9e2d4; border-radius: 16px; padding: 22px;">
           <b style="display: block; font-size: 12px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: #6b6357; margin-bottom: 8px;">Good to know</b>
