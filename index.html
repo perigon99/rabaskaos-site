@@ -42,6 +42,7 @@
         "@id": "https://mrservices.ca/#organisation",
         "name": "MR Services",
         "url": "https://mrservices.ca/",
+        "email": "sebastien@mrservices.ca",
         "description": "Atelier d’ordinateurs et de logiciels à Pointe-aux-Trembles, Montréal : vente d’ordinateurs reconditionnés, réparation, développement de logiciels.",
         "address": {
           "@type": "PostalAddress",
@@ -944,7 +945,7 @@ input, select, textarea, button { font: inherit; }
         </div>
         <div style="background: #e9e2d4; border-radius: 16px; padding: 22px;">
           <b style="display: block; font-size: 12px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: #6b6357; margin-bottom: 8px;">Courriel direct</b>
-          <a href="mailto:spmorin.mrservices@gmail.com" style="font-family: 'Newsreader', Georgia, serif; font-size: 21px; letter-spacing: -0.02em; box-shadow: inset 0 -2px 0 #c15a34; overflow-wrap: anywhere;">spmorin.mrservices@gmail.com</a>
+          <a href="mailto:sebastien@mrservices.ca" style="font-family: 'Newsreader', Georgia, serif; font-size: 21px; letter-spacing: -0.02em; box-shadow: inset 0 -2px 0 #c15a34; overflow-wrap: anywhere;">sebastien@mrservices.ca</a>
         </div>
         <div style="background: #e9e2d4; border-radius: 16px; padding: 22px;">
           <b style="display: block; font-size: 12px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: #6b6357; margin-bottom: 8px;">Garantie</b>
@@ -999,7 +1000,7 @@ input, select, textarea, button { font: inherit; }
     </div>
     <div style="display: flex; justify-content: space-between; gap: 20px; flex-wrap: wrap; margin-top: 36px; padding-top: 20px; border-top: 1px solid rgba(28,23,16,.1); font-size: 13.5px; color: #9a9080;">
       <span>© 2026 MR Services. Tous droits réservés.</span>
-      <a href="mailto:spmorin.mrservices@gmail.com" style="color: #1c1814;">spmorin.mrservices@gmail.com</a>
+      <a href="mailto:sebastien@mrservices.ca" style="color: #1c1814;">sebastien@mrservices.ca</a>
       <span>Linux et les programmes du socle restent sous leurs licences d’origine. La couche Rabaska est propriétaire.</span>
     </div>
   </footer>
@@ -1078,7 +1079,7 @@ input, select, textarea, button { font: inherit; }
       var sujet = document.getElementById("f-sujet").value;
       var message = document.getElementById("f-message").value;
       var corps = "Nom : " + nom + "\nCourriel : " + courriel + "\nSujet : " + sujet + "\n\n" + message;
-      window.location.href = "mailto:spmorin.mrservices@gmail.com?subject=" +
+      window.location.href = "mailto:sebastien@mrservices.ca?subject=" +
         encodeURIComponent("Rabaska OS — " + sujet) + "&body=" + encodeURIComponent(corps);
     });
   }
