@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Droits et licences — Rabaska OS</title>
   <meta name="description" content="Droits d’usage de Rabaska OS : licence propriétaire de la couche Rabaska, licences libres du socle Linux/Lubuntu, marques citées.">
+  <meta name="author" content="MR Services">
   <meta name="robots" content="index,follow">
   <meta name="referrer" content="no-referrer">
   <link rel="canonical" href="https://rabaskaos.com/droits.html">
@@ -38,6 +39,12 @@
       "@type": "WebSite",
       "name": "Rabaska OS",
       "url": "https://rabaskaos.com/"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "@id": "https://mrservices.ca/#organisation",
+      "name": "MR Services",
+      "url": "https://mrservices.ca/"
     }
   }
   </script>
@@ -102,11 +109,23 @@
       padding: 16px 0 15px;
     }
     .brand {
-      display: flex; align-items: center; gap: 10px;
+      display: grid; grid-template-columns: auto auto;
+      column-gap: 10px; align-items: center;
+    }
+    .brand .nom {
+      align-self: end;
       font-family: "Newsreader", Georgia, serif;
       font-size: 21px; font-weight: 500; color: var(--ink);
-      letter-spacing: -0.03em;
+      letter-spacing: -0.03em; line-height: 1.05;
     }
+    .brand .par {
+      align-self: start;
+      font-size: 12px; font-weight: 500; letter-spacing: 0.02em;
+      line-height: 1.35; color: var(--mut);
+    }
+    .brand .par:hover { color: var(--accent); }
+    .brand .tile { grid-row: 1 / 3; }
+    .brand .tile:hover { color: #fff; }
     .tile {
       width: 30px; height: 30px; background: var(--accent); border-radius: 8px;
       color: #fff; font-family: "Newsreader", Georgia, serif;
@@ -234,10 +253,11 @@
   <div class="top">
     <div class="wrap">
       <header>
-        <a class="brand" href="index.html">
-          <span class="tile" aria-hidden="true">R</span>
-          Rabaska OS
-        </a>
+        <div class="brand">
+          <a class="tile" href="index.html" tabindex="-1" aria-hidden="true">R</a>
+          <a class="nom" href="index.html">Rabaska OS</a>
+          <a class="par" href="https://mrservices.ca/" hreflang="fr">par MR Services</a>
+        </div>
         <div class="haut-droite">
           <a class="mail-haut" href="mailto:spmorin.mrservices@gmail.com">spmorin.mrservices@gmail.com</a>
           <nav aria-label="Langue" style="display:flex;align-items:center;gap:6px;font-size:13px;font-weight:600;letter-spacing:0.04em;">
@@ -261,9 +281,10 @@
       <article>
         <h2>01 — Rabaska OS</h2>
         <p>
-          Rabaska OS, son habillage, ses outils et cette page sont protégés.
-          © 2026. Tous droits réservés. Aucune licence libre n’est accordée
-          sur Rabaska OS.
+          Rabaska OS est un produit de MR Services. Le système, son
+          habillage, ses outils et cette page sont protégés.
+          © 2026 MR Services. Tous droits réservés. Aucune licence libre
+          n’est accordée sur Rabaska OS.
         </p>
         <p>
           L’acheteur d’un ordinateur qui en est équipé reçoit un
@@ -291,17 +312,34 @@
       <article>
         <h2>03 — Marques</h2>
         <p>
-          « Rabaska OS » est une marque de produit. Linux® est une marque de
-          Linus Torvalds. Ubuntu, Lubuntu, LXQt, Firefox, Thunderbird,
-          Chromium, LibreOffice, Google et les autres noms cités
+          « Rabaska OS » est une marque de produit de MR Services. Linux® est
+          une marque de Linus Torvalds. Ubuntu, Lubuntu, LXQt, Firefox,
+          Thunderbird, Chromium, LibreOffice, Google et les autres noms cités
           appartiennent à leurs titulaires. Aucune affiliation.
+        </p>
+      </article>
+      <article>
+        <h2>04 — MR Services</h2>
+        <p>
+          Rabaska OS est conçu, installé et mis à jour par
+          <strong>MR Services</strong>, atelier d’ordinateurs et de logiciels
+          établi à Montréal (Pointe-aux-Trembles). Les machines équipées de
+          Rabaska OS y sont préparées et vendues.
+        </p>
+        <p>
+          Coordonnées et pages légales de l’entreprise&nbsp;:
+          <a href="https://mrservices.ca/" hreflang="fr">mrservices.ca</a> ·
+          <a href="https://mrservices.ca/store/conditions" hreflang="fr">conditions d’utilisation</a> ·
+          <a href="https://mrservices.ca/store/privacy" hreflang="fr">politique de confidentialité</a> ·
+          <a href="https://mrservices.ca/store/mentions-legales" hreflang="fr">mentions légales</a>.
         </p>
       </article>
     </main>
     <footer>
       <div class="pied-bas">
-        <span>Usage commercial · pas de redistribution</span>
+        <span>© 2026 MR Services · Usage commercial · pas de redistribution</span>
         <a class="pied-mail" href="mailto:spmorin.mrservices@gmail.com">spmorin.mrservices@gmail.com</a>
+        <a href="https://mrservices.ca/" hreflang="fr">mrservices.ca</a>
         <a href="index.html">Retour à l’accueil</a>
       </div>
     </footer>

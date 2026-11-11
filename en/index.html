@@ -4,7 +4,8 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Rabaska OS — French operating system for used PCs</title>
-  <meta name="description" content="Rabaska OS is a French-language operating system, delivered preinstalled on used and refurbished computers. Accessibility from the first boot: style, text size, colours, pace.">
+  <meta name="description" content="Rabaska OS is the French-language operating system from MR Services, delivered preinstalled on its used and refurbished computers. Accessibility from the first boot: style, text size, colours, pace.">
+  <meta name="author" content="MR Services">
   <meta name="robots" content="index,follow">
   <meta name="referrer" content="no-referrer">
   <link rel="canonical" href="https://rabaskaos.com/en/">
@@ -35,7 +36,15 @@
     "description": "French-language operating system for used and refurbished computers, delivered preinstalled, with accessibility from the first boot.",
     "inLanguage": "en",
     "applicationCategory": "OperatingSystem",
-    "operatingSystem": "Linux"
+    "operatingSystem": "Linux",
+    "author": { "@id": "https://mrservices.ca/#organisation" },
+    "publisher": {
+      "@type": "Organization",
+      "@id": "https://mrservices.ca/#organisation",
+      "name": "MR Services",
+      "url": "https://mrservices.ca/",
+      "address": { "@type": "PostalAddress", "addressLocality": "Montréal", "addressRegion": "QC", "addressCountry": "CA" }
+    }
   }
   </script>
   <style>
@@ -74,10 +83,11 @@ input, select, textarea, button { font: inherit; }
 
   <div style="position: sticky; top: 0; z-index: 40; background: rgba(233,226,212,.88); backdrop-filter: blur(20px); border-bottom: 1px solid rgba(28,23,16,.1);">
     <div style="width: min(1240px, calc(100% - 48px)); margin-inline: auto; display: flex; align-items: center; gap: 18px; min-height: 68px; padding: 10px 0; flex-wrap: wrap;">
-      <a href="#haut" style="display: flex; align-items: center; gap: 11px; font-family: 'Newsreader', Georgia, serif; font-size: 21px; font-weight: 500; letter-spacing: -0.03em; flex: none;">
-        <span style="width: 32px; height: 32px; background: #c15a34; border-radius: 9px; color: #fff; font-family: 'Newsreader', Georgia, serif; font-style: italic; font-weight: 600; font-size: 18px; display: grid; place-items: center;">R</span>
-        Rabaska&nbsp;OS
-      </a>
+      <div style="display: grid; grid-template-columns: auto auto; column-gap: 11px; align-items: center; flex: none;">
+        <a href="#haut" tabindex="-1" aria-hidden="true" style="grid-row: 1 / 3; width: 34px; height: 34px; background: #c15a34; border-radius: 9px; color: #fff; font-family: 'Newsreader', Georgia, serif; font-style: italic; font-weight: 600; font-size: 19px; display: grid; place-items: center;">R</a>
+        <a href="#haut" style="align-self: end; font-family: 'Newsreader', Georgia, serif; font-size: 21px; font-weight: 500; letter-spacing: -0.03em; line-height: 1.05;">Rabaska&nbsp;OS</a>
+        <a href="https://mrservices.ca/" hreflang="fr" style="align-self: start; font-size: 12px; font-weight: 500; letter-spacing: 0.02em; line-height: 1.35; color: #6b6357;" data-hover="color:#c15a34">by MR&nbsp;Services</a>
+      </div>
       <nav style="display: flex; align-items: center; gap: 8px 16px; margin-left: auto; font-size: 14px; font-weight: 500; flex-wrap: wrap;">
         <a href="#visite" style="color: #6b6357;" data-hover="color:#c15a34">Guided tour</a>
         <a href="#logiciels" style="color: #6b6357;" data-hover="color:#c15a34">Software</a>
@@ -108,7 +118,7 @@ input, select, textarea, button { font: inherit; }
           A used computer.<br>A <em style="font-style: italic; font-weight: 450; color: #c15a34;">new</em> system.
         </h1>
         <p style="margin: 26px 0 0; max-width: 30em; color: #6b6357; font-size: 20px; line-height: 1.5; animation: monter .9s .16s cubic-bezier(.22,1,.36,1) both;">
-          Rabaska OS replaces Windows on refurbished PCs. Light, in French, already installed. You turn it on, answer four questions, and you are on your desktop.
+          Rabaska OS replaces Windows on PCs refurbished by MR&nbsp;Services. Light, in French, already installed. You turn it on, answer four questions, and you are on your desktop.
         </p>
         <div style="display: flex; flex-wrap: wrap; gap: 12px; margin-top: 32px; animation: monter .9s .24s cubic-bezier(.22,1,.36,1) both;">
           <a href="#visite" style="background: #c15a34; color: #fff; font-size: 16px; font-weight: 600; padding: 15px 26px; border-radius: 999px; transition: background .2s, transform .2s;" data-hover="background:#ac4c2b; color:#fff; transform:translateY(-2px)">Tour the desktop</a>
@@ -271,7 +281,7 @@ input, select, textarea, button { font: inherit; }
           <div style="background: linear-gradient(180deg, #ded6c7 0%, #d8cfc0 100%); border: 1px solid rgba(28,23,16,.1); border-radius: 20px; padding: 28px; display: grid; gap: 14px; align-content: center; min-height: 380px;">
             <p style="margin: 0; font-size: 12px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: #c15a34;">Updates</p>
             <div style="background: #fdfbf6; border-radius: 12px; padding: 16px 18px; border: 1px solid rgba(28,23,16,.1);"><b style="display:block;font-size:16px;margin-bottom:3px;">Security</b><span style="color:#6b6357;font-size:15px;">Install without waiting.</span></div>
-            <div style="background: #fdfbf6; border-radius: 12px; padding: 16px 18px; border: 1px solid rgba(28,23,16,.1);"><b style="display:block;font-size:16px;margin-bottom:3px;">Rabaska OS</b><span style="color:#6b6357;font-size:15px;">Improvements via the seller channel.</span></div>
+            <div style="background: #fdfbf6; border-radius: 12px; padding: 16px 18px; border: 1px solid rgba(28,23,16,.1);"><b style="display:block;font-size:16px;margin-bottom:3px;">Rabaska OS</b><span style="color:#6b6357;font-size:15px;">Improvements via the MR Services channel.</span></div>
             <div style="background: #fdfbf6; border-radius: 12px; padding: 16px 18px; border: 1px solid rgba(28,23,16,.1);"><b style="display:block;font-size:16px;margin-bottom:3px;">Apps and system</b><span style="color:#6b6357;font-size:15px;">New versions of your programs.</span></div>
             <p style="margin: 4px 0 0; font-size: 14px; color: #6b6357;">One button “Update everything”. Or “Later”.</p>
           </div>
@@ -280,7 +290,7 @@ input, select, textarea, button { font: inherit; }
           <ul style="list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; font-size: 16px; color: #1c1814;">
             <li style="display: flex; gap: 10px;"><span style="color: #c15a34;">—</span> No terminal, no commands to type.</li>
             <li style="display: flex; gap: 10px;"><span style="color: #c15a34;">—</span> Security fixes from the Ubuntu base keep arriving overnight.</li>
-            <li style="display: flex; gap: 10px;"><span style="color: #c15a34;">—</span> The Rabaska layer updates through the seller channel.</li>
+            <li style="display: flex; gap: 10px;"><span style="color: #c15a34;">—</span> The Rabaska layer updates through the MR Services channel.</li>
           </ul>
         </div>
       </div>
@@ -558,14 +568,14 @@ input, select, textarea, button { font: inherit; }
             </div>
             <div style="background: #232019; border-radius: 12px; padding: 16px 18px;">
               <b style="display: block; font-size: 16px; margin-bottom: 3px;">Rabaska OS</b>
-              <span style="color: #a89f8d; font-size: 15px;">Improvements to the Rabaska layer, via the seller channel.</span>
+              <span style="color: #a89f8d; font-size: 15px;">Improvements to the Rabaska layer, via the MR Services channel.</span>
             </div>
             <div style="background: #232019; border-radius: 12px; padding: 16px 18px;">
               <b style="display: block; font-size: 16px; margin-bottom: 3px;">Apps and system</b>
               <span style="color: #a89f8d; font-size: 15px;">New versions of your programs.</span>
             </div>
           </div>
-          <p style="margin: 22px 0 0; color: #a89f8d; font-size: 15.5px; line-height: 1.6;">The Linux base keeps receiving Ubuntu-family security fixes. Without the seller channel, the Rabaska layer stops evolving. Lubuntu’s original notifier is still present&nbsp;: you may see two invitations for a while.</p>
+          <p style="margin: 22px 0 0; color: #a89f8d; font-size: 15.5px; line-height: 1.6;">The Linux base keeps receiving Ubuntu-family security fixes. Without the MR Services channel, the Rabaska layer stops evolving. Lubuntu’s original notifier is still present&nbsp;: you may see two invitations for a while.</p>
         </div>
       </div>
 
@@ -576,7 +586,7 @@ input, select, textarea, button { font: inherit; }
         </div>
         <div>
           <h3 style="margin: 0 0 8px; font-family: 'Newsreader', Georgia, serif; font-weight: 500; font-size: 24px; letter-spacing: -0.03em;">Where software comes from</h3>
-          <p style="margin: 0; color: #a89f8d; font-size: 15.5px; line-height: 1.6;">Official .deb repositories (Ubuntu, Mozilla). Snap packages are removed. The Rabaska layer comes from one channel&nbsp;: the seller’s.</p>
+          <p style="margin: 0; color: #a89f8d; font-size: 15.5px; line-height: 1.6;">Official .deb repositories (Ubuntu, Mozilla). Snap packages are removed. The Rabaska layer comes from one channel&nbsp;: the one run by MR Services.</p>
         </div>
         <div>
           <h3 style="margin: 0 0 8px; font-family: 'Newsreader', Georgia, serif; font-weight: 500; font-size: 24px; letter-spacing: -0.03em;">Secure Boot kept</h3>
@@ -696,7 +706,7 @@ input, select, textarea, button { font: inherit; }
         <span style="color: #6b6357; font-size: 15.5px; line-height: 1.55;">This is not a bare Ubuntu for an admin to tune. Theme and menu are fixed.</span>
       </div>
       <div style="background: #e9e2d4; border: 1px solid rgba(28,23,16,.14); border-radius: 18px; padding: 24px;">
-        <b style="display: block; font-size: 17px; margin-bottom: 6px;">Depends on the seller channel</b>
+        <b style="display: block; font-size: 17px; margin-bottom: 6px;">Depends on the MR Services channel</b>
         <span style="color: #6b6357; font-size: 15.5px; line-height: 1.55;">Without that channel, the Rabaska layer stops evolving. The Linux base continues.</span>
       </div>
       <div style="background: #e9e2d4; border: 1px solid rgba(28,23,16,.14); border-radius: 18px; padding: 24px;">
@@ -763,7 +773,7 @@ input, select, textarea, button { font: inherit; }
   </section>
 
   <section id="contact" style="width: min(1240px, calc(100% - 48px)); margin: 104px auto 0; scroll-margin-top: 88px;">
-    <div style="background: #fdfbf6; border: 1px solid rgba(28,23,16,.1); border-radius: 22px; padding: 44px; display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 48px;">
+    <div style="background: #fdfbf6; border: 1px solid rgba(28,23,16,.1); border-radius: 22px; padding: clamp(22px, 5vw, 44px); display: grid; grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr)); gap: 48px;">
       <div>
         <p style="margin: 0 0 14px; font-size: 11px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: #c15a34;">Contact us</p>
         <h2 style="margin: 0 0 14px; font-family: 'Newsreader', Georgia, serif; font-weight: 500; font-size: clamp(30px, 3.4vw, 42px); letter-spacing: -0.035em; line-height: 1.06;">A question, a clear need&nbsp;?</h2>
@@ -797,6 +807,15 @@ input, select, textarea, button { font: inherit; }
       </div>
       <div style="display: flex; flex-direction: column; gap: 14px;">
         <div style="background: #e9e2d4; border-radius: 16px; padding: 22px;">
+          <b style="display: block; font-size: 12px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: #6b6357; margin-bottom: 8px;">An MR Services product</b>
+          <span style="display: block; font-size: 16px; line-height: 1.55;">Rabaska machines are prepared, tested and sold by MR Services, a computer and software workshop in Pointe-aux-Trembles, Montréal.</span>
+          <span style="display: flex; flex-wrap: wrap; gap: 8px 20px; margin-top: 12px; font-size: 15px; font-weight: 600;">
+            <a href="https://mrservices.ca/" hreflang="fr" style="box-shadow: inset 0 -2px 0 #c15a34;">mrservices.ca</a>
+            <a href="https://mrservices.ca/store/ordinateurs" hreflang="fr" style="box-shadow: inset 0 -2px 0 #c15a34;">Computers in stock</a>
+          </span>
+          <span style="display: block; margin-top: 8px; font-size: 13.5px; color: #6b6357;">Site in French.</span>
+        </div>
+        <div style="background: #e9e2d4; border-radius: 16px; padding: 22px;">
           <b style="display: block; font-size: 12px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: #6b6357; margin-bottom: 8px;">Direct email</b>
           <a href="mailto:spmorin.mrservices@gmail.com" style="font-family: 'Newsreader', Georgia, serif; font-size: 21px; letter-spacing: -0.02em; box-shadow: inset 0 -2px 0 #c15a34; overflow-wrap: anywhere;">spmorin.mrservices@gmail.com</a>
         </div>
@@ -824,8 +843,9 @@ input, select, textarea, button { font: inherit; }
           Rabaska&nbsp;OS
         </a>
         <p style="margin: 12px 0 0; max-width: 24em; color: #6b6357; font-size: 15px; line-height: 1.5;">A clear system, in French, on a machine you do not need to buy again. Delivered preinstalled&nbsp;— no download.</p>
+        <p style="margin: 10px 0 0; font-size: 15px; color: #6b6357;">A product of <a href="https://mrservices.ca/" hreflang="fr" style="color: #1c1814; font-weight: 600; box-shadow: inset 0 -2px 0 #c15a34;">MR&nbsp;Services</a></p>
       </div>
-      <div style="display: flex; gap: 48px; font-size: 15px;">
+      <div style="display: flex; flex-wrap: wrap; gap: 28px 48px; font-size: 15px;">
         <div style="display: flex; flex-direction: column; gap: 9px;">
           <a href="#visite" style="color: #6b6357;">Guided tour</a>
           <a href="#logiciels" style="color: #6b6357;">Software</a>
@@ -841,10 +861,17 @@ input, select, textarea, button { font: inherit; }
           <a href="#questions" style="color: #6b6357;">Questions</a>
           <a href="#contact" style="color: #6b6357;">Contact us</a>
           <a href="rights.html" style="color: #6b6357;">Rights</a></div>
+        <div style="display: flex; flex-direction: column; gap: 9px;">
+          <a href="https://mrservices.ca/" hreflang="fr" style="color: #1c1814; font-weight: 600;">MR Services</a>
+          <a href="https://mrservices.ca/store/ordinateurs" hreflang="fr" style="color: #6b6357;">Computers</a>
+          <a href="https://mrservices.ca/store/reparation" hreflang="fr" style="color: #6b6357;">Repair</a>
+          <a href="https://mrservices.ca/store/privacy" hreflang="fr" style="color: #6b6357;">Privacy</a>
+          <a href="https://mrservices.ca/store/mentions-legales" hreflang="fr" style="color: #6b6357;">Legal notice</a>
+        </div>
       </div>
     </div>
     <div style="display: flex; justify-content: space-between; gap: 20px; flex-wrap: wrap; margin-top: 36px; padding-top: 20px; border-top: 1px solid rgba(28,23,16,.1); font-size: 13.5px; color: #9a9080;">
-      <span>© 2026. All rights reserved.</span>
+      <span>© 2026 MR Services. All rights reserved.</span>
       <a href="mailto:spmorin.mrservices@gmail.com" style="color: #1c1814;">spmorin.mrservices@gmail.com</a>
       <span>Linux and base programs keep their original licences. The Rabaska layer is proprietary.</span>
     </div>

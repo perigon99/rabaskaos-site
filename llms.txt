@@ -1,6 +1,11 @@
 # Rabaska OS
 
-> French-language operating system for used and refurbished computers. Delivered preinstalled with the machine — no public download.
+> French-language operating system for used and refurbished computers, by MR Services. Delivered preinstalled with the machine — no public download.
+
+## Publisher
+
+- [MR Services](https://mrservices.ca/) : computer and software workshop in Pointe-aux-Trembles, Montréal (Québec). Prepares, sells and updates the machines that run Rabaska OS. Site in French.
+- [Computers in stock](https://mrservices.ca/store/ordinateurs)
 
 ## Pages
 
@@ -12,6 +17,7 @@
 ## Contact
 
 - Email: spmorin.mrservices@gmail.com
+- Web: https://mrservices.ca/store/contact
 
 ## Notes
 
