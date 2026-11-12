@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Privacy — Rabaska OS</title>
+  <meta name="description" content="What rabaskaos.com and Rabaska machines collect about you, who is responsible, and how to exercise your rights (Quebec Law 25).">
+  <meta name="author" content="MR Services">
+  <meta name="robots" content="index,follow">
+  <meta name="referrer" content="no-referrer">
+  <link rel="canonical" href="https://rabaskaos.com/en/privacy.html">
+  <link rel="alternate" hreflang="fr-CA" href="https://rabaskaos.com/confidentialite.html">
+  <link rel="alternate" hreflang="en" href="https://rabaskaos.com/en/privacy.html">
+  <link rel="alternate" hreflang="x-default" href="https://rabaskaos.com/confidentialite.html">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="en_CA">
+  <meta property="og:locale:alternate" content="fr_CA">
+  <meta property="og:site_name" content="Rabaska OS">
+  <meta property="og:url" content="https://rabaskaos.com/en/privacy.html">
+  <meta property="og:title" content="Privacy — Rabaska OS">
+  <meta property="og:description" content="No cookies, no analytics: what is collected, by whom, and your rights.">
+  <meta property="og:image" content="https://rabaskaos.com/captures/menu.png">
+  <meta property="og:image:alt" content="Rabaska OS Start menu">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Privacy — Rabaska OS">
+  <meta name="twitter:description" content="No cookies, no analytics: what is collected, by whom, and your rights.">
+  <meta name="twitter:image" content="https://rabaskaos.com/captures/menu.png">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self'; script-src 'unsafe-inline'; base-uri 'self'">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="../fonts/Newsreader.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="../fonts/HankenGrotesk.woff2" as="font" type="font/woff2" crossorigin>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "Privacy — Rabaska OS",
+    "url": "https://rabaskaos.com/en/privacy.html",
+    "description": "Privacy policy of rabaskaos.com and Rabaska machines (Quebec Law 25).",
+    "inLanguage": "en",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "Rabaska OS",
+      "url": "https://rabaskaos.com/"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "@id": "https://mrservices.ca/#organisation",
+      "name": "MR Services",
+      "url": "https://mrservices.ca/"
+    }
+  }
+  </script>
+  <style>
+    @font-face {
+      font-family: "Hanken Grotesk";
+      src: url("../fonts/HankenGrotesk.woff2") format("woff2");
+      font-weight: 100 900;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: "Newsreader";
+      src: url("../fonts/Newsreader.woff2") format("woff2");
+      font-weight: 100 900;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: "Newsreader";
+      src: url("../fonts/Newsreader-Italic.woff2") format("woff2");
+      font-weight: 100 900;
+      font-style: italic;
+      font-display: swap;
+    }
+    :root {
+      --bg: #e9e2d4;
+      --ink: #1c1814;
+      --mut: #6b6357;
+      --faint: #9a9080;
+      --accent: #c15a34;
+      --bd: rgba(28, 23, 16, 0.14);
+      --spring: cubic-bezier(.22, 1, .36, 1);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { background: var(--bg); }
+    body {
+      font-family: "Hanken Grotesk", system-ui, sans-serif;
+      background: var(--bg); color: var(--ink);
+      font-size: 17px; line-height: 1.55;
+    }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { color: #9c4526; }
+    .wrap { width: min(760px, calc(100% - 48px)); margin-inline: auto; }
+    .top {
+      position: sticky;
+      top: 0;
+      z-index: 30;
+      background: color-mix(in srgb, var(--bg) 84%, transparent);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border-bottom: 1px solid var(--bd);
+    }
+    .top::before {
+      content: "";
+      display: block;
+      height: 3px;
+      background: var(--accent);
+    }
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 0 15px;
+    }
+    .brand {
+      display: grid; grid-template-columns: auto auto;
+      column-gap: 10px; align-items: center;
+    }
+    .brand .nom {
+      align-self: end;
+      font-family: "Newsreader", Georgia, serif;
+      font-size: 21px; font-weight: 500; color: var(--ink);
+      letter-spacing: -0.03em; line-height: 1.05;
+    }
+    .brand .par {
+      align-self: start;
+      font-size: 12px; font-weight: 500; letter-spacing: 0.02em;
+      line-height: 1.35; color: var(--mut);
+    }
+    .brand .par:hover { color: var(--accent); }
+    .brand .tile { grid-row: 1 / 3; }
+    .brand .tile:hover { color: #fff; }
+    .tile {
+      width: 30px; height: 30px; background: var(--accent); border-radius: 8px;
+      color: #fff; font-family: "Newsreader", Georgia, serif;
+      font-style: italic; font-weight: 600; font-size: 17px;
+      display: grid; place-items: center;
+      transition: transform .32s var(--spring);
+    }
+    .brand:hover .tile { transform: rotate(-8deg) scale(1.06); }
+    .top-lien {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--mut);
+      position: relative;
+    }
+    .top-lien::after {
+      content: "";
+      position: absolute;
+      left: 0; right: 0; bottom: -3px;
+      height: 1px;
+      background: var(--accent);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform .32s var(--spring);
+    }
+    .top-lien:hover { color: var(--accent); }
+    .top-lien:hover::after { transform: scaleX(1); }
+    .haut-droite {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 8px;
+      min-width: 0;
+    }
+    .mail-haut {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.01em;
+      color: var(--accent);
+      overflow-wrap: anywhere;
+      text-align: right;
+    }
+    .mail-haut:hover { color: var(--ink); }
+    .mail-haut::after { display: none; }
+    main { padding: 64px 0 8px; }
+    .eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 18px;
+    }
+    .eyebrow i {
+      display: block;
+      width: 28px;
+      height: 1px;
+      background: var(--accent);
+      opacity: .55;
+      font-style: normal;
+    }
+    h1 {
+      font-family: "Newsreader", Georgia, serif;
+      font-weight: 500;
+      font-size: clamp(40px, 6vw, 58px);
+      letter-spacing: -0.035em;
+      line-height: 1.02;
+      margin-bottom: 16px;
+    }
+    h1 em { font-style: italic; font-weight: 450; }
+    .lede {
+      color: var(--mut);
+      font-size: 19px;
+      line-height: 1.45;
+      max-width: 32em;
+      margin-bottom: 48px;
+    }
+    article {
+      padding: 28px 0;
+      border-top: 1px solid var(--bd);
+    }
+    article h2 {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 12px;
+    }
+    article p { color: var(--mut); margin-bottom: 12px; }
+    strong { color: var(--ink); font-weight: 600; }
+    footer {
+      border-top: 1px solid var(--bd);
+      margin-top: 48px;
+      padding: 28px 0 40px;
+      color: var(--faint);
+      font-size: 13px;
+    }
+    .pied-bas {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    footer a { color: var(--faint); }
+    footer a:hover { color: var(--accent); }
+    footer a.pied-mail { color: var(--ink); font-weight: 500; }
+    footer a.pied-mail:hover { color: var(--accent); }
+    @media (max-width: 640px) {
+      .wrap { width: calc(100% - 40px); }
+      main { padding-top: 40px; }
+      .pied-bas { flex-direction: column; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation: none !important;
+        transition: none !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="top">
+    <div class="wrap">
+      <header>
+        <div class="brand">
+          <a class="tile" href="./" tabindex="-1" aria-hidden="true">R</a>
+          <a class="nom" href="./">Rabaska OS</a>
+          <a class="par" href="https://mrservices.ca/" hreflang="fr">by MR Services</a>
+        </div>
+        <div class="haut-droite">
+          <a class="mail-haut" href="mailto:sebastien@mrservices.ca">sebastien@mrservices.ca</a>
+          <nav aria-label="Language" style="display:flex;align-items:center;gap:6px;font-size:13px;font-weight:600;letter-spacing:0.04em;">
+            <a href="../confidentialite.html" hreflang="fr" lang="fr" style="color:var(--mut);">FR</a>
+            <span style="color:var(--faint);" aria-hidden="true">|</span>
+            <span style="color:var(--ink);" aria-current="page">EN</span>
+          </nav>
+          <a class="top-lien" href="./">Home</a>
+        </div>
+      </header>
+    </div>
+  </div>
+  <div class="wrap">
+    <main>
+      <p class="eyebrow">Privacy <i></i> Quebec Law 25</p>
+      <h1>This site does not follow you.<br><em>Here is the rest.</em></h1>
+      <p class="lede">
+        No cookies, no analytics, no ads. Here, in plain terms, is what
+        is collected, by whom, and how to reach us.
+      </p>
+      <article>
+        <h2>01 — This site</h2>
+        <p>
+          rabaskaos.com sets no cookies and uses no analytics, advertising,
+          or tracking tools. Fonts, images, and scripts all come from the
+          site itself: displaying it makes your browser contact no other
+          service.
+        </p>
+        <p>
+          The site is hosted by <strong>GitHub Pages</strong> (GitHub, in
+          the United States). Like any host, GitHub logs visitors’ IP
+          addresses for security. MR Services has no access to those logs.
+          See
+          <a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement">GitHub’s privacy statement</a>.
+        </p>
+      </article>
+      <article>
+        <h2>02 — When you write to us</h2>
+        <p>
+          The “Write to us” form sends nothing by itself: it opens your
+          email app with the message already written. Nothing leaves until
+          you send it.
+        </p>
+        <p>
+          We then receive your name, email address, and message. Our email
+          is hosted by Google: your messages are stored on its servers,
+          possibly outside Quebec. We use them to answer you and, if you
+          buy a machine, for the sale and the warranty. We do not sell or
+          rent them, and we never add you to a mailing list. Retention
+          follows the
+          <a href="https://mrservices.ca/store/privacy" hreflang="fr">MR Services privacy policy</a> (in French).
+        </p>
+      </article>
+      <article>
+        <h2>03 — On Rabaska machines</h2>
+        <p>
+          Rabaska OS sends MR Services no usage data: no account to create,
+          no telemetry, no advertising ID. Browser telemetry is turned off.
+        </p>
+        <p>
+          Like any computer, the machine contacts servers for its updates:
+          Ubuntu’s, Mozilla’s, and the MR Services channel. The browsers
+          also reach Google services, for example for safe browsing or
+          protected video playback. Those servers see the machine’s IP
+          address, like any website.
+        </p>
+        <p>
+          The AI assistant opens Google’s Gemini only if you click it. You
+          sign in with your own Google account: Google’s policy then
+          applies.
+        </p>
+        <p>
+          For troubleshooting, the machine keeps a diagnostic log on its
+          disk (machine name, user name, system log excerpts). It never
+          leaves over the Internet. It is copied only during after-sales
+          service, when MR Services plugs its diagnostic key into the
+          machine.
+        </p>
+      </article>
+      <article>
+        <h2>04 — Your rights</h2>
+        <p>
+          <strong>Person in charge of the protection of personal
+          information</strong>: the person who runs MR Services. Write to
+          <a href="mailto:sebastien@mrservices.ca">sebastien@mrservices.ca</a>.
+        </p>
+        <p>
+          You can ask to see the information we hold about you, have it
+          corrected or deleted, or withdraw your consent. We answer in
+          writing within 30&nbsp;days. If our answer does not satisfy you,
+          you can turn to Quebec’s
+          <a href="https://www.cai.gouv.qc.ca/" hreflang="fr">Commission d’accès à l’information</a>.
+        </p>
+        <p>Last updated: November&nbsp;11, 2026.</p>
+      </article>
+    </main>
+    <footer>
+      <div class="pied-bas">
+        <span>© 2026 MR Services</span>
+        <a class="pied-mail" href="mailto:sebastien@mrservices.ca">sebastien@mrservices.ca</a>
+        <a href="https://mrservices.ca/" hreflang="fr">mrservices.ca</a>
+        <a href="rights.html">Rights</a>
+        <a href="./">Back to home</a>
+      </div>
+    </footer>
+  </div>
+</body>
+</html>

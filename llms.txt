@@ -13,6 +13,8 @@
 - [Home (EN)](https://rabaskaos.com/en/) : English mirror of the home page
 - [Rights (FR)](https://rabaskaos.com/droits.html) : usage rights, Linux base licences, trademarks
 - [Rights (EN)](https://rabaskaos.com/en/rights.html) : English mirror of the rights page
+- [Privacy (FR)](https://rabaskaos.com/confidentialite.html) : privacy policy (Quebec Law 25) for the site and Rabaska machines
+- [Privacy (EN)](https://rabaskaos.com/en/privacy.html) : English mirror of the privacy policy
 
 ## Contact
 
@@ -24,3 +26,5 @@
 - Content in French (fr-CA) and English (en)
 - No public ISO, no installer to download
 - Accessibility: four questions at first power-on (style, size, colours, pace), reversible afterward
+- Warranty: 3 months on Rabaska machines, on top of the legal warranty under Quebec's Consumer Protection Act
+- No cookies, no analytics, no third-party resources on rabaskaos.com
